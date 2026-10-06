@@ -1,0 +1,161 @@
+/* --- Apple-Grade Overrides --- */
+
+/* Hero Section Updates */
+.hero {
+    position: relative;
+    padding-top: 15vh;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.03) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero::before {
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.02) 0%, transparent 60%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(3.5rem, 8vw, 6.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    font-weight: 700;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #8a8a8a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+.hero-chips {
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.chip {
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chip-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.chip-ads .chip-dot { background: var(--color-05); box-shadow: 0 0 10px var(--color-05); }
+.chip-tech .chip-dot { background: var(--color-08); box-shadow: 0 0 10px var(--color-08); }
+
+
+/* Bento Card Premium Glassmorphism */
+.bento-item {
+    background: rgba(20, 20, 22, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 24px !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.glass-reflection {
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.bento-item:hover {
+    transform: translateY(-8px) scale(1.02) !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    background: rgba(30, 30, 32, 0.7) !important;
+}
+
+.card-bg-icon {
+    position: absolute;
+    right: -10%;
+    bottom: -10%;
+    width: 60%;
+    height: auto;
+    opacity: 0.03;
+    color: #ffffff;
+    z-index: 0;
+    transform: rotate(-15deg);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s;
+    pointer-events: none;
+}
+
+.bento-item:hover .card-bg-icon {
+    transform: rotate(0deg) scale(1.1) translate(-5%, -5%);
+    opacity: 0.08;
+}
+
+.card-visual, .card-content {
+    z-index: 3 !important;
+}
+
+.icon-group {
+    display: flex;
+    gap: 12px;
+}
+
+.service-icon {
+    width: 56px !important;
+    height: 56px !important;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.brand-icon {
+    width: 48px !important;
+    height: 48px !important;
+}
+
+.bento-item:hover .service-icon {
+    transform: scale(1.15) translateY(-4px) !important;
+}
+
+.card-meta {
+    font-weight: 600;
+    letter-spacing: 2px !important;
+}
+
+.giant-title {
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    margin-bottom: 0.5rem;
+    line-height: 1.05;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    margin-top: 0;
+}
+
+.card-glow {
+    width: 250px !important;
+    height: 250px !important;
+    filter: blur(80px) !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    z-index: 0 !important;
+}
+
+.bento-item:hover .card-glow {
+    opacity: 0.15 !important;
+}

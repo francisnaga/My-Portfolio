@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, observerOptions);
 
-    const elementsToAnimate = document.querySelectorAll('.project-card, .section-title, .about-text, .skills-list');
+    const elementsToAnimate = document.querySelectorAll('.service-card, .section-title, .about-text, .skills-list');
     elementsToAnimate.forEach(el => {
         el.style.opacity = "0";
         el.style.transform = "translateY(20px)";
@@ -69,3 +69,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // (CSS handles the main fade-in class defined in style.css, this JS block enhances it 
     // by applying it to more elements dynamically)
 });
+
+// Modal Logic
+function openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    const overlay = document.getElementById('modalOverlay');
+    if (modal && overlay) {
+        modal.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+}
+
+function closeModals() {
+    const modals = document.querySelectorAll('.modal');
+    const overlay = document.getElementById('modalOverlay');
+    
+    modals.forEach(m => m.classList.remove('active'));
+    if (overlay) overlay.classList.remove('active');
+    
+    document.body.style.overflow = ''; // Restore background scrolling
+}
