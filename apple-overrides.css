@@ -250,9 +250,7 @@ body.light-mode .glass-reflection {
     background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, transparent 40%);
 }
 
-body.light-mode .card-glow {
-    opacity: 0.1; /* Reduce glow intensity in light mode */
-}
+body.light-mode .card-glow { display: none !important; }
 
 body.light-mode .header {
     background: rgba(245, 245, 247, 0.7);
@@ -350,9 +348,7 @@ body.light-mode .card-meta {
 }
 
 /* Fix the glowing blobs (card-glow) entirely in light mode */
-body.light-mode .card-glow {
-    display: none !important; /* The blobs look like smudges in light mode, remove them for a clean Apple look */
-}
+body.light-mode .card-glow { display: none !important; }
 
 /* Fix SVG colors in cards */
 body.light-mode .bento-item .service-icon {
@@ -456,15 +452,8 @@ body.light-mode .service-card:hover {
     box-shadow: 0 20px 40px rgba(99, 102, 241, 0.25), 0 0 15px rgba(236, 72, 153, 0.2) !important; /* Indigo & Pink glow */
 }
 
-/* Give icons inside cards a gradient pop on hover */
-.service-card:hover .service-icon {
-    background: linear-gradient(135deg, #6366f1, #ec4899) !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important;
-    color: transparent !important;
-    transform: scale(1.1);
-    transition: all 0.3s ease;
-}
+
+
 
 /* --- Contact Form Styling --- */
 .contact-form {
@@ -582,14 +571,7 @@ body.light-mode .loader-text {
 
 /* --- Make Card Colors Pop (Light & Dark) --- */
 /* Override the previous display:none in light mode */
-body.light-mode .card-glow {
-    display: block !important;
-    opacity: 0.1 !important; 
-    filter: blur(50px) !important;
-    background: var(--service-color) !important;
-    width: 200px !important;
-    height: 200px !important;
-}
+body.light-mode .card-glow { display: none !important; }
 
 /* Dark mode default pop increase */
 .card-glow {
@@ -603,9 +585,7 @@ body.light-mode .card-glow {
     filter: blur(60px) !important;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
-body.light-mode .service-card:hover .card-glow {
-    opacity: 0.3 !important;
-}
+
 
 
 /* --- Fix Hero Centering & Blue Accent --- */
@@ -635,22 +615,12 @@ body.light-mode .loader-text {
 body.light-mode .service-icon {
     color: #1d1d1f; /* Ensure stroke="currentColor" icons are dark in light mode */
 }
-/* Ensure the hover state still overrides it */
-body.light-mode .service-card:hover .service-icon {
-    color: transparent !important; /* Let the gradient show */
-}
+
+body.light-mode 
 
 
-/* --- Fix SVG Icon Hover Bug (Overrides previous text-clip hack) --- */
-.service-card:hover .service-icon,
-body.light-mode .service-card:hover .service-icon {
-    background: transparent !important;
-    -webkit-text-fill-color: initial !important;
-    color: #0070F3 !important; /* Premium Vercel Blue Accent */
-    filter: drop-shadow(0 0 10px rgba(0, 112, 243, 0.5)) !important;
-    transform: scale(1.1) !important;
-    transition: all 0.3s ease !important;
-}
+
+
 
 /* Also ensure the brand icons with specific inline colors don't get overwritten 
    unintentionally when NOT hovered in light mode */
@@ -659,15 +629,8 @@ body.light-mode .service-icon:not(.brand-icon) {
 }
 
 
-/* --- Fix SVG Icon Hover Bug (Absolute Override) --- */
-.service-card:hover .service-icon,
-body.light-mode .service-card:hover .service-icon {
-    background: transparent !important;
-    -webkit-background-clip: border-box !important;
-    -webkit-text-fill-color: #0070F3 !important; /* Force the text-fill to blue instead of transparent or initial */
-    color: #0070F3 !important; 
-    filter: drop-shadow(0 0 10px rgba(0, 112, 243, 0.5)) !important;
-}
+
+
 
 /* --- Desktop Service Card Hover Details --- */
 .card-hover-desc {
@@ -697,4 +660,18 @@ body.light-mode .service-card:hover .service-icon {
     .card-content {
         transition: transform 0.4s ease;
     }
+}
+
+/* --- Clean Icon Hover --- */
+.service-card:hover .service-icon {
+    background: transparent !important;
+    -webkit-text-fill-color: initial !important;
+    -webkit-background-clip: initial !important;
+    filter: drop-shadow(0 0 12px currentColor) brightness(1.2) !important;
+    transform: scale(1.1) !important;
+    transition: all 0.3s ease !important;
+}
+/* In light mode, ensure non-brand icons are dark initially so they are visible */
+body.light-mode .service-icon:not(.brand-icon) {
+    color: #1d1d1f !important; 
 }
