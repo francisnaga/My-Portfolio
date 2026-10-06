@@ -606,3 +606,36 @@ body.light-mode .card-glow {
 body.light-mode .service-card:hover .card-glow {
     opacity: 0.3 !important;
 }
+
+
+/* --- Fix Hero Centering & Blue Accent --- */
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #0070F3, #3291FF) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+/* --- Fix Loader Light Mode Text --- */
+body.light-mode .loader-text {
+    color: #1d1d1f !important;
+    border-right-color: #0070F3 !important;
+}
+
+/* --- Fix Free Consultation Icon & General Service Icons in Light Mode --- */
+body.light-mode .service-icon {
+    color: #1d1d1f; /* Ensure stroke="currentColor" icons are dark in light mode */
+}
+/* Ensure the hover state still overrides it */
+body.light-mode .service-card:hover .service-icon {
+    color: transparent !important; /* Let the gradient show */
+}
