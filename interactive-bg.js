@@ -48,7 +48,11 @@ function loop() {
     mouse.x += (mouse.targetX - mouse.x) * 0.05;
     mouse.y += (mouse.targetY - mouse.y) * 0.05;
     
+    
+    const isLight = document.body.classList.contains('light-mode');
+    
     orbs.forEach((orb, i) => {
+
         // Move towards mouse with slight parallax
         let dx = (mouse.x - orb.x) * orb.speed;
         let dy = (mouse.y - orb.y) * orb.speed;
@@ -57,9 +61,19 @@ function loop() {
         orb.x += dx + Math.sin(Date.now() * 0.001 + i) * 0.5;
         orb.y += dy + Math.cos(Date.now() * 0.001 + i) * 0.5;
         
+
+        // Determine color based on theme
+        let orbColor = orb.color;
+        if (isLight) {
+            if (i === 0) orbColor = 'rgba(0, 0, 0, 0.04)';
+            if (i === 1) orbColor = 'rgba(50, 50, 50, 0.03)';
+            if (i === 2) orbColor = 'rgba(100, 100, 100, 0.02)';
+        }
+
         // Draw orb
         const gradient = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
-        gradient.addColorStop(0, orb.color);
+        gradient.addColorStop(0, orbColor);
+
         gradient.addColorStop(1, 'rgba(0,0,0,0)');
         
         ctx.beginPath();
