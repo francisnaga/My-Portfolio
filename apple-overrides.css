@@ -394,3 +394,8 @@ body.light-mode .header {
         padding: 1rem 0 !important;
     }
 }
+
+/* Hamburger menu fix for Light Mode */
+body.light-mode .bar {
+    background-color: var(--text-primary) !important;
+}
