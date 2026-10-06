@@ -657,3 +657,44 @@ body.light-mode .service-card:hover .service-icon {
 body.light-mode .service-icon:not(.brand-icon) {
     color: #1d1d1f !important;
 }
+
+
+/* --- Fix SVG Icon Hover Bug (Absolute Override) --- */
+.service-card:hover .service-icon,
+body.light-mode .service-card:hover .service-icon {
+    background: transparent !important;
+    -webkit-background-clip: border-box !important;
+    -webkit-text-fill-color: #0070F3 !important; /* Force the text-fill to blue instead of transparent or initial */
+    color: #0070F3 !important; 
+    filter: drop-shadow(0 0 10px rgba(0, 112, 243, 0.5)) !important;
+}
+
+/* --- Desktop Service Card Hover Details --- */
+.card-hover-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 1rem;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    line-height: 1.5;
+}
+
+/* Only enable the hover expansion on desktop devices (laptops/desktops) */
+@media (min-width: 1024px) {
+    .service-card:hover .card-hover-desc {
+        opacity: 1;
+        max-height: 150px; /* Expand to fit text */
+        margin-top: 1rem;
+    }
+    
+    /* Slightly lift the whole content block up on hover for a parallax feel */
+    .service-card:hover .card-content {
+        transform: translateY(-5px);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .card-content {
+        transition: transform 0.4s ease;
+    }
+}
