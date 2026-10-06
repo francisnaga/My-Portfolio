@@ -611,10 +611,7 @@ body.light-mode .loader-text {
     border-right-color: #0070F3 !important;
 }
 
-/* --- Fix Free Consultation Icon & General Service Icons in Light Mode --- */
-body.light-mode .service-icon {
-    color: #1d1d1f; /* Ensure stroke="currentColor" icons are dark in light mode */
-}
+
 
 body.light-mode 
 
