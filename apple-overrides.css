@@ -276,3 +276,21 @@ body.light-mode .btn-email {
 body.light-mode .btn-email:hover {
     background: rgba(0,0,0,0.06) !important;
 }
+
+/* Modal Contact Buttons Hover Effects */
+.btn-whatsapp-small:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+.btn-email-small:hover {
+    background: rgba(255, 255, 255, 0.12) !important;
+}
+
+body.light-mode .btn-email-small {
+    background: rgba(0,0,0,0.05) !important;
+    border-color: rgba(0,0,0,0.1) !important;
+}
+
+body.light-mode .btn-email-small:hover {
+    background: rgba(0,0,0,0.08) !important;
+}
