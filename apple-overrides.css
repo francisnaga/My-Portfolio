@@ -624,9 +624,7 @@ body.light-mode
 
 /* Also ensure the brand icons with specific inline colors don't get overwritten 
    unintentionally when NOT hovered in light mode */
-body.light-mode .service-icon:not(.brand-icon) {
-    color: #1d1d1f !important;
-}
+
 
 
 
@@ -671,7 +669,4 @@ body.light-mode .service-icon:not(.brand-icon) {
     transform: scale(1.1) !important;
     transition: all 0.3s ease !important;
 }
-/* In light mode, ensure non-brand icons are dark initially so they are visible */
-body.light-mode .service-icon:not(.brand-icon) {
-    color: #1d1d1f !important; 
-}
+
