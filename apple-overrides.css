@@ -378,3 +378,19 @@ body.light-mode .section-subtitle,
 body.light-mode .about-desc p {
     color: #424245 !important;
 }
+
+body.light-mode .header {
+    background: rgba(245, 245, 247, 0.85) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+}
+
+@media (max-width: 768px) {
+    .mobile-only-contacts {
+        display: flex !important;
+    }
+    .header {
+        padding: 1rem 0 !important;
+    }
+}
