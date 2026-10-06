@@ -399,3 +399,21 @@ body.light-mode .header {
 body.light-mode .bar {
     background-color: var(--text-primary) !important;
 }
+
+/* --- Light Mode Mobile Menu Fix --- */
+@media (max-width: 768px) {
+    body.light-mode .nav-links {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(25px) !important;
+        -webkit-backdrop-filter: blur(25px) !important;
+        border-left: 1px solid rgba(0,0,0,0.1) !important;
+        box-shadow: -10px 0 40px rgba(0,0,0,0.1) !important;
+    }
+    body.light-mode .nav-links a {
+        color: #1d1d1f !important;
+    }
+    body.light-mode .nav-links a:hover {
+        color: #000000 !important;
+        background: rgba(0,0,0,0.05) !important;
+    }
+}

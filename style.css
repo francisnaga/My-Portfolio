@@ -6,8 +6,8 @@
     --card-bg: #161616;
     --border-color: #2a2a2a;
 
-    --font-heading: 'Playfair Display', serif;
-    --font-body: 'Inter', sans-serif;
+    --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
     --transition: cubic-bezier(0.2, 0.8, 0.2, 1) 0.5s;
 
