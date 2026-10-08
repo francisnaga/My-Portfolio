@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { FaApple, FaAndroid, FaGooglePlay, FaAppStoreIos, FaPython, FaFacebook, FaInstagram, FaTiktok, FaGoogle } from 'react-icons/fa';
 import { FaComputer } from 'react-icons/fa6';
 import { BsStars } from 'react-icons/bs';
-import { Rocket } from 'lucide-react'; // Wait, lucide-react is not installed, I'll use a FontAwesome rocket instead
 import { FaRocket } from 'react-icons/fa';
 
 const allServices = [
