@@ -6,7 +6,6 @@ const projects = [
     title: "NCB Finance",
     stack: ["Next.js", "Supabase", "Paystack", "TypeScript"],
     desc: "Invoicing and payments platform for Nigerian freelancers and CAC-registered businesses. FIRS/NRS e-invoicing compliance, dark luxury fintech aesthetic, and Paystack integration.",
-    image: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=800&auto=format&fit=crop",
     link: "#"
   },
   {
@@ -14,7 +13,6 @@ const projects = [
     title: "Vantage",
     stack: ["Next.js", "Supabase", "Tailwind", "Framer Motion"],
     desc: "Job application tracker with a premium SaaS aesthetic. Minimalist, built for job seekers to track pipelines.",
-    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop",
     link: "#"
   },
   {
@@ -22,7 +20,6 @@ const projects = [
     title: "NairaLens",
     stack: ["Next.js", "Supabase"],
     desc: "Nigerian financial transparency platform: BNPL plan comparison, vendor legitimacy checking, remittance rate comparison, and live Naira rate tracking.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
     link: "#"
   },
   {
@@ -30,7 +27,6 @@ const projects = [
     title: "Classync",
     stack: ["Next.js", "PWA", "Supabase"],
     desc: "Edtech PWA for Nigerian university students with Student/Rep/Admin roles and a full approval workflow.",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop",
     link: "#"
   },
   {
@@ -38,7 +34,6 @@ const projects = [
     title: "Inkto",
     stack: ["React Native", "Kotlin", "Supabase", "Gemini AI"],
     desc: "AI-powered legal document platform: scans and transcribes handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device scanning and cloud AI transcription. Built for a practicing Nigerian lawyer.",
-    image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=800&auto=format&fit=crop",
     link: "#"
   }
 ];
@@ -59,46 +54,42 @@ export default function Work() {
   }, [activeProject]);
 
   return (
-    <section id="work" className="py-16 md:py-24 px-6 md:px-12 bg-white">
+    <section id="work" className="py-16 md:py-24 px-6 md:px-12 bg-white border-b border-dark/10">
       <div className="max-w-6xl mx-auto">
         <h2 className="font-mono text-xs uppercase tracking-widest text-dark/50 mb-12 md:mb-16">
           // Selected Works
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {projects.map((proj) => (
             <div 
               key={proj.id} 
-              className="group cursor-pointer flex flex-col gap-4"
+              className="group cursor-pointer flex flex-col justify-between p-6 md:p-8 bg-light border border-dark/10 hover:border-accent hover:bg-white transition-all duration-300 min-h-[250px] hover:shadow-[8px_8px_0px_0px_rgba(10,10,10,1)]"
               onClick={() => setActiveProject(proj)}
             >
-              <div className="aspect-[4/3] w-full bg-light overflow-hidden border border-dark/10 relative">
-                <img 
-                  src={proj.image} 
-                  alt={proj.title}
-                  className="w-full h-full object-cover filter grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-dark/0 group-hover:bg-dark/10 transition-colors duration-500" />
-              </div>
               <div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="font-mono text-xs text-dark/40">[{proj.id}]</span>
-                  <h3 className="font-mono text-xl uppercase font-bold text-dark group-hover:text-accent transition-colors">
-                    {proj.title}
-                  </h3>
+                <div className="flex justify-between items-start mb-4">
+                  <span className="font-mono text-sm text-dark/40 group-hover:text-accent/60 transition-colors">[{proj.id}]</span>
+                  <svg className="w-5 h-5 text-dark/20 group-hover:text-accent group-hover:-translate-y-1 group-hover:translate-x-1 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </div>
-                <div className="flex flex-wrap gap-2">
-                  {proj.stack.slice(0, 2).map((tag, i) => (
-                    <span key={i} className="text-xs font-mono uppercase bg-light px-2 py-1 text-dark/60">
-                      {tag}
-                    </span>
-                  ))}
-                  {proj.stack.length > 2 && (
-                    <span className="text-xs font-mono uppercase bg-light px-2 py-1 text-dark/60">
-                      +{proj.stack.length - 2}
-                    </span>
-                  )}
-                </div>
+                <h3 className="font-mono text-2xl uppercase font-bold text-dark group-hover:text-accent transition-colors mb-4">
+                  {proj.title}
+                </h3>
+              </div>
+
+              <div className="flex flex-wrap gap-2">
+                {proj.stack.slice(0, 3).map((tag, i) => (
+                  <span key={i} className="text-[10px] font-mono uppercase bg-dark/5 px-2 py-1 text-dark/60 border border-dark/5 group-hover:border-dark/20 group-hover:bg-white transition-colors">
+                    {tag}
+                  </span>
+                ))}
+                {proj.stack.length > 3 && (
+                  <span className="text-[10px] font-mono uppercase bg-dark/5 px-2 py-1 text-dark/60 border border-dark/5 group-hover:border-dark/20 group-hover:bg-white transition-colors">
+                    +{proj.stack.length - 3}
+                  </span>
+                )}
               </div>
             </div>
           ))}
@@ -112,7 +103,7 @@ export default function Work() {
             className="absolute inset-0 bg-dark/90 backdrop-blur-sm cursor-pointer"
             onClick={() => setActiveProject(null)}
           />
-          <div className="relative w-full max-w-4xl max-h-[90vh] bg-white border-2 border-dark flex flex-col md:flex-row overflow-y-auto md:overflow-hidden shadow-[16px_16px_0px_0px_rgba(10,10,10,1)]">
+          <div className="relative w-full max-w-2xl max-h-[90vh] bg-white border-2 border-dark flex flex-col overflow-y-auto shadow-[16px_16px_0px_0px_rgba(10,10,10,1)]">
             
             {/* Close Button */}
             <button 
@@ -124,40 +115,39 @@ export default function Work() {
               </svg>
             </button>
 
-            {/* Modal Image */}
-            <div className="w-full md:w-1/2 h-64 md:h-auto border-b md:border-b-0 md:border-r border-dark relative">
-              <img 
-                src={activeProject.image} 
-                alt={activeProject.title}
-                className="w-full h-full object-cover filter grayscale"
-              />
-            </div>
-
             {/* Modal Content */}
-            <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col">
+            <div className="w-full p-8 md:p-12 flex flex-col">
               <span className="font-mono text-sm text-dark/40 mb-2">[{activeProject.id}]</span>
-              <h3 className="font-mono text-3xl md:text-5xl uppercase font-bold text-dark mb-6">
+              <h3 className="font-mono text-4xl md:text-5xl uppercase font-bold text-dark mb-6 pr-12">
                 {activeProject.title}
               </h3>
               
-              <div className="flex flex-wrap gap-2 mb-8">
+              <div className="flex flex-wrap gap-2 mb-8 pb-8 border-b border-dark/10">
                 {activeProject.stack.map((tag, i) => (
-                  <span key={i} className="text-xs font-mono uppercase border border-dark/20 px-3 py-1 text-dark/80">
+                  <span key={i} className="text-xs font-mono uppercase border border-dark/20 px-3 py-1 text-dark/80 bg-light">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              <p className="font-sans text-base md:text-lg text-dark/80 leading-relaxed mb-12 flex-1">
+              <p className="font-sans text-lg md:text-xl text-dark/80 leading-relaxed mb-12 flex-1">
                 {activeProject.desc}
               </p>
 
-              <a 
-                href={activeProject.link}
-                className="w-full py-4 bg-dark text-white text-center font-mono uppercase tracking-widest hover:bg-accent transition-colors"
-              >
-                View Live Demo
-              </a>
+              <div className="flex gap-4">
+                <a 
+                  href={activeProject.link}
+                  className="flex-1 py-4 bg-dark text-white text-center font-mono uppercase tracking-widest hover:bg-accent transition-colors"
+                >
+                  Live Demo
+                </a>
+                <a 
+                  href="#"
+                  className="flex-1 py-4 border border-dark text-dark text-center font-mono uppercase tracking-widest hover:bg-dark hover:text-white transition-colors"
+                >
+                  GitHub
+                </a>
+              </div>
             </div>
           </div>
         </div>
