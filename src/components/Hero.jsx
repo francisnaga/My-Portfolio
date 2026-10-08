@@ -1,9 +1,9 @@
 export default function Hero() {
   return (
-    <section className="min-h-screen w-full flex flex-col md:flex-row border-b border-dark/10">
+    <section className="min-h-[100svh] w-full flex flex-col md:flex-row border-b border-dark/10">
       {/* 60% Left Side */}
-      <div className="w-full md:w-[60%] flex flex-col justify-end p-6 md:p-12 pb-24 md:pb-12 bg-white">
-        <h1 className="font-mono text-5xl md:text-8xl font-bold leading-[0.9] tracking-tighter uppercase mb-6 text-dark">
+      <div className="w-full md:w-[60%] flex flex-col justify-end p-6 md:p-12 pb-16 pt-32 md:pb-12 bg-white flex-grow">
+        <h1 className="font-mono text-6xl md:text-8xl font-bold leading-[0.9] tracking-tighter uppercase mb-8 text-dark">
           Build.<br />
           Ship.<br />
           Scale.
@@ -14,9 +14,9 @@ export default function Hero() {
       </div>
       
       {/* 40% Right Side - Accent Block */}
-      <div className="w-full md:w-[40%] bg-accent min-h-[50vh] md:min-h-screen flex items-end p-6 md:p-12">
-        <div className="text-white font-mono text-sm uppercase tracking-widest">
-          <p className="mb-2">Lagos, NG</p>
+      <div className="w-full md:w-[40%] bg-accent min-h-[15vh] md:min-h-screen flex items-end p-6 md:p-12 border-t md:border-t-0 md:border-l border-dark/10">
+        <div className="text-white font-mono text-sm uppercase tracking-widest flex w-full justify-between md:flex-col md:justify-end md:items-start gap-2">
+          <p>Lagos, NG</p>
           <p>EST. 2023</p>
         </div>
       </div>
