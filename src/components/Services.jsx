@@ -1,18 +1,18 @@
 const services = [
   {
     id: "01",
-    title: "Mobile App Development",
-    desc: "Native and cross-platform mobile apps engineered for speed and stability. From the first line of code to the App Store launch.",
+    title: "Apps",
+    desc: "I build native and cross-platform apps from scratch. I handle everything from the first line of code to getting it approved on the App Store.",
   },
   {
     id: "02",
-    title: "Website Development",
-    desc: "Bespoke websites that do not just look pretty. Blazing fast, SEO-optimized, and hardcoded to turn traffic into revenue.",
+    title: "Websites",
+    desc: "Fast, custom websites. No WordPress themes or generic site builders. Just hand-written code designed to run smoothly and look good.",
   },
   {
     id: "03",
-    title: "AI & Automation",
-    desc: "Custom AI pipelines and LLM integrations. Automate customer support, streamline internal workflows, and slash overhead.",
+    title: "Automation",
+    desc: "I connect APIs and build custom tools to automate the boring stuff, so you can actually focus on running your business.",
   },
 ];
 

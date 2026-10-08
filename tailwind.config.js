@@ -13,7 +13,6 @@ export default {
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-        mono: ['"Space Mono"', 'monospace'],
       },
     },
   },

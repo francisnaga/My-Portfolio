@@ -9,7 +9,7 @@ export default function Hero() {
           Scale.
         </h1>
         <p className="font-sans text-base md:text-xl max-w-md text-dark/80">
-          I am Naga. I engineer custom web and mobile applications for ambitious businesses. No templates. No bloat. Just clean code built to convert.
+          Hey, I'm Naga. I write code for websites and mobile apps. I don't use bloated templates or page builders—just raw code that loads fast and gets the job done.
         </p>
       </div>
       

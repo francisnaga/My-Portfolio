@@ -3,7 +3,7 @@ const projects = [
     id: "01",
     title: "NCB Finance",
     stack: "React, Node, PostgreSQL",
-    desc: "Invoicing and payments platform for Nigerian freelancers and businesses. Built for strict FIRS compliance.",
+    desc: "An invoicing and payment tool I built for Nigerian freelancers to easily stay FIRS compliant.",
     offset: "md:ml-0",
     img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
   },
@@ -11,7 +11,7 @@ const projects = [
     id: "02",
     title: "Vantage Real Estate",
     stack: "Next.js, Tailwind",
-    desc: "Property discovery platform with real-time map clustering and an aggressive SEO architecture.",
+    desc: "A property search site with a custom map integration and lightning-fast load times.",
     offset: "md:ml-[15%]",
     img: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=800&auto=format&fit=crop"
   },
@@ -19,7 +19,7 @@ const projects = [
     id: "03",
     title: "Inkto",
     stack: "React Native, Firebase",
-    desc: "Mobile application built for a specific legal firm. Secure document sharing and real-time client updates.",
+    desc: "A secure file-sharing mobile app I made for a law firm to keep their client updates private.",
     offset: "md:ml-[30%]",
     img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop"
   },

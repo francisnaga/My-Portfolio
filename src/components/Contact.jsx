@@ -11,7 +11,7 @@ export default function Contact() {
             Let's Talk<br />Code.
           </h3>
           <p className="font-sans text-base md:text-lg text-white/70 max-w-md mb-8 md:mb-12">
-            No endless discovery calls. Drop me a line with your project details and budget. I will tell you if we are a fit.
+            Shoot me an email with what you're trying to build, and we can figure out if it makes sense to work together.
           </p>
           
           <a href="mailto:hello@francisnaga.site" className="inline-flex items-center gap-4 group">
