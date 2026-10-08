@@ -1,20 +1,16 @@
-# Naga Digital | Professional Developer Portfolio
+# React + Vite
 
-A high-performance, premium portfolio website showcasing mobile and web development services. Designed with a sleek, Apple-inspired aesthetic featuring frosted glass effects, fluid animations, and a seamless Light/Dark mode toggle.
+This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
-## 🚀 Features
+Currently, two official plugins are available:
 
-- **Premium UI/UX:** Frosted glass navigation, interactive bento-box service cards, and dynamic gradient glows.
-- **Dark & Light Modes:** Flawless transition between a sleek dark aesthetic and a clean, bright light mode.
-- **Fully Responsive:** Optimized for both desktop and mobile experiences with bespoke touch-friendly layouts.
-- **Vanilla Performance:** Built purely with HTML, CSS, and JavaScript for zero-dependency blazing fast load times.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🛠 Tech Stack
-- HTML5
-- CSS3 (Custom Properties, Grid, Flexbox, Backdrop Filters)
-- JavaScript (Vanilla DOM manipulation, Intersection Observer)
+## React Compiler
 
-## 👤 About Naga
-Providing premium digital solutions to elevate your business from idea to scale. From mobile app development to website design, Python automation, and Google Business setup.
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-*Built for high conversion and premium client experiences.*
+## Expanding the Oxlint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
