@@ -1,23 +1,21 @@
 export default function Hero() {
   return (
-    <section className="min-h-[100svh] w-full flex flex-col md:flex-row border-b border-dark/10">
-      {/* 60% Left Side */}
-      <div className="w-full md:w-[60%] flex flex-col justify-center md:justify-end p-6 md:p-12 pt-32 md:pb-12 bg-white flex-grow">
-        <h1 className="font-mono text-5xl md:text-8xl font-bold leading-[1] md:leading-[0.9] tracking-tighter uppercase mb-6 md:mb-8 text-dark mt-12 md:mt-0">
-          Build.<br />
-          Ship.<br />
-          Scale.
-        </h1>
-        <p className="font-sans text-base md:text-xl max-w-md text-dark/80">
-          Hey, I'm Naga. I write code for websites and mobile apps. I don't use bloated templates or page builders. Just raw code that loads fast and gets the job done.
+    <section className="min-h-[85svh] w-full flex flex-col items-center justify-center p-6 md:p-12 border-b border-dark/10 bg-white text-center mt-16 md:mt-0">
+      <div className="max-w-4xl mx-auto flex flex-col items-center gap-6">
+        <p className="font-mono text-sm md:text-base uppercase tracking-widest text-dark/50">
+          Hey, I'm Naga.
         </p>
-      </div>
-      
-      {/* 40% Right Side - Accent Block */}
-      <div className="w-full md:w-[40%] bg-accent min-h-[20vh] md:min-h-screen flex items-end p-6 md:p-12 border-t md:border-t-0 md:border-l border-dark/10 shrink-0">
-        <div className="text-white font-mono text-sm uppercase tracking-widest flex w-full justify-between md:flex-col md:justify-end md:items-start gap-2">
-          <p>Lagos, NG</p>
-          <p>EST. 2023</p>
+        <h1 className="font-mono text-5xl md:text-7xl lg:text-8xl uppercase font-bold text-dark leading-[1.1]">
+          I build it.<br />
+          I launch it.<br />
+          <span className="text-accent">I help you grow it.</span>
+        </h1>
+        <div className="flex flex-wrap justify-center gap-3 mt-8">
+          {["Web Dev", "Mobile Apps", "UI/UX", "Automation", "SEO"].map((chip) => (
+            <span key={chip} className="font-mono text-xs uppercase px-4 py-2 bg-light text-dark/70 border border-dark/10">
+              {chip}
+            </span>
+          ))}
         </div>
       </div>
     </section>
