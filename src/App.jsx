@@ -2,8 +2,8 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import Work from './components/Work'
+import About from './components/About'
 import Contact from './components/Contact'
-
 function App() {
   return (
     <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
@@ -12,6 +12,7 @@ function App() {
         <Hero />
         <Services />
         <Work />
+        <About />
       </main>
       <Contact />
 
