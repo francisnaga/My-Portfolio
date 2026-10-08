@@ -2,10 +2,10 @@ export default function Hero() {
   return (
     <section className="min-h-[100svh] w-full flex flex-col md:flex-row border-b border-dark/10">
       {/* 60% Left Side */}
-      <div className="w-full md:w-[60%] flex flex-col justify-end p-6 md:p-12 pb-16 md:pb-24 pt-32 md:pt-12 bg-white">
-        <h1 className="font-mono text-5xl md:text-6xl lg:text-8xl uppercase font-bold text-dark leading-[0.9] mb-8">
+      <div className="w-full md:w-[60%] flex flex-col justify-end p-6 md:p-12 pb-16 md:pb-24 pt-40 md:pt-48 bg-white">
+        <h1 className="font-sans text-5xl md:text-6xl lg:text-7xl uppercase font-extrabold text-dark leading-[0.95] tracking-tight mb-8">
           I BUILD IT.<br />
-          I LAUNCH IT.<br />
+          <span className="text-accent">I LAUNCH IT.</span><br />
           I HELP YOU<br />
           GROW IT.
         </h1>
