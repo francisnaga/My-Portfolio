@@ -1,16 +1,87 @@
-# React + Vite
+# Francis Naga Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A personal portfolio website built with React, Vite, and Tailwind CSS. This project showcases my work, services, and contact information in a bold, modern brutalist design aesthetic.
 
-Currently, two official plugins are available:
+Live site: https://francisnaga.site
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Overview
 
-## React Compiler
+This portfolio is designed to highlight:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- My services and capabilities
+- Selected projects and work samples
+- A clear and direct contact path
+- A responsive, mobile-friendly experience
+- A strong personal brand with a custom visual style
 
-## Expanding the Oxlint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React 19
+- Vite
+- Tailwind CSS
+- JavaScript
+- GitHub Pages / Vercel-style deployment readiness
+
+## Features
+
+- Responsive landing page and hero section
+- Service overview cards
+- Portfolio / work showcase section
+- Contact section with direct WhatsApp CTA
+- Brutalist UI styling with accessible contrast and mobile-friendly layout
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+```bash
+git clone https://github.com/francisnaga/My-Portfolio.git
+cd My-Portfolio
+npm install
+```
+
+### Run locally
+
+```bash
+npm run dev
+```
+
+Then open the local Vite URL shown in the terminal.
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Project Scripts
+
+```bash
+npm run dev     # start local development server
+npm run build   # create production bundle
+npm run preview # preview built app locally
+npm run lint    # run linter checks
+```
+
+## Deployment
+
+This project is set up for deployment on a frontend host such as Vercel or similar static hosting providers.
+
+## Author
+
+Francis Naga
+
+## License
+
+This project is currently unlicensed.
