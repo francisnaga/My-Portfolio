@@ -1,3 +1,5 @@
+import { FaGithub, FaLinkedin, FaTiktok, FaXTwitter } from 'react-icons/fa6';
+
 export default function Contact() {
   return (
     <section id="contact" className="py-16 md:py-24 px-6 md:px-12 bg-dark text-white">
@@ -24,10 +26,22 @@ export default function Contact() {
           </a>
         </div>
         
-        <div className="w-full md:w-auto font-mono text-xs uppercase tracking-widest text-white/50 flex flex-row md:flex-col gap-4 mt-8 md:mt-0">
-          <p className="hidden md:block">Social</p>
-          <a href="#" className="hover:text-white transition-colors">LinkedIn //</a>
-          <a href="#" className="hover:text-white transition-colors">GitHub //</a>
+        <div className="w-full md:w-auto font-mono text-xs uppercase tracking-widest text-white/50 flex flex-col md:items-end gap-6 mt-8 md:mt-0">
+          <p className="hidden md:block mb-2">Social</p>
+          <div className="flex gap-6">
+            <a href="https://github.com/francisnaga" target="_blank" rel="noreferrer" className="hover:text-white hover:scale-110 transition-all">
+              <FaGithub size={28} />
+            </a>
+            <a href="https://linkedin.com/in/francisnaga" target="_blank" rel="noreferrer" className="hover:text-white hover:scale-110 transition-all">
+              <FaLinkedin size={28} />
+            </a>
+            <a href="https://tiktok.com/@efobi_naga" target="_blank" rel="noreferrer" className="hover:text-white hover:scale-110 transition-all">
+              <FaTiktok size={28} />
+            </a>
+            <a href="https://twitter.com/francisnaga" target="_blank" rel="noreferrer" className="hover:text-white hover:scale-110 transition-all">
+              <FaXTwitter size={28} />
+            </a>
+          </div>
         </div>
         
       </div>
