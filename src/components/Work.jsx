@@ -6,35 +6,40 @@ const projects = [
     title: "NCB Finance",
     stack: ["Next.js", "Supabase", "Paystack", "TypeScript"],
     desc: "Invoicing and payments platform for Nigerian freelancers and CAC-registered businesses. FIRS/NRS e-invoicing compliance, dark luxury fintech aesthetic, and Paystack integration.",
-    link: "#"
+    link: "https://ncbfinance.francisnaga.site",
+    github: "https://github.com/francisnaga/NCB-Finance"
   },
   {
     id: "02",
     title: "Vantage",
     stack: ["Next.js", "Supabase", "Tailwind", "Framer Motion"],
     desc: "Job application tracker with a premium SaaS aesthetic. Minimalist, built for job seekers to track pipelines.",
-    link: "#"
+    link: "https://vantage.francisnaga.site",
+    github: "https://github.com/francisnaga/Vantage"
   },
   {
     id: "03",
     title: "NairaLens",
     stack: ["Next.js", "Supabase"],
     desc: "Nigerian financial transparency platform: BNPL plan comparison, vendor legitimacy checking, remittance rate comparison, and live Naira rate tracking.",
-    link: "#"
+    link: "https://nairalens.francisnaga.site",
+    github: "https://github.com/francisnaga/NairaLens"
   },
   {
     id: "04",
     title: "Classync",
     stack: ["Next.js", "PWA", "Supabase"],
     desc: "Edtech PWA for Nigerian university students with Student/Rep/Admin roles and a full approval workflow.",
-    link: "#"
+    link: "https://classync.francisnaga.site",
+    github: "https://github.com/francisnaga/Classync"
   },
   {
     id: "05",
     title: "Inkto",
     stack: ["React Native", "Kotlin", "Supabase", "Gemini AI"],
     desc: "AI-powered legal document platform: scans and transcribes handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device scanning and cloud AI transcription. Built for a practicing Nigerian lawyer.",
-    link: "#"
+    link: "https://inkto.francisnaga.site",
+    github: "https://github.com/francisnaga/Inkto"
   }
 ];
 
@@ -137,12 +142,16 @@ export default function Work() {
               <div className="flex gap-4">
                 <a 
                   href={activeProject.link}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex-1 py-4 bg-dark text-white text-center font-mono uppercase tracking-widest hover:bg-accent transition-colors"
                 >
                   Live Demo
                 </a>
                 <a 
-                  href="#"
+                  href={activeProject.github}
+                  target="_blank"
+                  rel="noreferrer"
                   className="flex-1 py-4 border border-dark text-dark text-center font-mono uppercase tracking-widest hover:bg-dark hover:text-white transition-colors"
                 >
                   GitHub
