@@ -21,33 +21,21 @@ export default function About() {
                 I'm Naga, a software developer and student builder focused on creating practical digital products across web, mobile, AI, and automation. 
               </p>
               <p>
-                I build full-stack applications, AI-powered tools, and business websites, combining software development with product thinking to solve real problems. I'm currently studying Marine Engineering at Nigeria Maritime University (on a federal-government scholarship) and hold NIIT certificates in Web Development and Python.
+                I build full-stack applications, AI-powered tools, and business websites, combining software development with product thinking to solve real problems. I'm currently studying Marine Engineering at Nigeria Maritime University and hold NIIT certificates in Web Development and Python.
               </p>
             </div>
 
             {/* Metrics & Evidence */}
-            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-              
+            <div className="mt-12">
               <div className="border-l-2 border-accent pl-6 py-2">
-                <span className="block font-mono text-3xl font-bold text-foreground mb-1">200+</span>
+                <span className="block font-mono text-3xl font-bold text-foreground mb-1">₦80M+</span>
                 <span className="font-mono text-sm text-foreground/60 uppercase tracking-wide">
-                  Members in NMU Innovators
+                  Enterprise Lead Pipeline
                 </span>
-                <p className="mt-2 text-sm text-foreground/70">
-                  Founded and lead a student tech community driving innovation on campus.
+                <p className="mt-2 text-sm text-foreground/70 max-w-lg">
+                  Architected and executed a high-conversion digital marketing campaign that successfully generated an ₦80M enterprise business opportunity.
                 </p>
               </div>
-
-              <div className="border-l-2 border-accent pl-6 py-2">
-                <span className="block font-mono text-3xl font-bold text-foreground mb-1">₦8M</span>
-                <span className="font-mono text-sm text-foreground/60 uppercase tracking-wide">
-                  Potential Lead Generated
-                </span>
-                <p className="mt-2 text-sm text-foreground/70">
-                  Managed a ₦10k ad spend generating 100+ chats (₦100/msg) and closing a massive business opportunity.
-                </p>
-              </div>
-
             </div>
           </div>
 
@@ -65,7 +53,7 @@ export default function About() {
                 Nigeria Maritime University (NMU)
               </p>
               <p className="text-xs text-accent mt-2 font-mono uppercase">
-                2024–2029 • Federal Scholarship
+                2024–2029
               </p>
             </div>
 
