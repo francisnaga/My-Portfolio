@@ -7,9 +7,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        accent: '#002FA7', // International Klein Blue
-        dark: '#111111',
-        light: '#F8F8F8',
+        accent: 'hsl(var(--accent))',
+        dark: 'hsl(var(--foreground))',
+        light: 'hsl(var(--background))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        ring: 'hsl(var(--ring))',
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'sans-serif'],
