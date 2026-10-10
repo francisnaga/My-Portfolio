@@ -1,11 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaSun, FaMoon, FaBars, FaXmark } from 'react-icons/fa6';
-import { useTheme } from './ThemeProvider';
+import { FaBars, FaXmark } from 'react-icons/fa6';
 
 export default function Nav() {
-  const { theme, toggleTheme } = useTheme();
   const [isOpen, setIsOpen] = useState(false);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
 
   const links = [
     { name: 'Home', href: '#home' },
@@ -21,7 +31,7 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/70 backdrop-blur-md transition-colors duration-300">
+      <nav className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/70 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-6 md:px-12 h-20 flex justify-between items-center">
           {/* Logo */}
           <a href="#home" className="font-mono text-lg tracking-widest uppercase font-bold text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
@@ -43,14 +53,6 @@ export default function Nav() {
             </div>
 
             <div className="flex items-center gap-4 border-l border-foreground/20 pl-4">
-              <button 
-                onClick={toggleTheme}
-                className="text-foreground/70 hover:text-accent transition-colors p-2 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
-                aria-label="Toggle Theme"
-              >
-                {theme === 'dark' ? <FaSun size={20} /> : <FaMoon size={20} />}
-              </button>
-              
               <a 
                 href="#contact"
                 className="bg-foreground text-background font-mono text-xs uppercase tracking-widest px-6 py-3 hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
@@ -60,15 +62,8 @@ export default function Nav() {
             </div>
           </div>
 
-          {/* Mobile Menu Toggle & Theme */}
+          {/* Mobile Menu Toggle */}
           <div className="flex md:hidden items-center gap-4">
-            <button 
-              onClick={toggleTheme}
-              className="text-foreground p-2 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
-              aria-label="Toggle Theme"
-            >
-              {theme === 'dark' ? <FaSun size={20} /> : <FaMoon size={20} />}
-            </button>
             <button 
               onClick={() => setIsOpen(true)}
               className="text-foreground p-2 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
@@ -88,7 +83,7 @@ export default function Nav() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[200] bg-background flex flex-col noise-bg"
+            className="fixed inset-0 z-[200] bg-background flex flex-col noise-bg h-[100dvh]"
           >
             <div className="p-6 h-20 flex justify-between items-center border-b border-foreground/10 relative z-10">
               <span className="font-mono text-lg tracking-widest uppercase font-bold text-foreground">

@@ -4,13 +4,12 @@ import Services from './components/Services'
 import Work from './components/Work'
 import About from './components/About'
 import Contact from './components/Contact'
-import { ThemeProvider } from './components/ThemeProvider'
 
 function App() {
   return (
-    <ThemeProvider>
+    <>
+      <Nav />
       <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
-        <Nav />
         <main>
           <Hero />
           <Services />
@@ -34,7 +33,7 @@ function App() {
       </a>
 
       </div>
-    </ThemeProvider>
+    </>
   )
 }
 
