@@ -1,36 +1,104 @@
+import { motion } from 'framer-motion';
+
 export default function About() {
   return (
-    <section id="about" className="py-16 md:py-24 px-6 md:px-12 border-b border-dark/10 bg-white">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-12 md:gap-24">
-        
-        {/* Left Side: Title */}
-        <div className="w-full md:w-1/3">
-          <h2 className="font-mono text-3xl md:text-5xl uppercase font-bold text-dark leading-[1.1] mb-6">
-            MORE THAN JUST <span className="text-accent italic">CODE.</span>
-          </h2>
-        </div>
+    <section id="about" className="py-16 md:py-24 px-6 md:px-12 bg-background border-b border-foreground/10 noise-bg">
+      <div className="max-w-6xl mx-auto relative z-10">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-12 md:mb-16">
+          // The Builder
+        </h2>
 
-        {/* Right Side: Content */}
-        <div className="w-full md:w-2/3 flex flex-col gap-6">
-          <p className="font-sans text-lg md:text-xl text-dark/80 max-w-2xl leading-relaxed">
-            I believe that true craftsmanship lies in the details. It's not just about writing code; it's about building scalable, elegant, and efficient solutions.
-          </p>
-          <p className="font-sans text-lg md:text-xl text-dark/80 max-w-2xl leading-relaxed">
-            As a certified Web and Python Developer (NIIT), I bridge the gap between complex engineering and seamless user experiences.
-          </p>
-
-          <div className="flex gap-12 mt-8">
-            <div className="flex flex-col">
-              <span className="font-mono text-5xl font-bold text-dark mb-2">3+</span>
-              <span className="font-mono text-sm uppercase tracking-widest text-dark/50">Years Exp.</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Main Bio */}
+          <div className="lg:col-span-7">
+            <h3 className="font-mono text-3xl md:text-5xl uppercase font-bold text-foreground mb-8">
+              Efobi Francis Chibundo
+            </h3>
+            
+            <div className="space-y-6 font-sans text-lg text-foreground/80 leading-relaxed">
+              <p>
+                I'm Naga, a software developer and student builder focused on creating practical digital products across web, mobile, AI, and automation. 
+              </p>
+              <p>
+                I build full-stack applications, AI-powered tools, and business websites, combining software development with product thinking to solve real problems. I'm currently studying Marine Engineering at Nigeria Maritime University (on a federal-government scholarship) and hold NIIT certificates in Web Development and Python.
+              </p>
             </div>
-            <div className="flex flex-col">
-              <span className="font-mono text-5xl font-bold text-dark mb-2">20+</span>
-              <span className="font-mono text-sm uppercase tracking-widest text-dark/50">Projects</span>
+
+            {/* Metrics & Evidence */}
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+              
+              <div className="border-l-2 border-accent pl-6 py-2">
+                <span className="block font-mono text-3xl font-bold text-foreground mb-1">200+</span>
+                <span className="font-mono text-sm text-foreground/60 uppercase tracking-wide">
+                  Members in NMU Innovators
+                </span>
+                <p className="mt-2 text-sm text-foreground/70">
+                  Founded and lead a student tech community driving innovation on campus.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-accent pl-6 py-2">
+                <span className="block font-mono text-3xl font-bold text-foreground mb-1">₦8M</span>
+                <span className="font-mono text-sm text-foreground/60 uppercase tracking-wide">
+                  Potential Lead Generated
+                </span>
+                <p className="mt-2 text-sm text-foreground/70">
+                  Managed a ₦10k ad spend generating 100+ chats (₦100/msg) and closing a massive business opportunity.
+                </p>
+              </div>
+
             </div>
           </div>
-        </div>
 
+          {/* Sidebar Info */}
+          <div className="lg:col-span-4 lg:col-start-9 space-y-8">
+            
+            <div className="bg-foreground/5 border border-foreground/10 p-6">
+              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/50 mb-4 border-b border-foreground/10 pb-2">
+                Education
+              </h4>
+              <p className="font-mono font-bold text-foreground">
+                B.Eng. Marine Engineering
+              </p>
+              <p className="text-sm text-foreground/70 mt-1">
+                Nigeria Maritime University (NMU)
+              </p>
+              <p className="text-xs text-accent mt-2 font-mono uppercase">
+                2024–2029 • Federal Scholarship
+              </p>
+            </div>
+
+            <div className="bg-foreground/5 border border-foreground/10 p-6">
+              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/50 mb-4 border-b border-foreground/10 pb-2">
+                Certifications
+              </h4>
+              <ul className="space-y-3 font-mono text-sm text-foreground">
+                <li className="flex items-start gap-3">
+                  <span className="text-accent">▹</span> NIIT Web Development
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-accent">▹</span> NIIT Python Programming
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-foreground/5 border border-foreground/10 p-6">
+              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/50 mb-4 border-b border-foreground/10 pb-2">
+                Location
+              </h4>
+              <p className="font-mono text-foreground flex items-center gap-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                </span>
+                Nigeria
+              </p>
+            </div>
+
+          </div>
+          
+        </div>
       </div>
     </section>
   );

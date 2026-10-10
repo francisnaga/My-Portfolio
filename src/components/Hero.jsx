@@ -22,7 +22,7 @@ const itemVariants = {
 
 export default function Hero() {
   return (
-    <section className="min-h-[100svh] w-full flex flex-col md:flex-row border-b border-dark/10 noise-bg">
+    <section id="home" className="min-h-[100svh] w-full flex flex-col md:flex-row border-b border-foreground/10 noise-bg">
       {/* 60% Left Side */}
       <div className="w-full md:w-[60%] flex flex-col justify-end p-6 md:p-12 pb-16 md:pb-24 pt-40 md:pt-48 bg-background relative z-10">
         <motion.div
@@ -43,7 +43,7 @@ export default function Hero() {
             variants={itemVariants}
             className="font-sans text-base md:text-xl max-w-md text-foreground/80"
           >
-            Hey, I'm Naga. I write code for websites and mobile apps. I don't use bloated templates or page builders. Just raw code that loads fast and gets the job done.
+            Hey, I'm Naga, a software developer and student builder. I build practical digital products across web, mobile, AI, and automation—without bloated templates or page builders. Just raw code that gets the job done.
           </motion.p>
         </motion.div>
       </div>

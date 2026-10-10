@@ -4,17 +4,20 @@ import Services from './components/Services'
 import Work from './components/Work'
 import About from './components/About'
 import Contact from './components/Contact'
+import { ThemeProvider } from './components/ThemeProvider'
+
 function App() {
   return (
-    <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
-      <Nav />
-      <main>
-        <Hero />
-        <Services />
-        <Work />
-        <About />
-      </main>
-      <Contact />
+    <ThemeProvider>
+      <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
+        <Nav />
+        <main>
+          <Hero />
+          <Services />
+          <Work />
+          <About />
+        </main>
+        <Contact />
 
       {/* Floating Brutalist WhatsApp Button */}
       <a 
@@ -30,7 +33,8 @@ function App() {
         <span className="font-mono text-sm uppercase tracking-widest font-bold hidden md:inline">Chat</span>
       </a>
 
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
 
