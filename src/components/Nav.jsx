@@ -3,6 +3,7 @@ import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaXmark } from 'react-icons/fa6';
 import { playClick, toggleSound } from '../utils/sound';
+import Logo from './Logo';
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,9 +82,10 @@ export default function Nav() {
             <a 
               href="#home" 
               onClick={() => playClick(500, 'sine', 0.03)}
-              className="font-mono text-base md:text-lg tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+              className="flex items-center gap-2.5 font-mono text-base md:text-lg tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none group"
             >
-              NAGA DIGITAL
+              <Logo size={24} className="flex-shrink-0" />
+              <span>NAGA</span>
             </a>
             <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] uppercase text-foreground/60 border-l border-foreground/15 pl-3">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
@@ -168,9 +170,10 @@ export default function Nav() {
             >
               {/* Drawer Top Header */}
               <div className="p-4 sm:p-6 h-20 flex justify-between items-center border-b-2 border-foreground bg-white">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2.5">
+                  <Logo size={22} className="flex-shrink-0" />
                   <span className="font-mono text-base tracking-widest uppercase font-black text-foreground">
-                    NAGA DIGITAL
+                    NAGA
                   </span>
                   <span className="font-mono text-[10px] text-accent font-bold">
                     // MENU
