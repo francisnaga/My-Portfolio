@@ -4,8 +4,9 @@ import { playClick } from '../utils/sound';
 export default function TerminalHero() {
   const [time, setTime] = useState('');
   const [history, setHistory] = useState([
-    { type: 'system', text: '[NAGA-OS v2.6] Marine Systems & Digital Product Studio' },
-    { type: 'system', text: '[INFO] Discipline: B.Eng Marine Engineering (NMU) × Full-Stack' },
+    { type: 'system', text: '[NAGA-SHELL v2.6] Developer Console & Project Telemetry' },
+    { type: 'system', text: '[INFO] Software Developer & Student Builder' },
+    { type: 'system', text: '[INFO] Focus: Full-Stack Web, Mobile, Applied AI & Automation' },
     { type: 'system', text: '[INFO] Flagship: Inkto (AI Legal OCR) · Pipeline: ₦80M+' },
     { type: 'dim', text: 'Tap an action chip below or type a command to explore.' }
   ]);
@@ -45,7 +46,7 @@ export default function TerminalHero() {
 
     if (cmd === 'clear' || cmd === 'cls') {
       setHistory([
-        { type: 'system', text: '[NAGA-OS] Terminal cleared. Ready for input.' }
+        { type: 'system', text: '[NAGA-SHELL] Console cleared. Ready for input.' }
       ]);
       return;
     }
@@ -58,7 +59,6 @@ export default function TerminalHero() {
           { type: 'output', text: 'Available commands:' },
           { type: 'dim', text: '  skills       - Tech stack & engineering capabilities' },
           { type: 'dim', text: '  projects     - Active production projects' },
-          { type: 'dim', text: '  marine-eng   - Marine engineering × Software architecture' },
           { type: 'dim', text: '  blueprint    - Inkto OCR & NCB Finance architecture flow' },
           { type: 'dim', text: '  status       - Real-time builder status & availability' },
           { type: 'dim', text: '  contact      - Direct WhatsApp and email coordinates' },
@@ -69,7 +69,7 @@ export default function TerminalHero() {
       case 'skills':
         newHistory.push(
           { type: 'output', text: '─── TECHNICAL CAPABILITIES ───' },
-          { type: 'highlight', text: '[AI & OCR]       Gemini Vision, On-Device OCR, Document Parsers' },
+          { type: 'highlight', text: '[AI & OCR]       Gemini Vision API, On-Device OCR, Document Parsers' },
           { type: 'highlight', text: '[FULL-STACK]    Next.js, React 19, TypeScript, Tailwind, REST' },
           { type: 'highlight', text: '[BACKEND & DB]  Supabase (PostgreSQL), Python (FastAPI/Scripts)' },
           { type: 'highlight', text: '[MOBILE]        React Native, Kotlin Native Bridges' },
@@ -79,23 +79,12 @@ export default function TerminalHero() {
 
       case 'projects':
         newHistory.push(
-          { type: 'output', text: '─── VERIFIED PRODUCTION BUILDS ───' },
+          { type: 'output', text: '─── PRODUCTION BUILDS ───' },
           { type: 'highlight', text: '01. INKTO       [AI Legal OCR] - Scans handwritten legal docs to DOCX' },
           { type: 'highlight', text: '02. NCB FINANCE [Fintech/CAC] - Compliant invoicing + Paystack' },
           { type: 'highlight', text: '03. CLASSYNC    [Edtech PWA] - Multi-role student/admin workflow' },
           { type: 'highlight', text: '04. VANTAGE     [SaaS Tracker] - Minimalist job application pipeline' },
           { type: 'highlight', text: '05. NAIRALENS   [Transparency] - Nigerian financial rate comparison' }
-        );
-        break;
-
-      case 'marine-eng':
-        newHistory.push(
-          { type: 'output', text: '─── THE MARINE ENGINEERING FOUNDATION ───' },
-          { type: 'dim', text: 'Studying B.Eng Marine Engineering at Nigeria Maritime University.' },
-          { type: 'dim', text: 'Marine systems (propulsion, hydraulics, auxiliary plants) demand' },
-          { type: 'dim', text: 'absolute fault tolerance—failure at sea is not an option.' },
-          { type: 'highlight', text: 'I apply this exact industrial discipline to software systems:' },
-          { type: 'dim', text: 'Zero unnecessary bloat, robust error states, and resilient logic.' }
         );
         break;
 
@@ -114,9 +103,9 @@ export default function TerminalHero() {
 
       case 'status':
         newHistory.push(
-          { type: 'output', text: '─── LIVE BUILDER TELEMETRY ───' },
+          { type: 'output', text: '─── BUILDER STATUS & TELEMETRY ───' },
           { type: 'highlight', text: 'Status:       AVAILABLE FOR CONTRACTS & NEW BUILDS' },
-          { type: 'dim', text: 'Location:     Lagos & NMU, Nigeria (WAT)' },
+          { type: 'dim', text: 'Location:     Nigeria (WAT)' },
           { type: 'dim', text: 'Metric:       ₦80M+ Enterprise Lead Pipeline Generated' },
           { type: 'dim', text: 'Active Focus: Inkto Android beta release & AI automation' }
         );
@@ -135,7 +124,7 @@ export default function TerminalHero() {
       case 'whoami':
         newHistory.push(
           { type: 'highlight', text: 'Efobi Francis Chibundo (Naga)' },
-          { type: 'dim', text: 'Marine Engineering Student & Full-Stack Systems Builder.' }
+          { type: 'dim', text: 'Software developer and student builder.' }
         );
         break;
 
@@ -171,7 +160,7 @@ export default function TerminalHero() {
           <div className="w-2.5 h-2.5 bg-[#FFBD2E] border border-[#DEA123]"></div>
           <div className="w-2.5 h-2.5 bg-[#27C93F] border border-[#1AAB29]"></div>
           <span className="text-[11px] text-white/70 ml-2 uppercase font-bold tracking-wider">
-            NAGA-SHELL // LAGOS_WAT
+            NAGA-SHELL // DEV_CONSOLE
           </span>
         </div>
         <div className="flex items-center gap-2 text-[10px] text-white/60">
@@ -202,7 +191,7 @@ export default function TerminalHero() {
         })}
       </div>
 
-      {/* Interactive Quick-Action Chips (Crucial for Mobile Perfection) */}
+      {/* Interactive Quick-Action Chips */}
       <div className="p-3 bg-[#12141A] border-t border-[#2B2F3D] flex flex-wrap gap-1.5 select-none">
         <button
           type="button"
@@ -220,13 +209,6 @@ export default function TerminalHero() {
         </button>
         <button
           type="button"
-          onClick={() => handleChipClick('marine-eng')}
-          className="px-2.5 py-1.5 text-[10px] bg-[#1E2230] text-cyan-300 hover:bg-cyan-500 hover:text-black border border-cyan-500/40 transition-colors active:scale-95"
-        >
-          [marine-eng]
-        </button>
-        <button
-          type="button"
           onClick={() => handleChipClick('blueprint')}
           className="px-2.5 py-1.5 text-[10px] bg-[#1E2230] text-emerald-300 hover:bg-emerald-500 hover:text-black border border-emerald-500/40 transition-colors active:scale-95"
         >
@@ -238,6 +220,13 @@ export default function TerminalHero() {
           className="px-2.5 py-1.5 text-[10px] bg-[#1E2230] text-white hover:bg-accent hover:text-white border border-[#3A405A] transition-colors active:scale-95"
         >
           [status]
+        </button>
+        <button
+          type="button"
+          onClick={() => handleChipClick('contact')}
+          className="px-2.5 py-1.5 text-[10px] bg-[#1E2230] text-cyan-300 hover:bg-cyan-500 hover:text-black border border-cyan-500/40 transition-colors active:scale-95"
+        >
+          [contact]
         </button>
         <button
           type="button"
@@ -255,7 +244,7 @@ export default function TerminalHero() {
           type="text"
           value={inputVal}
           onChange={(e) => setInputVal(e.target.value)}
-          placeholder="type a command (e.g. help, contact)"
+          placeholder="type a command (e.g. skills, contact)"
           className="flex-1 bg-transparent text-white placeholder-white/30 text-[11px] md:text-xs font-mono outline-none border-none focus:ring-0 p-0"
         />
         <button

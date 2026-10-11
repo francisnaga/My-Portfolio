@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { playClick } from '../utils/sound';
 
@@ -126,16 +127,28 @@ export default function Work() {
   const [modalTab, setModalTab] = useState("overview"); // "overview" | "blueprint" | "specs"
   const [copiedId, setCopiedId] = useState(null);
 
-  // Lock body scroll when modal is open
+  // Bulletproof body scroll lock when modal is open
   useEffect(() => {
     if (activeProject) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [activeProject]);
 
   const filteredProjects = activeCategory === "ALL" 
@@ -151,7 +164,7 @@ export default function Work() {
   };
 
   return (
-    <section id="work" className="py-16 md:py-24 px-6 md:px-12 bg-white border-b border-foreground/10 noise-bg">
+    <section id="work" className="py-16 md:py-24 px-4 sm:px-8 md:px-12 bg-white border-b-2 border-foreground/10 noise-bg max-w-full overflow-x-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         
         {/* Header & Category Filter Bar */}
@@ -260,16 +273,17 @@ export default function Work() {
       </div>
 
       {/* Brutalist Modal with Architecture Blueprints & Specs */}
-      <AnimatePresence>
-        {activeProject && (
-          <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-foreground/90 backdrop-blur-sm cursor-pointer"
-              onClick={() => setActiveProject(null)}
-            />
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {activeProject && (
+            <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4 md:p-6">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-foreground/90 backdrop-blur-sm cursor-pointer"
+                onClick={() => setActiveProject(null)}
+              />
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -444,7 +458,9 @@ export default function Work() {
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+    )}
     </section>
   );
 }

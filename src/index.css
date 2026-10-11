@@ -11,8 +11,10 @@
     --ring: 223 100% 33%;
   }
 
-  body {
+  html, body {
     @apply bg-background text-foreground font-sans antialiased;
+    overflow-x: hidden;
+    max-width: 100%;
   }
 }
 

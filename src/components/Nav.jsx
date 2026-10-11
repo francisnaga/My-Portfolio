@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaXmark } from 'react-icons/fa6';
 import { playClick, toggleSound } from '../utils/sound';
@@ -25,16 +26,28 @@ export default function Nav() {
     return () => clearInterval(interval);
   }, []);
 
-  // Lock body scroll when mobile menu is open
+  // Bulletproof mobile scroll lock that preserves scroll position
   useEffect(() => {
     if (isOpen) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+      }
     }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
   }, [isOpen]);
 
   const links = [
@@ -60,11 +73,11 @@ export default function Nav() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/80 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 h-20 flex justify-between items-center">
+      <nav className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/90 backdrop-blur-md">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-12 h-20 flex justify-between items-center">
           
           {/* Logo & Live Status */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <a 
               href="#home" 
               onClick={() => playClick(500, 'sine', 0.03)}
@@ -93,7 +106,7 @@ export default function Nav() {
               ))}
             </div>
 
-            {/* Sound Toggle (Haptic Easter Egg) */}
+            {/* Sound Toggle */}
             <button
               type="button"
               onClick={handleSoundToggle}
@@ -117,7 +130,7 @@ export default function Nav() {
           </div>
 
           {/* Mobile Right Controls */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex md:hidden items-center gap-2.5">
             <button
               type="button"
               onClick={handleSoundToggle}
@@ -127,11 +140,12 @@ export default function Nav() {
             </button>
 
             <button 
+              type="button"
               onClick={() => {
                 playClick(700, 'sine', 0.04);
                 setIsOpen(true);
               }}
-              className="text-foreground p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none border border-foreground/20"
+              className="text-foreground p-2 min-w-[42px] min-h-[42px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none border-2 border-foreground active:bg-foreground active:text-white"
               aria-label="Open Menu"
             >
               <FaBars size={20} />
@@ -140,74 +154,79 @@ export default function Nav() {
         </div>
       </nav>
 
-      {/* Mobile Drawer (Strict 100dvh & Ergonomic Perfection) */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[200] bg-background flex flex-col noise-bg h-[100dvh]"
-          >
-            {/* Drawer Top Header */}
-            <div className="p-6 h-20 flex justify-between items-center border-b border-foreground/10 relative z-10">
-              <div className="flex items-center gap-2">
-                <span className="font-mono text-base tracking-widest uppercase font-bold text-foreground">
-                  NAGA DIGITAL
-                </span>
-                <span className="font-mono text-[10px] text-accent">
-                  [MENU]
-                </span>
-              </div>
-              <button 
-                onClick={() => {
-                  playClick(500, 'sine', 0.03);
-                  setIsOpen(false);
-                }}
-                className="text-foreground p-3 min-w-[44px] min-h-[44px] flex items-center justify-center bg-foreground/5 hover:bg-accent hover:text-white transition-colors border border-foreground/10"
-                aria-label="Close Menu"
-              >
-                <FaXmark size={22} />
-              </button>
-            </div>
-
-            {/* Drawer Links */}
-            <div className="flex-1 flex flex-col justify-center px-6 gap-6 relative z-10">
-              {links.map((link, i) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={handleLinkClick}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 + (i * 0.08) }}
-                  className="font-mono text-3xl uppercase font-bold text-foreground hover:text-accent transition-colors flex items-center justify-between py-2 border-b border-foreground/5"
+      {/* Mobile Drawer (Attached via Portal directly to body for 100% viewport coverage) */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, x: '100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 220 }}
+              className="fixed inset-0 top-0 left-0 w-full h-[100dvh] z-[999999] bg-[#F8F8F8] flex flex-col text-foreground overflow-y-auto"
+              style={{ touchAction: 'pan-y' }}
+            >
+              {/* Drawer Top Header */}
+              <div className="p-4 sm:p-6 h-20 flex justify-between items-center border-b-2 border-foreground bg-white">
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-base tracking-widest uppercase font-black text-foreground">
+                    NAGA DIGITAL
+                  </span>
+                  <span className="font-mono text-[10px] text-accent font-bold">
+                    // MENU
+                  </span>
+                </div>
+                <button 
+                  type="button"
+                  onClick={() => {
+                    playClick(500, 'sine', 0.03);
+                    setIsOpen(false);
+                  }}
+                  className="text-foreground p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center bg-foreground/5 hover:bg-accent hover:text-white transition-colors border-2 border-foreground"
+                  aria-label="Close Menu"
                 >
-                  <span>{link.name}</span>
-                  <span className="text-xs text-foreground/30 font-mono">0{i + 1}</span>
-                </motion.a>
-              ))}
-              
-              <motion.a
-                href="#contact"
-                onClick={handleLinkClick}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="mt-6 bg-foreground text-background text-center font-mono text-sm uppercase tracking-widest py-4 border-2 border-foreground hover:bg-accent hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,47,167,1)]"
-              >
-                Start A Project ↗
-              </motion.a>
-
-              <div className="mt-4 pt-4 border-t border-foreground/10 flex items-center justify-between font-mono text-[11px] text-foreground/60">
-                <span>LAGOS {time} WAT</span>
-                <span>STATUS: AVAILABLE</span>
+                  <FaXmark size={22} />
+                </button>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
+              {/* Drawer Links */}
+              <div className="flex-1 flex flex-col justify-center px-6 sm:px-8 py-8 gap-5">
+                {links.map((link, i) => (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.05 + (i * 0.06) }}
+                    className="font-mono text-2xl sm:text-3xl uppercase font-black text-foreground hover:text-accent transition-colors flex items-center justify-between py-2 border-b border-foreground/10"
+                  >
+                    <span>{link.name}</span>
+                    <span className="text-xs text-foreground/40 font-mono font-normal">0{i + 1}</span>
+                  </motion.a>
+                ))}
+                
+                <motion.a
+                  href="#contact"
+                  onClick={handleLinkClick}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-4 bg-foreground text-background text-center font-mono text-sm uppercase tracking-widest py-4 border-2 border-foreground hover:bg-accent hover:text-white transition-colors shadow-[4px_4px_0px_0px_rgba(0,47,167,1)] font-bold"
+                >
+                  Start A Project ↗
+                </motion.a>
+
+                <div className="mt-4 pt-4 border-t border-foreground/15 flex items-center justify-between font-mono text-[11px] text-foreground/60">
+                  <span>LAGOS {time} WAT</span>
+                  <span className="text-emerald-600 font-bold">● ACTIVE</span>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </>
   );
 }
