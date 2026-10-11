@@ -30,7 +30,7 @@ const services = [
     range: "₦150k - 1.5M",
     turnaround: "2 - 4 weeks",
     deliverables: "Vision models, document extraction pipelines (handwritten & scanned), legal/tax parsers, automated DOCX/PDF generation.",
-    stack: ["Gemini Vision", "Python", "FastAPI", "OpenCV"]
+    stack: ["Document AI", "Python", "FastAPI", "OpenCV"]
   },
   {
     id: "04",

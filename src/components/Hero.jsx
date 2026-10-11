@@ -32,10 +32,6 @@ export default function Hero() {
           animate="visible"
           className="max-w-full"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 mb-6 font-mono text-xs uppercase tracking-widest bg-foreground/5 border border-foreground/10 px-3 py-1.5 w-max max-w-full">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span className="text-foreground/80 font-bold">Software Developer & Student Builder</span>
-          </motion.div>
 
           <motion.h1 
             variants={itemVariants}
@@ -51,7 +47,7 @@ export default function Hero() {
             variants={itemVariants}
             className="font-sans text-base sm:text-lg md:text-xl max-w-xl text-foreground/85 leading-relaxed mb-8"
           >
-            Hey, I'm Naga, a software developer and student builder. I build practical digital products across web, mobile, AI, and automation—without bloated templates or page builders. Just raw code that gets the job done.
+            Hey, I'm Naga, a software developer and student builder. I build practical digital products across web, mobile, AI, and automation, without bloated templates or page builders. Just raw code that gets the job done.
           </motion.p>
 
           <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 sm:gap-4">

@@ -2,12 +2,10 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaXmark } from 'react-icons/fa6';
-import { playClick, toggleSound } from '../utils/sound';
 import Logo from './Logo';
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const [soundOn, setSoundOn] = useState(true);
   const [time, setTime] = useState('');
 
   // Live Lagos (WAT - UTC+1) Clock
@@ -60,16 +58,7 @@ export default function Nav() {
   ];
 
   const handleLinkClick = () => {
-    playClick(600, 'sine', 0.03);
     setIsOpen(false);
-  };
-
-  const handleSoundToggle = () => {
-    const nextState = toggleSound();
-    setSoundOn(nextState);
-    if (nextState) {
-      playClick(850, 'sine', 0.05);
-    }
   };
 
   return (
@@ -81,7 +70,6 @@ export default function Nav() {
           <div className="flex items-center gap-3 sm:gap-4">
             <a 
               href="#home" 
-              onClick={() => playClick(500, 'sine', 0.03)}
               className="flex items-center gap-2.5 font-mono text-base md:text-lg tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none group"
             >
               <Logo size={24} className="flex-shrink-0" />
@@ -100,7 +88,6 @@ export default function Nav() {
                 <a 
                   key={link.name} 
                   href={link.href}
-                  onClick={() => playClick(600, 'sine', 0.03)}
                   className="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none py-1"
                 >
                   {link.name}
@@ -108,22 +95,9 @@ export default function Nav() {
               ))}
             </div>
 
-            {/* Sound Toggle */}
-            <button
-              type="button"
-              onClick={handleSoundToggle}
-              className={`font-mono text-[10px] uppercase tracking-wider px-2 py-1 border transition-colors ${
-                soundOn ? 'border-accent text-accent bg-accent/5' : 'border-foreground/20 text-foreground/40'
-              }`}
-              title="Toggle tactile sound effects"
-            >
-              SFX: {soundOn ? 'ON' : 'OFF'}
-            </button>
-
             <div className="border-l border-foreground/20 pl-4">
               <a 
                 href="#contact"
-                onClick={() => playClick(800, 'sine', 0.04)}
                 className="bg-foreground text-background font-mono text-xs uppercase tracking-widest px-5 py-2.5 hover:bg-accent hover:text-white transition-colors border border-foreground shadow-[3px_3px_0px_0px_rgba(17,17,17,1)] active:translate-y-0.5"
               >
                 Let's Talk
@@ -132,19 +106,10 @@ export default function Nav() {
           </div>
 
           {/* Mobile Right Controls */}
-          <div className="flex md:hidden items-center gap-2.5">
-            <button
-              type="button"
-              onClick={handleSoundToggle}
-              className="font-mono text-[9px] uppercase px-2 py-1 border border-foreground/20 text-foreground/60"
-            >
-              SFX: {soundOn ? 'ON' : 'OFF'}
-            </button>
-
+          <div className="flex md:hidden items-center">
             <button 
               type="button"
               onClick={() => {
-                playClick(700, 'sine', 0.04);
                 setIsOpen(true);
               }}
               className="text-foreground p-2 min-w-[42px] min-h-[42px] flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none border-2 border-foreground active:bg-foreground active:text-white"
@@ -181,10 +146,7 @@ export default function Nav() {
                 </div>
                 <button 
                   type="button"
-                  onClick={() => {
-                    playClick(500, 'sine', 0.03);
-                    setIsOpen(false);
-                  }}
+                  onClick={() => setIsOpen(false)}
                   className="text-foreground p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center bg-foreground/5 hover:bg-accent hover:text-white transition-colors border-2 border-foreground"
                   aria-label="Close Menu"
                 >

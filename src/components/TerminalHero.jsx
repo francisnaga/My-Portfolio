@@ -54,6 +54,33 @@ export default function TerminalHero() {
     const newHistory = [...history, { type: 'user', text: `> ${cmd}` }];
 
     switch (cmd) {
+      case 'hi':
+      case 'hello':
+      case 'hey':
+      case 'yo':
+        newHistory.push(
+          { type: 'highlight', text: "Hey! Welcome to Naga's developer console." },
+          { type: 'dim', text: "I build practical web, mobile, and applied AI systems. Tap an action chip below or explore commands:" },
+          { type: 'dim', text: "  [projects]   - Active production builds" },
+          { type: 'dim', text: "  [skills]     - Architecture & capabilities" },
+          { type: 'dim', text: "  [contact]    - Direct WhatsApp & email" }
+        );
+        break;
+
+      case 'pricing':
+      case 'rates':
+      case 'cost':
+      case 'services':
+        newHistory.push(
+          { type: 'output', text: '─── CAPABILITY RATES & TIMELINES ───' },
+          { type: 'highlight', text: 'Mobile App Engineering:      ₦500k+ (3-6 wks)' },
+          { type: 'highlight', text: 'Full-Stack Web Applications: ₦100k+ (1-3 wks)' },
+          { type: 'highlight', text: 'Applied AI & Document OCR:   ₦150k+ (2-4 wks)' },
+          { type: 'highlight', text: 'Python Automation & Bots:    ₦30k+  (3-7 days)' },
+          { type: 'dim', text: 'Scroll to the Capability Ledger or tap [contact] to discuss.' }
+        );
+        break;
+
       case 'help':
         newHistory.push(
           { type: 'output', text: 'Available commands:' },
@@ -61,15 +88,17 @@ export default function TerminalHero() {
           { type: 'dim', text: '  projects     - Active production projects' },
           { type: 'dim', text: '  blueprint    - Inkto OCR & NCB Finance architecture flow' },
           { type: 'dim', text: '  status       - Real-time builder status & availability' },
+          { type: 'dim', text: '  pricing      - Engineering rates & turnaround times' },
           { type: 'dim', text: '  contact      - Direct WhatsApp and email coordinates' },
           { type: 'dim', text: '  clear        - Clear console window' }
         );
         break;
 
       case 'skills':
+      case 'stack':
         newHistory.push(
           { type: 'output', text: '─── TECHNICAL CAPABILITIES ───' },
-          { type: 'highlight', text: '[AI & OCR]       Gemini Vision API, On-Device OCR, Document Parsers' },
+          { type: 'highlight', text: '[AI & OCR]       Multimodal Document AI, Computer Vision, OCR Parsers' },
           { type: 'highlight', text: '[FULL-STACK]    Next.js, React 19, TypeScript, Tailwind, REST' },
           { type: 'highlight', text: '[BACKEND & DB]  Supabase (PostgreSQL), Python (FastAPI/Scripts)' },
           { type: 'highlight', text: '[MOBILE]        React Native, Kotlin Native Bridges' },
@@ -78,6 +107,7 @@ export default function TerminalHero() {
         break;
 
       case 'projects':
+      case 'work':
         newHistory.push(
           { type: 'output', text: '─── PRODUCTION BUILDS ───' },
           { type: 'highlight', text: '01. INKTO       [AI Legal OCR] - Scans handwritten legal docs to DOCX' },
@@ -89,13 +119,14 @@ export default function TerminalHero() {
         break;
 
       case 'blueprint':
+      case 'architecture':
         newHistory.push(
           { type: 'output', text: '─── ARCHITECTURE BLUEPRINT: INKTO OCR ───' },
           { type: 'dim', text: '[CAMERA SCAN]' },
           { type: 'dim', text: '     ↓' },
           { type: 'highlight', text: '[KOTLIN NATIVE FILTER] (Binarization & deskewing)' },
           { type: 'dim', text: '     ↓' },
-          { type: 'highlight', text: '[GEMINI VISION API] (Handwriting extraction & legal context)' },
+          { type: 'highlight', text: '[MULTIMODAL DOCUMENT AI] (Handwriting extraction & legal context)' },
           { type: 'dim', text: '     ↓' },
           { type: 'highlight', text: '[DOCX GENERATOR] (Formal court affidavit structure)' }
         );
@@ -112,6 +143,9 @@ export default function TerminalHero() {
         break;
 
       case 'contact':
+      case 'hire':
+      case 'email':
+      case 'whatsapp':
         newHistory.push(
           { type: 'output', text: '─── DIRECT COORDINATES ───' },
           { type: 'highlight', text: 'Email:    hello@francisnaga.site' },
@@ -122,15 +156,17 @@ export default function TerminalHero() {
         break;
 
       case 'whoami':
+      case 'about':
+      case 'naga':
         newHistory.push(
           { type: 'highlight', text: 'Efobi Francis Chibundo (Naga)' },
-          { type: 'dim', text: 'Software developer and student builder.' }
+          { type: 'dim', text: 'Software developer and builder creating practical digital products.' }
         );
         break;
 
       default:
         newHistory.push(
-          { type: 'dim', text: `Command not found: "${cmd}". Type "help" or tap an action chip.` }
+          { type: 'dim', text: `Unrecognized command "${cmd}". Tap an action chip below or type "help".` }
         );
         break;
     }

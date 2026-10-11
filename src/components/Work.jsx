@@ -10,19 +10,19 @@ const projects = [
     category: "AI & Mobile",
     flagship: true,
     tagline: "AI-Powered Legal Document Scanner & Transcription Platform",
-    stack: ["React Native", "Kotlin", "Supabase", "Gemini AI"],
-    desc: "Built for a practicing Nigerian lawyer to digitize court workflows. Scans and transcribes physical handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device processing and Gemini Vision AI.",
+    stack: ["React Native", "Kotlin", "Supabase", "Document AI"],
+    desc: "Built for a practicing Nigerian lawyer to digitize court workflows. Scans and transcribes physical handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device image processing and high-precision multimodal vision pipelines.",
     blueprint: [
       { step: "01. CAPTURE", detail: "On-device camera module with automatic perspective crop and edge detection." },
       { step: "02. KOTLIN BRIDGE", detail: "Native Android OpenCV pipeline executes adaptive binarization & deskewing." },
-      { step: "03. GEMINI VISION", detail: "Multimodal LLM extracts handwritten legal cursive with high transcription accuracy." },
+      { step: "03. MULTIMODAL OCR", detail: "Multimodal neural vision extracts handwritten legal cursive with high transcription accuracy." },
       { step: "04. LEGAL PARSER", detail: "Formats into structured High Court affidavits, briefs, and formatted DOCX." },
       { step: "05. SYNC & STORAGE", detail: "Encrypted Supabase storage with lawyer-client confidentiality controls." }
     ],
     specs: {
       "Target User": "Practicing Nigerian Litigation Lawyers & Chambers",
       "Key Latency": "Sub-4s full document scan-to-DOCX export",
-      "Architecture": "Native Kotlin bridge + React Native UI + Gemini Vision API",
+      "Architecture": "Native Kotlin bridge + React Native UI + Document AI Pipeline",
       "Status": "Active Production Beta"
     },
     link: "https://inkto.francisnaga.site",

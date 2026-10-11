@@ -51,7 +51,7 @@ export default function About() {
                 Nigeria Maritime University (NMU)
               </p>
               <p className="text-xs text-accent mt-2 font-mono uppercase">
-                2024–2029
+                2024 - 2029
               </p>
             </div>
 
