@@ -1,7 +1,8 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import Services from './components/Services'
+import Marquee from './components/Marquee'
 import Work from './components/Work'
+import Services from './components/Services'
 import About from './components/About'
 import Contact from './components/Contact'
 
@@ -12,8 +13,9 @@ function App() {
       <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
         <main>
           <Hero />
-          <Services />
+          <Marquee />
           <Work />
+          <Services />
           <About />
         </main>
         <Contact />
