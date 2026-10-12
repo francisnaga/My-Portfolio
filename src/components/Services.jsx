@@ -111,12 +111,63 @@ export default function Services() {
           // Services & Pricing
         </h2>
         
+        {/* Mobile View: Clean, full-information cards without awkward tap-toggles */}
+        <div className="grid grid-cols-1 gap-4 md:hidden">
+          {allServices.map((svc) => (
+            <div 
+              key={svc.id}
+              className="border border-foreground/10 bg-white p-5 shadow-[4px_4px_0px_0px_rgba(17,17,17,1)] flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex justify-between items-start mb-2">
+                  <span className="font-mono text-xs text-foreground/40 font-bold">[{svc.id}]</span>
+                  {svc.icon && (
+                    <div className="text-foreground/50">
+                      {svc.icon}
+                    </div>
+                  )}
+                </div>
+                <h3 className="font-mono text-xl uppercase font-bold text-foreground mb-2">
+                  {svc.title}
+                </h3>
+                <p className="font-sans text-sm text-foreground/80 leading-relaxed mb-4">
+                  {svc.desc}
+                </p>
+              </div>
+
+              <div>
+                <div className="font-mono text-xs text-foreground/70 border-t border-foreground/10 pt-3 pb-3 flex justify-between items-center">
+                  <span><strong className="text-foreground font-semibold">Range:</strong> {svc.range}</span>
+                  <span className="font-bold text-accent text-sm">{svc.price}</span>
+                </div>
+                <div className="flex gap-2">
+                  <a 
+                    href="https://wa.me/2349130436032"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 text-center py-2.5 bg-foreground text-background font-mono text-xs uppercase tracking-wider font-semibold active:bg-accent transition-colors flex items-center justify-center"
+                  >
+                    WhatsApp
+                  </a>
+                  <a 
+                    href="mailto:hello@francisnaga.site"
+                    className="flex-1 text-center py-2.5 border border-foreground text-foreground font-mono text-xs uppercase tracking-wider font-semibold active:bg-foreground active:text-background transition-colors flex items-center justify-center"
+                  >
+                    Email
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop View: Interactive Bento Grid with Hover Details */}
         <motion.div 
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6"
+          className="hidden md:grid md:grid-cols-4 gap-4 md:gap-6"
         >
           {allServices.map((svc) => (
             <motion.div 

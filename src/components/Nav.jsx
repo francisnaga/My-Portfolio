@@ -35,8 +35,8 @@ export default function Nav() {
       <nav className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/70 backdrop-blur-md">
         <div className="max-w-6xl mx-auto px-6 md:px-12 h-20 flex justify-between items-center">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-2.5 font-mono text-lg tracking-widest uppercase font-bold text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none group">
-            <Logo size={24} className="flex-shrink-0" />
+          <a href="#home" className="flex items-center gap-3 font-mono text-xl md:text-2xl tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none group">
+            <Logo className="w-8 h-8 md:w-9 md:h-9 flex-shrink-0" />
             <span>NAGA</span>
           </a>
 
@@ -85,11 +85,11 @@ export default function Nav() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            className="fixed inset-0 z-[200] bg-background flex flex-col noise-bg h-[100dvh]"
+            className="fixed inset-0 top-0 left-0 w-full h-[100dvh] z-[200] bg-background flex flex-col"
           >
             <div className="p-6 h-20 flex justify-between items-center border-b border-foreground/10 relative z-10">
-              <a href="#home" onClick={handleLinkClick} className="flex items-center gap-2 font-mono text-lg tracking-widest uppercase font-bold text-foreground">
-                <Logo size={22} className="flex-shrink-0" />
+              <a href="#home" onClick={handleLinkClick} className="flex items-center gap-3 font-mono text-xl tracking-widest uppercase font-black text-foreground">
+                <Logo className="w-8 h-8 flex-shrink-0" />
                 <span>NAGA</span>
               </a>
               <button 

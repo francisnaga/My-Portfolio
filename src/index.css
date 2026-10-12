@@ -17,7 +17,7 @@
 }
 
 /* Subtle SVG Noise Texture (Anti-AI Polish) */
-.noise-bg {
+.noise-bg:not(.fixed):not([class*="fixed"]) {
   position: relative;
 }
 .noise-bg::before {

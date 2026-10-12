@@ -11,12 +11,12 @@ import React from 'react';
  * @param {'klein'|'mono'|'white'} [props.variant='mono'] - Color variant
  */
 export default function Logo({
-  size = 24,
+  size,
   className = '',
   variant = 'mono',
   ...rest
 }) {
-  const numericSize = typeof size === 'number' ? size : parseInt(size, 10) || 24;
+  const numericSize = size ? (typeof size === 'number' ? size : parseInt(size, 10)) : undefined;
   
   let fill = 'currentColor';
   if (variant === 'klein') {

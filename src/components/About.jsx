@@ -12,11 +12,11 @@ export default function About() {
           
           {/* Main Bio */}
           <div className="lg:col-span-7">
-            <h3 className="font-mono text-3xl md:text-5xl uppercase font-bold text-foreground mb-8">
+            <h3 className="font-mono text-2xl sm:text-3xl md:text-5xl uppercase font-bold text-foreground mb-6 md:mb-8 leading-tight">
               Efobi Francis Chibundo
             </h3>
             
-            <div className="space-y-6 font-sans text-lg text-foreground/80 leading-relaxed">
+            <div className="space-y-4 sm:space-y-6 font-sans text-base md:text-lg text-foreground/80 leading-relaxed">
               <p>
                 I'm Naga, a software developer and student builder focused on creating practical digital products across web, mobile, AI, and automation. 
               </p>

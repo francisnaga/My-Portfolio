@@ -144,13 +144,14 @@ export default function Work() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="relative w-full max-w-2xl max-h-[90vh] bg-white border-2 border-foreground flex flex-col overflow-y-auto shadow-[16px_16px_0px_0px_rgba(17,17,17,1)]"
+              className="relative w-full max-w-2xl max-h-[90vh] bg-white border-2 border-foreground flex flex-col overflow-y-auto shadow-[6px_6px_0px_0px_rgba(17,17,17,1)] md:shadow-[16px_16px_0px_0px_rgba(17,17,17,1)]"
             >
               
               {/* Close Button */}
               <button 
                 onClick={() => setActiveProject(null)}
-                className="absolute top-4 right-4 z-10 bg-white border border-foreground w-10 h-10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                className="absolute top-3 right-3 md:top-4 md:right-4 z-10 bg-white border border-foreground w-9 h-9 md:w-10 md:h-10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                aria-label="Close project modal"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -158,31 +159,31 @@ export default function Work() {
               </button>
 
               {/* Modal Content */}
-              <div className="w-full p-8 md:p-12 flex flex-col noise-bg">
+              <div className="w-full p-6 sm:p-8 md:p-12 flex flex-col noise-bg">
                 <div className="relative z-10">
-                  <span className="font-mono text-sm text-foreground/40 mb-2 block">[{activeProject.id}]</span>
-                  <h3 className="font-mono text-4xl md:text-5xl uppercase font-bold text-foreground mb-6 pr-12">
+                  <span className="font-mono text-xs sm:text-sm text-foreground/40 mb-2 block">[{activeProject.id}]</span>
+                  <h3 className="font-mono text-2xl sm:text-3xl md:text-5xl uppercase font-bold text-foreground mb-4 md:mb-6 pr-10 md:pr-12">
                     {activeProject.title}
                   </h3>
                   
-                  <div className="flex flex-wrap gap-2 mb-8 pb-8 border-b border-foreground/10">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6 md:mb-8 pb-6 md:pb-8 border-b border-foreground/10">
                     {activeProject.stack.map((tag, i) => (
-                      <span key={i} className="text-xs font-mono uppercase border border-foreground/20 px-3 py-1 text-foreground/80 bg-background">
+                      <span key={i} className="text-[10px] sm:text-xs font-mono uppercase border border-foreground/20 px-2.5 sm:px-3 py-1 text-foreground/80 bg-background">
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <p className="font-sans text-lg md:text-xl text-foreground/80 leading-relaxed mb-12 flex-1">
+                  <p className="font-sans text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed mb-8 md:mb-12 flex-1">
                     {activeProject.desc}
                   </p>
 
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                     <a 
                       href={activeProject.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 py-4 bg-foreground text-background text-center font-mono uppercase tracking-widest hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
+                      className="flex-1 py-3.5 md:py-4 bg-foreground text-background text-center font-mono text-xs sm:text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
                     >
                       Live Demo
                     </a>
@@ -190,7 +191,7 @@ export default function Work() {
                       href={activeProject.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 py-4 border border-foreground text-foreground text-center font-mono uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
+                      className="flex-1 py-3.5 md:py-4 border border-foreground text-foreground text-center font-mono text-xs sm:text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
                     >
                       GitHub
                     </a>
