@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 80" fill="none" role="img" aria-label="Naga Logo">
-  <!-- Naga Monogram // Interlocking 45-degree chamfered geometry -->
-  <!-- Primary Blade (Black / Deep Foreground) -->
-  <path d="M0 14L14 0H22V36L64 80H44L18 46V80H0Z" fill="#111111" />
-  <!-- Secondary Blade (International Klein Blue Accent) -->
-  <path d="M88 66L74 80H66V44L24 0H44L70 34V0H88Z" fill="#002FA7" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="Naga Logo">
+  <!-- Naga Identity Mark // The Interlocking Keels -->
+  <path d="M16 16H38V48L58 74L42 84H16V16Z" fill="#002FA7" />
+  <path d="M84 84H62V52L42 26L58 16H84V84Z" fill="#002FA7" />
 </svg>
