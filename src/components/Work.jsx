@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { playClick } from '../utils/sound';
+import FeaturedProducts from './FeaturedProducts';
 
 const projects = [
   {
@@ -10,19 +11,19 @@ const projects = [
     category: "AI & Mobile",
     flagship: true,
     tagline: "AI-Powered Legal Document Scanner & Transcription Platform",
-    stack: ["React Native", "Kotlin", "Supabase", "Document AI"],
-    desc: "Built for a practicing Nigerian lawyer to digitize court workflows. Scans and transcribes physical handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device image processing and high-precision multimodal vision pipelines.",
+    stack: ["React Native", "Google ML Kit", "Gemini Vision", "Supabase"],
+    desc: "Built for a practicing Nigerian lawyer to digitize court workflows. Scans and transcribes physical handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device ML Kit rectification and Gemini Multimodal Vision.",
     blueprint: [
-      { step: "01. CAPTURE", detail: "On-device camera module with automatic perspective crop and edge detection." },
-      { step: "02. KOTLIN BRIDGE", detail: "Native Android OpenCV pipeline executes adaptive binarization & deskewing." },
-      { step: "03. MULTIMODAL OCR", detail: "Multimodal neural vision extracts handwritten legal cursive with high transcription accuracy." },
+      { step: "01. ON-DEVICE SCAN", detail: "Google ML Kit Document Scanner handles edge detection, auto-crop, and boundary rectification locally." },
+      { step: "02. RASTER NORMALIZATION", detail: "Removes camera shadows and paper yellowing before cloud ingestion." },
+      { step: "03. MULTIMODAL EXTRACTION", detail: "Gemini Vision transcribes handwritten cursive into structured legal clauses." },
       { step: "04. LEGAL PARSER", detail: "Formats into structured High Court affidavits, briefs, and formatted DOCX." },
       { step: "05. SYNC & STORAGE", detail: "Encrypted Supabase storage with lawyer-client confidentiality controls." }
     ],
     specs: {
       "Target User": "Practicing Nigerian Litigation Lawyers & Chambers",
       "Key Latency": "Sub-4s full document scan-to-DOCX export",
-      "Architecture": "Native Kotlin bridge + React Native UI + Document AI Pipeline",
+      "Architecture": "React Native + ML Kit Scanner + Gemini Multimodal Vision",
       "Status": "Active Production Beta"
     },
     link: "https://inkto.francisnaga.site",
@@ -30,9 +31,54 @@ const projects = [
   },
   {
     id: "02",
+    title: "Classync",
+    category: "Edtech",
+    flagship: false,
+    tagline: "Campus Multi-Role Academic Information Platform",
+    stack: ["Next.js", "PWA", "Supabase", "Tailwind"],
+    desc: "Progressive Web Application (PWA) built for Nigerian university departments. Features strict permission separation across Student, Course Rep, and Lecturer/Admin roles with lecture schedule conflict resolution and offline-first caching.",
+    blueprint: [
+      { step: "01. ROLE HIERARCHY", detail: "RBAC authentication enforcing Rep announcements and Student view states." },
+      { step: "02. OFFLINE CACHE", detail: "Service Worker precaching ensures timetable access in low-connectivity campus halls." },
+      { step: "03. REALTIME SYNC", detail: "Supabase Realtime WebSockets push instant venue and timetable changes." }
+    ],
+    specs: {
+      "Target Environment": "Nigerian Tertiary Campuses (High data efficiency)",
+      "Platform": "Installable Progressive Web App (PWA)",
+      "Sync Engine": "Supabase Realtime Pub/Sub",
+      "Status": "Live Deployment"
+    },
+    link: "https://classync.francisnaga.site",
+    github: "https://github.com/francisnaga/Classync"
+  },
+  {
+    id: "03",
+    title: "CemGuard",
+    category: "Industrial & Marine",
+    flagship: false,
+    tagline: "Mechanical Degradation & Vibration Severity Modeling Tool",
+    stack: ["Python", "Mathematical Modeling", "Reliability Engineering", "FastAPI"],
+    desc: "Developed as a university engineering challenge software model at Nigeria Maritime University. Implements Archard's Wear Law to calculate surface wear rates, ISO 20816-3 to evaluate vibration severity zones, and Weibull probability curves to forecast remaining useful machinery life.",
+    blueprint: [
+      { step: "01. ARCHARD WEAR MODEL", detail: "Calculates volumetric wear depth from contact pressure, hardness, and running hours." },
+      { step: "02. ISO 20816-3 STANDARD", detail: "Evaluates vibration velocity RMS against international industrial tolerance zones." },
+      { step: "03. WEIBULL RELIABILITY", detail: "Applies 2-parameter Weibull curve to forecast cumulative breakdown probability." },
+      { step: "04. OVERHAUL ADVISORY", detail: "Emits predictive maintenance windows before catastrophic mechanical seizure." }
+    ],
+    specs: {
+      "Engineering Foundation": "B.Eng Marine Engineering Design Challenge (NMU)",
+      "Physics Equations": "Archard's Sliding Wear Law & ISO 20816-3 Velocity Bands",
+      "Statistical Engine": "2-Parameter Weibull Distribution",
+      "Status": "Academic Engineering Challenge Project"
+    },
+    link: "https://francisnaga.site/#work",
+    github: "https://github.com/francisnaga"
+  },
+  {
+    id: "04",
     title: "NCB Finance",
     category: "Fintech & SaaS",
-    flagship: true,
+    flagship: false,
     tagline: "Compliant Invoicing & Payments for Nigerian Freelancers and Businesses",
     stack: ["Next.js", "Supabase", "Paystack", "TypeScript"],
     desc: "Invoicing and payment infrastructure designed for Nigerian entrepreneurs and CAC-registered businesses. Features FIRS/NRS e-invoicing compliance, real-time Paystack settlement webhooks, and client portal access.",
@@ -52,29 +98,7 @@ const projects = [
     github: "https://github.com/francisnaga/NCB-Finance"
   },
   {
-    id: "03",
-    title: "Classync",
-    category: "Edtech",
-    flagship: false,
-    tagline: "Campus Multi-Role Academic Information Platform",
-    stack: ["Next.js", "PWA", "Supabase", "Tailwind"],
-    desc: "Progressive Web Application (PWA) built for Nigerian university departments. Features strict permission separation across Student, Course Rep, and Lecturer/Admin roles with lecture schedule conflict resolution.",
-    blueprint: [
-      { step: "01. ROLE HIERARCHY", detail: "RBAC authentication enforcing Rep announcements and Student view states." },
-      { step: "02. OFFLINE CACHE", detail: "Service Worker precaching ensures timetable access in low-connectivity areas." },
-      { step: "03. REALTIME SYNC", detail: "Supabase Realtime WebSockets push instant venue and timetable changes." }
-    ],
-    specs: {
-      "Target Environment": "Nigerian Tertiary Campuses (High data efficiency)",
-      "Platform": "Installable Progressive Web App (PWA)",
-      "Sync Engine": "Supabase Realtime Pub/Sub",
-      "Status": "Live Deployment"
-    },
-    link: "https://classync.francisnaga.site",
-    github: "https://github.com/francisnaga/Classync"
-  },
-  {
-    id: "04",
+    id: "05",
     title: "Vantage",
     category: "Fintech & SaaS",
     flagship: false,
@@ -96,7 +120,7 @@ const projects = [
     github: "https://github.com/francisnaga/Vantage"
   },
   {
-    id: "05",
+    id: "06",
     title: "NairaLens",
     category: "Transparency",
     flagship: false,
@@ -119,7 +143,7 @@ const projects = [
   }
 ];
 
-const categories = ["ALL", "AI & Mobile", "Fintech & SaaS", "Edtech", "Transparency"];
+const categories = ["ALL", "AI & Mobile", "Edtech", "Industrial & Marine", "Fintech & SaaS", "Transparency"];
 
 export default function Work() {
   const [activeCategory, setActiveCategory] = useState("ALL");
@@ -167,36 +191,54 @@ export default function Work() {
     <section id="work" className="py-16 md:py-24 px-4 sm:px-8 md:px-12 bg-white border-b-2 border-foreground/10 noise-bg max-w-full overflow-x-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
         
-        {/* Header & Category Filter Bar */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-2">
-              // Selected Works
-            </h2>
-            <h3 className="font-mono text-2xl md:text-3xl uppercase font-bold text-foreground">
-              Production Systems & Products
-            </h3>
-          </div>
+        {/* Section Header */}
+        <div className="mb-12">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-2">
+            // Centerpiece Products
+          </h2>
+          <h3 className="font-mono text-2xl md:text-4xl uppercase font-bold text-foreground">
+            What I Actually Built & Shipped
+          </h3>
+          <p className="font-sans text-sm md:text-base text-foreground/75 mt-2 max-w-2xl">
+            Real products solving concrete operational problems across law, education, and industrial engineering. Tested with real users.
+          </p>
+        </div>
 
-          {/* Interactive Filter Pills (Mobile Scrollable) */}
-          <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar select-none">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                type="button"
-                onClick={() => {
-                  playClick(500, 'sine', 0.03);
-                  setActiveCategory(cat);
-                }}
-                className={`font-mono text-xs uppercase tracking-wider px-3.5 py-2 border-2 transition-all shrink-0 active:scale-95 ${
-                  activeCategory === cat
-                    ? 'bg-foreground text-background border-foreground shadow-[3px_3px_0px_0px_rgba(0,47,167,1)]'
-                    : 'bg-background text-foreground/70 border-foreground/10 hover:border-foreground hover:text-foreground'
-                }`}
-              >
-                {cat} {cat === "ALL" ? `(${projects.length})` : ''}
-              </button>
-            ))}
+        {/* Featured Centerpiece Showcases: Inkto, Classync, CemGuard */}
+        <FeaturedProducts />
+
+        {/* Secondary Systems Header & Filter Bar */}
+        <div className="pt-12 border-t-2 border-foreground/10 mb-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+            <div>
+              <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-2">
+                // System Catalog & Architecture Ledgers
+              </h2>
+              <h3 className="font-mono text-xl md:text-2xl uppercase font-bold text-foreground">
+                All Production Repositories & Builds
+              </h3>
+            </div>
+
+            {/* Interactive Filter Pills */}
+            <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar select-none">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  type="button"
+                  onClick={() => {
+                    playClick(500, 'sine', 0.03);
+                    setActiveCategory(cat);
+                  }}
+                  className={`font-mono text-xs uppercase tracking-wider px-3.5 py-2 border-2 transition-all shrink-0 active:scale-95 ${
+                    activeCategory === cat
+                      ? 'bg-foreground text-background border-foreground shadow-[3px_3px_0px_0px_rgba(0,47,167,1)] font-bold'
+                      : 'bg-background text-foreground/70 border-foreground/10 hover:border-foreground hover:text-foreground'
+                  }`}
+                >
+                  {cat} {cat === "ALL" ? `(${projects.length})` : ''}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         
@@ -254,7 +296,7 @@ export default function Work() {
 
                   <div className="flex items-center justify-between pt-4 border-t border-foreground/10">
                     <span className="font-mono text-xs uppercase tracking-wider text-accent font-bold group-hover:underline flex items-center gap-1.5">
-                      Inspect System <span>→</span>
+                      Inspect Architecture <span>→</span>
                     </span>
                     <button
                       type="button"
@@ -440,9 +482,9 @@ export default function Work() {
                   target="_blank"
                   rel="noreferrer"
                   onClick={() => playClick(900, 'sine', 0.05)}
-                  className="flex-1 py-3.5 bg-foreground text-background text-center font-mono text-xs uppercase tracking-widest hover:bg-accent hover:text-white transition-colors border-2 border-foreground"
+                  className="flex-1 py-3.5 bg-foreground text-background text-center font-mono text-xs uppercase tracking-widest hover:bg-accent hover:text-white transition-colors border-2 border-foreground font-bold"
                 >
-                  Launch Live Demo ↗
+                  Launch Live System ↗
                 </a>
                 <a 
                   href={activeProject.github}

@@ -51,8 +51,9 @@ export default function Nav() {
 
   const links = [
     { name: 'Home', href: '#home' },
-    { name: 'Projects', href: '#work' },
-    { name: 'Services', href: '#services' },
+    { name: 'Products', href: '#work' },
+    { name: 'Build Log', href: '#build-log' },
+    { name: 'Capabilities', href: '#services' },
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' }
   ];

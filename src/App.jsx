@@ -2,6 +2,7 @@ import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Marquee from './components/Marquee'
 import Work from './components/Work'
+import BuildLog from './components/BuildLog'
 import Services from './components/Services'
 import About from './components/About'
 import Contact from './components/Contact'
@@ -15,6 +16,7 @@ function App() {
           <Hero />
           <Marquee />
           <Work />
+          <BuildLog />
           <Services />
           <About />
         </main>
