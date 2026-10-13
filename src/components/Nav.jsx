@@ -6,15 +6,23 @@ import Logo from './Logo';
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll and listen for Escape key when mobile menu is open
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = 'unset';
     }
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
 

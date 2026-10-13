@@ -64,15 +64,23 @@ const itemVariants = {
 export default function Work() {
   const [activeProject, setActiveProject] = useState(null);
 
-  // Lock body scroll when modal is open
+  // Lock body scroll and listen for Escape key when modal is open
   useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setActiveProject(null);
+      }
+    };
+
     if (activeProject) {
       document.body.style.overflow = 'hidden';
+      window.addEventListener('keydown', handleKeyDown);
     } else {
       document.body.style.overflow = 'unset';
     }
     return () => {
       document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, [activeProject]);
 
