@@ -6,6 +6,7 @@ const projects = [
     id: "01",
     title: "NCB Finance",
     stack: ["Next.js", "Supabase", "Paystack", "TypeScript"],
+    architecture: "Next.js App Router • Supabase RLS • Paystack Webhooks • FIRS/NRS E-Invoicing Validator",
     desc: "Invoicing and payments platform for Nigerian freelancers and CAC-registered businesses. FIRS/NRS e-invoicing compliance, dark luxury fintech aesthetic, and Paystack integration.",
     link: "https://ncbfinance.francisnaga.site",
     github: "https://github.com/francisnaga/NCB-Finance"
@@ -14,6 +15,7 @@ const projects = [
     id: "02",
     title: "Vantage",
     stack: ["Next.js", "Supabase", "Tailwind", "Framer Motion"],
+    architecture: "Next.js 14 • Supabase Auth & Realtime • Framer Motion Pipeline UI",
     desc: "Job application tracker with a premium SaaS aesthetic. Minimalist, built for job seekers to track pipelines.",
     link: "https://vantage.francisnaga.site",
     github: "https://github.com/francisnaga/Vantage"
@@ -21,7 +23,8 @@ const projects = [
   {
     id: "03",
     title: "NairaLens",
-    stack: ["Next.js", "Supabase"],
+    stack: ["Next.js", "Supabase", "Edge Functions"],
+    architecture: "Next.js • Parallel Edge Data Scraping • Supabase • FX & Remittance Comparison Engine",
     desc: "Nigerian financial transparency platform: BNPL plan comparison, vendor legitimacy checking, remittance rate comparison, and live Naira rate tracking.",
     link: "https://nairalens.francisnaga.site",
     github: "https://github.com/francisnaga/NairaLens"
@@ -30,6 +33,7 @@ const projects = [
     id: "04",
     title: "Classync",
     stack: ["Next.js", "PWA", "Supabase"],
+    architecture: "Next.js PWA • Role-Based Access Control • Multi-Tier Student Approval Workflow",
     desc: "Edtech PWA for Nigerian university students with Student/Rep/Admin roles and a full approval workflow.",
     link: "https://classync.francisnaga.site",
     github: "https://github.com/francisnaga/Classync"
@@ -38,9 +42,11 @@ const projects = [
     id: "05",
     title: "Inkto",
     stack: ["React Native", "Kotlin", "Supabase", "Gemini AI"],
+    architecture: "React Native • Kotlin Native Camera Bridge • On-Device OCR • Gemini 1.5 Flash • DOCX Compiler",
     desc: "AI-powered legal document platform: scans and transcribes handwritten legal documents (affidavits, motions, letters) to formatted DOCX using on-device scanning and cloud AI transcription. Built for a practicing Nigerian lawyer.",
-    link: "https://inkto.francisnaga.site",
-    github: "https://github.com/francisnaga/Inkto"
+    link: "https://play.google.com/store/apps/dev?id=7500831168663512287",
+    isPlayStore: true,
+    isClosedSource: true
   }
 ];
 
@@ -182,7 +188,15 @@ export default function Work() {
                     ))}
                   </div>
 
-                  <p className="font-sans text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed mb-8 md:mb-12 flex-1">
+                  {/* Engineering Architecture breakdown */}
+                  {activeProject.architecture && (
+                    <div className="mb-6 p-3.5 bg-foreground/5 border-l-2 border-accent text-xs font-mono text-foreground/80">
+                      <strong className="text-foreground uppercase tracking-wider block mb-1">// System Architecture</strong>
+                      <span>{activeProject.architecture}</span>
+                    </div>
+                  )}
+
+                  <p className="font-sans text-base sm:text-lg md:text-xl text-foreground/80 leading-relaxed mb-8 md:mb-10 flex-1">
                     {activeProject.desc}
                   </p>
 
@@ -191,18 +205,25 @@ export default function Work() {
                       href={activeProject.link}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex-1 py-3.5 md:py-4 bg-foreground text-background text-center font-mono text-xs sm:text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
+                      className="flex-1 py-3.5 md:py-4 bg-foreground text-background text-center font-mono text-xs sm:text-sm uppercase tracking-widest hover:bg-accent hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2 flex items-center justify-center gap-2"
                     >
-                      Live Demo
+                      {activeProject.isPlayStore ? 'Download on Google Play' : 'Live Demo'}
                     </a>
-                    <a 
-                      href={activeProject.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="flex-1 py-3.5 md:py-4 border border-foreground text-foreground text-center font-mono text-xs sm:text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
-                    >
-                      GitHub
-                    </a>
+                    {activeProject.github && !activeProject.isClosedSource && (
+                      <a 
+                        href={activeProject.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="flex-1 py-3.5 md:py-4 border border-foreground text-foreground text-center font-mono text-xs sm:text-sm uppercase tracking-widest hover:bg-foreground hover:text-background transition-all active:translate-x-[2px] active:translate-y-[2px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
+                      >
+                        GitHub
+                      </a>
+                    )}
+                    {activeProject.isClosedSource && (
+                      <div className="flex-1 py-3.5 md:py-4 border border-foreground/20 text-foreground/60 text-center font-mono text-xs uppercase tracking-widest flex items-center justify-center bg-foreground/5">
+                        [Proprietary / Closed Source]
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

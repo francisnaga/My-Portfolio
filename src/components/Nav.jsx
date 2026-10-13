@@ -26,6 +26,26 @@ export default function Nav() {
     };
   }, [isOpen]);
 
+  const [activeSection, setActiveSection] = useState('#home');
+
+  useEffect(() => {
+    const sectionIds = ['home', 'work', 'about', 'services', 'contact'];
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 220;
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const id = sectionIds[i];
+        const el = document.getElementById(id);
+        if (el && scrollPos >= el.offsetTop) {
+          setActiveSection(`#${id}`);
+          break;
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const links = [
     { name: 'Home', href: '#home' },
     { name: 'Projects', href: '#work' },
@@ -50,22 +70,30 @@ export default function Nav() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <div className="flex gap-6 font-mono text-sm uppercase tracking-widest text-foreground/70">
-              {links.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href}
-                  className="hover:text-accent transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
-                >
-                  {link.name}
-                </a>
-              ))}
+            <div className="flex gap-6 font-mono text-sm uppercase tracking-widest">
+              {links.map((link) => {
+                const isActive = activeSection === link.href;
+                return (
+                  <a 
+                    key={link.name} 
+                    href={link.href}
+                    className={`relative py-1 transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm ${
+                      isActive ? 'text-accent font-bold' : 'text-foreground/70 hover:text-accent'
+                    }`}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent" />
+                    )}
+                  </a>
+                );
+              })}
             </div>
 
             <div className="flex items-center gap-4 border-l border-foreground/20 pl-4">
               <a 
                 href="#contact"
-                className="bg-foreground text-background font-mono text-xs uppercase tracking-widest px-6 py-3 hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
+                className="bg-foreground text-background font-mono text-xs uppercase tracking-widest px-6 py-3 hover:bg-accent hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
               >
                 Let's Talk
               </a>
