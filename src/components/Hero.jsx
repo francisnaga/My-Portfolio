@@ -24,7 +24,7 @@ export default function Hero() {
   return (
     <section id="home" className="min-h-[100svh] w-full flex flex-col md:flex-row border-b border-foreground/10 noise-bg">
       {/* 60% Left Side */}
-      <div className="w-full md:w-[60%] flex flex-col justify-end p-6 md:p-12 pb-10 md:pb-24 pt-28 sm:pt-36 md:pt-48 bg-background relative z-10 flex-1">
+      <div className="w-full md:w-[60%] flex flex-col justify-start md:justify-end p-6 md:p-12 pb-10 md:pb-24 pt-28 sm:pt-36 md:pt-48 bg-background relative z-10 flex-1">
         <motion.div
           variants={containerVariants}
           initial="hidden"
