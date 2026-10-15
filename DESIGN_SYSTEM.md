@@ -24,22 +24,21 @@
   - (Dark mode was evaluated and permanently discarded per design review to maintain consistent brand identity).
 
 ### 1.2 Brand Monogram & Vector Logo System
-- **Design Philosophy:** Inspired by mechanical engineering chamfers and HANCORE's faceted monogram language. Built on an 88x80 Cartesian grid with strict 45-degree angled cuts and 180° rotational symmetry.
+- **Design Philosophy:** Inspired by marine engineering and precision software architecture. Built on a 100x100 viewBox with two opposing keel-like forms and a charcoal/blue split.
 - **Geometry Structure:**
-  - **Primary Blade (Left):** Vertical stem from `(0, 14)` with top-left 45° chamfer to `(14, 0)`, transitioning into a diagonal tongue at `(64, 80)`.
-  - **Secondary Blade (Right):** Rotated 180° counterpart starting at `(88, 66)` with bottom-right 45° chamfer to `(74, 80)`, gliding along the diagonal with a uniform negative space channel.
+  - **Primary Blade (Left):** Path `M16 16H38V48L58 74L42 84H16V16Z` in charcoal.
+  - **Secondary Blade (Right):** Path `M84 84H62V52L42 26L58 16H84V84Z` in Klein Blue.
 - **Available Assets in Project:**
-  - `src/components/Logo.jsx`: Reusable React component with props `size`, `className`, `variant` (`'duotone'`, `'mono'`, `'white'`, `'sand'`), and `type` (`'n'` or `'ng'`).
+  - `src/components/Logo.jsx`: Reusable React component with props `size`, `className`, and `variant` (`'duotone'`, `'mono'`, `'white'`, `'sand'`).
   - `public/favicon.svg`: Dynamic SVG favicon with `@media (prefers-color-scheme: dark)` support.
   - `public/logo.svg`: Standalone 2-tone vector (Charcoal + Klein Blue).
   - `public/logo-white.svg`: Standalone white vector for dark backgrounds.
-  - `public/logo-sand.svg`: Standalone sand/bone vector in exact HANCORE palette (`#C9C7B6` & `#EAE8DA`).
-  - `public/logo-ng.svg`: Interlocking NG alternative vector.
+  - `public/og-image.png`: Social-sharing preview featuring the mark.
 - **Copy-Paste Raw SVG for External Projects:**
 ```xml
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 88 80" fill="none" role="img" aria-label="Naga Logo">
-  <path d="M0 14L14 0H22V36L64 80H44L18 46V80H0Z" fill="#111111" />
-  <path d="M88 66L74 80H66V44L24 0H44L70 34V0H88Z" fill="#002FA7" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" role="img" aria-label="Naga logo">
+  <path d="M16 16H38V48L58 74L42 84H16V16Z" fill="#111111" />
+  <path d="M84 84H62V52L42 26L58 16H84V84Z" fill="#002FA7" />
 </svg>
 ```
 

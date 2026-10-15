@@ -1,27 +1,57 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaXmark } from 'react-icons/fa6';
 import Logo from './Logo';
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const menuRef = useRef(null);
+  const closeButtonRef = useRef(null);
+  const menuTriggerRef = useRef(null);
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    menuTriggerRef.current?.focus();
+  };
+
+  const openMenu = (event) => {
+    menuTriggerRef.current = event.currentTarget;
+    setIsOpen(true);
+  };
 
   // Lock body scroll and listen for Escape key when mobile menu is open
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setIsOpen(false);
+        closeMenu();
+        return;
+      }
+
+      if (e.key !== 'Tab' || !menuRef.current) return;
+      const focusable = [...menuRef.current.querySelectorAll('a[href], button:not(:disabled)')];
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey && (document.activeElement === first || document.activeElement === menuRef.current)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (document.activeElement === last || document.activeElement === menuRef.current)) {
+        e.preventDefault();
+        first.focus();
       }
     };
 
+    let previousOverflow;
     if (isOpen) {
+      previousOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
+      closeButtonRef.current?.focus();
       window.addEventListener('keydown', handleKeyDown);
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      if (isOpen) document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
@@ -53,10 +83,6 @@ export default function Nav() {
     { name: 'Services', href: '#services' },
     { name: 'Contact', href: '#contact' }
   ];
-
-  const handleLinkClick = () => {
-    setIsOpen(false);
-  };
 
   return (
     <>
@@ -103,7 +129,7 @@ export default function Nav() {
           {/* Mobile Menu Toggle */}
           <div className="flex md:hidden items-center gap-4">
             <button 
-              onClick={() => setIsOpen(true)}
+              onClick={openMenu}
               className="text-foreground p-2 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
               aria-label="Open Menu"
             >
@@ -121,15 +147,20 @@ export default function Nav() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            ref={menuRef}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site navigation"
             className="fixed inset-0 top-0 left-0 w-full h-[100dvh] z-[200] bg-background flex flex-col"
           >
             <div className="p-6 h-20 flex justify-between items-center border-b border-foreground/10 relative z-10">
-              <a href="#home" onClick={handleLinkClick} className="flex items-center gap-3 font-mono text-xl tracking-widest uppercase font-black text-foreground">
+              <a href="#home" onClick={closeMenu} className="flex items-center gap-3 font-mono text-xl tracking-widest uppercase font-black text-foreground">
                 <Logo className="w-8 h-8 flex-shrink-0" />
                 <span>NAGA</span>
               </a>
               <button 
-                onClick={() => setIsOpen(false)}
+                ref={closeButtonRef}
+                onClick={closeMenu}
                 className="text-foreground p-2 bg-foreground/5 hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
                 aria-label="Close Menu"
               >
@@ -142,7 +173,7 @@ export default function Nav() {
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  onClick={handleLinkClick}
+                  onClick={closeMenu}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + (i * 0.1) }}
@@ -154,7 +185,7 @@ export default function Nav() {
               
               <motion.a
                 href="#contact"
-                onClick={handleLinkClick}
+                onClick={closeMenu}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}

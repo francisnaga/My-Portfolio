@@ -16,10 +16,10 @@ export default function About() {
             
             <div className="space-y-4 sm:space-y-6 font-sans text-base md:text-lg text-foreground/80 leading-relaxed">
               <p>
-                I'm Naga, a software developer and student builder focused on creating practical digital products across web, mobile, AI, and automation. 
+                I'm Naga, a product-minded software developer focused on turning real user and business needs into dependable digital products.
               </p>
               <p>
-                I build full-stack applications, AI-powered tools, and business websites, combining software development with product thinking to solve real problems. I'm currently studying Marine Engineering at Nigeria Maritime University and hold NIIT certificates in Web Development and Python.
+                I work across full-stack web, mobile, applied AI, and automation, and care about the details that take an idea from a clear problem to a product people can use. Alongside building, I'm studying Marine Engineering at Nigeria Maritime University and hold NIIT certificates in Web Development and Python.
               </p>
             </div>
 
@@ -74,11 +74,8 @@ export default function About() {
                 Location
               </h4>
               <p className="font-mono text-foreground flex items-center gap-2">
-                <span className="relative flex h-3 w-3">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
-                </span>
-                Nigeria
+                <span aria-hidden="true" className="inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
+                Based in Nigeria
               </p>
             </div>
 

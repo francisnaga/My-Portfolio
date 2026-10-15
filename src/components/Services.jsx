@@ -1,247 +1,139 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaApple, FaAndroid, FaGooglePlay, FaAppStoreIos, FaPython, FaFacebook, FaInstagram, FaTiktok, FaGoogle } from 'react-icons/fa';
+import { FaApple, FaAndroid, FaGooglePlay, FaAppStoreIos, FaPython, FaFacebook, FaInstagram, FaTiktok, FaGoogle, FaRocket } from 'react-icons/fa';
 import { FaComputer } from 'react-icons/fa6';
 import { BsStars } from 'react-icons/bs';
-import { FaRocket } from 'react-icons/fa';
 
-const allServices = [
+const productServices = [
   {
-    id: "01",
-    title: "Mobile App Development",
-    price: "₦500k+",
-    range: "₦500k - 3.5M+",
-    desc: "Custom Android & iOS apps built from idea to launch: clean design, fast performance.",
-    colSpan: "md:col-span-2 md:row-span-2 min-h-[300px]",
-    icon: (
-      <div className="flex gap-2 text-foreground/40">
-        <FaApple size={32} />
-        <FaAndroid size={32} />
-        <FaGooglePlay size={32} />
-        <FaAppStoreIos size={32} />
-      </div>
-    )
+    id: '01',
+    title: 'Mobile app development',
+    price: 'From ₦500k',
+    range: '₦500k - ₦3.5M+',
+    desc: 'Custom Android and iOS apps, designed and built from first brief through launch.',
+    icon: <div className="flex gap-2"><FaApple /><FaAndroid /><FaGooglePlay /><FaAppStoreIos /></div>,
   },
   {
-    id: "02",
-    title: "Website Development",
-    price: "₦100k+",
-    range: "₦100k - 800k",
-    desc: "Modern, mobile-friendly websites for businesses: fast, easy to manage, built to convert.",
-    colSpan: "md:col-span-2 md:row-span-2 min-h-[300px]",
-    icon: <FaComputer size={36} className="text-foreground/40" />
+    id: '02',
+    title: 'Websites & web products',
+    price: 'From ₦100k',
+    range: '₦100k - ₦800k',
+    desc: 'Fast, accessible websites and full-stack web products built around your users and goals.',
+    icon: <FaComputer />,
   },
   {
-    id: "03",
-    title: "AI Tools & Chatbots",
-    price: "₦150k+",
-    range: "₦150k - 1.5M",
-    desc: "AI-powered tools and chatbots that answer customers, save time and cut costs.",
-    colSpan: "md:col-span-2 min-h-[250px]",
-    icon: <BsStars size={36} className="text-foreground/40" />
+    id: '03',
+    title: 'AI tools & chatbots',
+    price: 'From ₦150k',
+    range: '₦150k - ₦1.5M',
+    desc: 'Useful AI features and customer tools that fit into a real product or workflow.',
+    icon: <BsStars />,
   },
   {
-    id: "04",
-    title: "Python Automation",
-    price: "₦30k+",
-    range: "₦30k - 300k",
-    desc: "Custom scripts, bots and data tools that automate repetitive work.",
-    colSpan: "md:col-span-2 min-h-[250px]",
-    icon: <FaPython size={36} className="text-foreground/40" />
+    id: '04',
+    title: 'Automation & data tools',
+    price: 'From ₦30k',
+    range: '₦30k - ₦300k',
+    desc: 'Python scripts, bots, and integrations that reduce repetitive work.',
+    icon: <FaPython />,
   },
-  {
-    id: "05",
-    title: "Facebook & Social Ads",
-    price: "₦100k/mo",
-    range: "₦100k - 400k/month",
-    desc: "Ad campaigns that bring real leads and sales. Setup, tracking and weekly optimisation.",
-    colSpan: "md:col-span-2 min-h-[200px]",
-    icon: (
-      <div className="flex gap-2 text-foreground/40">
-        <FaFacebook size={32} />
-        <FaInstagram size={32} />
-        <FaTiktok size={32} />
-      </div>
-    )
-  },
-  {
-    id: "06",
-    title: "Google Business",
-    price: "₦20k+",
-    range: "₦20k - 80k",
-    desc: "I set up and optimise your business on Google Search and Maps.",
-    colSpan: "md:col-span-2 min-h-[200px]",
-    icon: <FaGoogle size={32} className="text-foreground/40" />
-  },
-  {
-    id: "07",
-    title: "Business Launch",
-    price: "₦250k+",
-    range: "₦250k - 900k",
-    desc: "Website, Google Business, WhatsApp setup and a launch ad campaign.",
-    colSpan: "md:col-span-4 min-h-[250px]",
-    icon: <FaRocket size={36} className="text-foreground/40" />
-  }
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-  }
-};
+const launchServices = [
+  {
+    id: '05',
+    title: 'Social advertising',
+    price: 'From ₦100k/mo',
+    range: '₦100k - ₦400k/month',
+    desc: 'Campaign setup, tracking, and ongoing optimisation for social channels.',
+    icon: <div className="flex gap-2"><FaFacebook /><FaInstagram /><FaTiktok /></div>,
+  },
+  {
+    id: '06',
+    title: 'Google Business Profile',
+    price: 'From ₦20k',
+    range: '₦20k - ₦80k',
+    desc: 'Set up and improve your business presence on Google Search and Maps.',
+    icon: <FaGoogle />,
+  },
+  {
+    id: '07',
+    title: 'Business launch package',
+    price: 'From ₦250k',
+    range: '₦250k - ₦900k',
+    desc: 'A coordinated website, business profile, WhatsApp setup, and launch campaign.',
+    icon: <FaRocket />,
+  },
+];
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { type: "spring", stiffness: 200, damping: 20 } 
-  }
-};
+function ServiceCard({ service, index }) {
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.35, delay: index * 0.04 }}
+      className="flex min-h-[230px] flex-col justify-between border border-foreground/10 bg-white p-5 transition-colors hover:border-accent md:p-6"
+    >
+      <div>
+        <div className="mb-6 flex items-start justify-between font-mono text-xs text-foreground/40">
+          <span>[{service.id}]</span>
+          <span aria-hidden="true" className="text-2xl text-foreground/40">{service.icon}</span>
+        </div>
+        <h4 className="font-mono text-lg font-bold uppercase leading-snug text-foreground md:text-xl">{service.title}</h4>
+        <p className="mt-3 text-sm leading-relaxed text-foreground/65">{service.desc}</p>
+      </div>
+      <div className="mt-6 flex items-end justify-between gap-3 border-t border-foreground/10 pt-4">
+        <span className="font-mono text-[10px] uppercase tracking-wider text-foreground/45">Typical range<br /><strong className="mt-1 inline-block text-xs text-foreground/70">{service.range}</strong></span>
+        <span className="font-mono text-sm font-bold text-accent">{service.price}</span>
+      </div>
+    </motion.article>
+  );
+}
+
+function ServiceGroup({ title, description, services, offset = 0 }) {
+  return (
+    <div className="mb-12 last:mb-0">
+      <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <h3 className="font-mono text-sm font-bold uppercase tracking-wider text-foreground">{title}</h3>
+        <p className="max-w-xl text-sm leading-relaxed text-foreground/55">{description}</p>
+      </div>
+      <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {services.map((service, index) => <ServiceCard key={service.id} service={service} index={index + offset} />)}
+      </div>
+    </div>
+  );
+}
 
 export default function Services() {
-  const [activeId, setActiveId] = useState(null);
-
   return (
-    <section id="services" className="py-16 md:py-24 px-6 md:px-12 border-b border-dark/10 bg-background noise-bg">
-      <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-12">
-          // Services & Pricing
-        </h2>
-        
-        {/* Mobile View: Clean, full-information cards without awkward tap-toggles */}
-        <div className="grid grid-cols-1 gap-4 md:hidden">
-          {allServices.map((svc) => (
-            <div 
-              key={svc.id}
-              className="border border-foreground/10 bg-white p-5 shadow-[4px_4px_0px_0px_rgba(17,17,17,1)] flex flex-col justify-between"
-            >
-              <div>
-                <div className="flex justify-between items-start mb-2">
-                  <span className="font-mono text-xs text-foreground/40 font-bold">[{svc.id}]</span>
-                  {svc.icon && (
-                    <div className="text-foreground/50">
-                      {svc.icon}
-                    </div>
-                  )}
-                </div>
-                <h3 className="font-mono text-xl uppercase font-bold text-foreground mb-2">
-                  {svc.title}
-                </h3>
-                <p className="font-sans text-sm text-foreground/80 leading-relaxed mb-4">
-                  {svc.desc}
-                </p>
-              </div>
-
-              <div>
-                <div className="font-mono text-xs text-foreground/70 border-t border-foreground/10 pt-3 pb-3 flex justify-between items-center">
-                  <span><strong className="text-foreground font-semibold">Range:</strong> {svc.range}</span>
-                  <span className="font-bold text-accent text-sm">{svc.price}</span>
-                </div>
-                <div className="flex gap-2">
-                  <a 
-                    href="https://wa.me/2349130436032"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 text-center py-2.5 bg-foreground text-background font-mono text-xs uppercase tracking-wider font-semibold active:bg-accent transition-colors flex items-center justify-center"
-                  >
-                    WhatsApp
-                  </a>
-                  <a 
-                    href="mailto:hello@francisnaga.site"
-                    className="flex-1 text-center py-2.5 border border-foreground text-foreground font-mono text-xs uppercase tracking-wider font-semibold active:bg-foreground active:text-background transition-colors flex items-center justify-center"
-                  >
-                    Email
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
+    <section id="services" className="border-b border-foreground/10 bg-background px-6 py-16 noise-bg md:px-12 md:py-24">
+      <div className="relative z-10 mx-auto max-w-6xl">
+        <h2 className="mb-5 font-mono text-xs uppercase tracking-widest text-foreground/50">// Build with me</h2>
+        <div className="mb-10 grid gap-4 border-l-2 border-accent pl-5 md:mb-14 md:grid-cols-[1fr_auto] md:items-end md:gap-8">
+          <div>
+            <h3 className="font-sans text-2xl font-bold tracking-tight text-foreground md:text-3xl">Product work for teams and founders.</h3>
+            <p className="mt-2 max-w-2xl font-sans text-sm leading-relaxed text-foreground/65 md:text-base">
+              Need a product built, an existing experience improved, or a business ready to launch? These are starting points; final scope and pricing depend on the brief.
+            </p>
+          </div>
+          <a href="#contact" className="inline-flex min-h-11 items-center font-mono text-[10px] font-bold uppercase tracking-widest text-accent underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent">Talk through a brief ↗</a>
         </div>
 
-        {/* Desktop View: Interactive Bento Grid with Hover Details */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="hidden md:grid md:grid-cols-4 gap-4 md:gap-6"
-        >
-          {allServices.map((svc) => (
-            <motion.div 
-              key={svc.id}
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5, transition: { type: "spring", stiffness: 400, damping: 25 } }}
-              className={`group relative overflow-hidden border border-foreground/10 bg-white cursor-pointer ${svc.colSpan} ${activeId === svc.id ? 'border-accent shadow-[8px_8px_0px_0px_rgba(0,47,167,1)]' : 'hover:border-accent hover:shadow-[8px_8px_0px_0px_rgba(17,17,17,1)]'}`}
-              onMouseEnter={() => setActiveId(svc.id)}
-              onMouseLeave={() => setActiveId(null)}
-              onClick={() => setActiveId(activeId === svc.id ? null : svc.id)}
-            >
-              
-              {/* Default State */}
-              <div className={`absolute inset-0 p-6 flex flex-col justify-between transition-opacity duration-300 ${activeId === svc.id ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-                <div>
-                  <div className="flex justify-between items-start mb-2">
-                    <span className="font-mono text-sm text-foreground/40">[{svc.id}]</span>
-                    {svc.icon && (
-                      <div className="group-hover:text-accent transition-colors">
-                        {svc.icon}
-                      </div>
-                    )}
-                  </div>
-                  <h3 className="font-mono text-2xl uppercase font-bold text-foreground group-hover:text-accent transition-colors">
-                    {svc.title}
-                  </h3>
-                </div>
-                <div className="flex justify-between items-end">
-                  <span className="font-mono text-sm font-bold text-foreground/70">
-                    {svc.price}
-                  </span>
-                  <svg className="w-5 h-5 text-foreground/20 group-hover:text-accent transform transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </div>
+        <ServiceGroup
+          title="Product engineering"
+          description="Core software work for teams that need a thoughtful build partner."
+          services={productServices}
+        />
+        <ServiceGroup
+          title="Launch support"
+          description="Practical setup for smaller businesses preparing to reach customers."
+          services={launchServices}
+          offset={productServices.length}
+        />
 
-              {/* Hover / Active State Details */}
-              <div className={`absolute inset-0 p-6 flex flex-col justify-between bg-white transition-opacity duration-300 ${activeId === svc.id ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}>
-                <div className="flex-1 overflow-y-auto pr-2 no-scrollbar">
-                  <h3 className="font-mono text-lg uppercase font-bold text-accent mb-2">
-                    {svc.title}
-                  </h3>
-                  <p className="font-sans text-sm text-foreground/80 mb-4 leading-relaxed">
-                    {svc.desc}
-                  </p>
-                  <div className="font-mono text-xs text-foreground/60 border-t border-foreground/10 pt-3">
-                    <strong className="text-foreground">Range:</strong> {svc.range}
-                  </div>
-                </div>
-                
-                <div className="flex gap-2 mt-4 pt-4 border-t border-foreground/10">
-                  <a 
-                    href="https://wa.me/2349130436032"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 text-center py-2 bg-foreground text-background font-mono text-[10px] uppercase tracking-widest hover:bg-accent transition-colors flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    WhatsApp
-                  </a>
-                  <a 
-                    href="mailto:hello@francisnaga.site"
-                    className="flex-1 text-center py-2 border border-foreground text-foreground font-mono text-[10px] uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    Email
-                  </a>
-                </div>
-              </div>
-
-            </motion.div>
-          ))}
-        </motion.div>
+        <a href="#contact" className="mt-10 inline-flex min-h-12 items-center justify-center border-2 border-foreground px-5 font-mono text-[10px] font-bold uppercase tracking-widest text-foreground transition-colors hover:border-accent hover:bg-accent hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2">
+          Share your brief <span aria-hidden="true" className="ml-3">↗</span>
+        </a>
       </div>
     </section>
   );

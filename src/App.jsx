@@ -4,6 +4,7 @@ import Services from './components/Services'
 import Work from './components/Work'
 import About from './components/About'
 import Contact from './components/Contact'
+import GithubStats from './components/GithubStats'
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
       <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
         <main>
           <Hero />
-          <Services />
           <Work />
+          <GithubStats />
           <About />
+          <Services />
         </main>
         <Contact />
 
