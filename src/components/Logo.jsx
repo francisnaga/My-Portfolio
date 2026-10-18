@@ -1,7 +1,7 @@
 import React from 'react';
 
 /**
- * Naga Identity Mark — Concept 02: "The Interlocking Keels"
+ * Naga Identity Mark : Concept 02: "The Interlocking Keels"
  * Marine engineering hull/keel geometry fused with precision software architecture.
  * Designed for extreme scalability (from 16px favicon to 512px app icon).
  *

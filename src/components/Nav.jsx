@@ -1,179 +1,164 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaBars, FaXmark } from 'react-icons/fa6';
 import Logo from './Logo';
+import { useDialog } from '../lib/useDialog';
+
+const links = [
+  { name: 'Home', href: '#home' },
+  { name: 'Projects', href: '#work' },
+  { name: 'About', href: '#about' },
+  { name: 'Services', href: '#services' },
+  { name: 'Contact', href: '#contact' }
+];
 
 export default function Nav() {
   const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef(null);
-  const closeButtonRef = useRef(null);
-  const menuTriggerRef = useRef(null);
-
-  const closeMenu = () => {
-    setIsOpen(false);
-    menuTriggerRef.current?.focus();
-  };
-
-  const openMenu = (event) => {
-    menuTriggerRef.current = event.currentTarget;
-    setIsOpen(true);
-  };
-
-  // Lock body scroll and listen for Escape key when mobile menu is open
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        closeMenu();
-        return;
-      }
-
-      if (e.key !== 'Tab' || !menuRef.current) return;
-      const focusable = [...menuRef.current.querySelectorAll('a[href], button:not(:disabled)')];
-      if (!focusable.length) return;
-      const first = focusable[0];
-      const last = focusable[focusable.length - 1];
-      if (e.shiftKey && (document.activeElement === first || document.activeElement === menuRef.current)) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && (document.activeElement === last || document.activeElement === menuRef.current)) {
-        e.preventDefault();
-        first.focus();
-      }
-    };
-
-    let previousOverflow;
-    if (isOpen) {
-      previousOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
-      closeButtonRef.current?.focus();
-      window.addEventListener('keydown', handleKeyDown);
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      if (isOpen) document.body.style.overflow = previousOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isOpen]);
-
   const [activeSection, setActiveSection] = useState('#home');
+  const drawerRef = useDialog(isOpen, () => setIsOpen(false));
 
+  // Scroll spy: the active section is the lowest one whose top has passed the
+  // nav line. Sorting by real position keeps it correct even when the nav order
+  // differs from the page order.
   useEffect(() => {
-    const sectionIds = ['home', 'work', 'about', 'services', 'contact'];
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 220;
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const el = document.getElementById(id);
-        if (el && scrollPos >= el.offsetTop) {
-          setActiveSection(`#${id}`);
-          break;
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      const line = window.scrollY + window.innerHeight * 0.3;
+      let current = '#home';
+      let best = -Infinity;
+      for (const { href } of links) {
+        const el = document.getElementById(href.slice(1));
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + window.scrollY;
+        if (top <= line && top > best) {
+          best = top;
+          current = href;
         }
       }
+      // Bottom of page: last section may be too short to cross the line
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        current = '#contact';
+      }
+      setActiveSection(current);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
   }, []);
 
-  const links = [
-    { name: 'Home', href: '#home' },
-    { name: 'Projects', href: '#work' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' }
-  ];
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/70 backdrop-blur-md">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 h-20 flex justify-between items-center">
+      <header className="fixed top-0 left-0 w-full z-[100] border-b border-foreground/10 bg-background/70 backdrop-blur-md">
+        <nav aria-label="Primary" className="max-w-6xl mx-auto px-6 md:px-12 h-20 flex justify-between items-center">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3 font-mono text-xl md:text-2xl tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none group">
-            <Logo className="w-8 h-8 md:w-9 md:h-9 flex-shrink-0" />
+          <a href="#home" translate="no" className="flex items-center gap-3 font-mono text-xl md:text-2xl tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none group">
+            <Logo className="w-8 h-8 md:w-9 md:h-9 flex-shrink-0" aria-hidden="true" />
             <span>NAGA</span>
           </a>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            <div className="flex gap-6 font-mono text-sm uppercase tracking-widest">
+            <ul className="flex gap-6 font-mono text-sm uppercase tracking-widest">
               {links.map((link) => {
                 const isActive = activeSection === link.href;
                 return (
-                  <a 
-                    key={link.name} 
-                    href={link.href}
-                    className={`relative py-1 transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm ${
-                      isActive ? 'text-accent font-bold' : 'text-foreground/70 hover:text-accent'
-                    }`}
-                  >
-                    {link.name}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent" />
-                    )}
-                  </a>
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      aria-current={isActive ? 'location' : undefined}
+                      className={`relative py-1 transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm ${
+                        isActive ? 'text-accent font-bold' : 'text-foreground/70 hover:text-accent'
+                      }`}
+                    >
+                      {link.name}
+                      {isActive && (
+                        <span aria-hidden="true" className="absolute bottom-0 left-0 w-full h-[2px] bg-accent" />
+                      )}
+                    </a>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
 
             <div className="flex items-center gap-4 border-l border-foreground/20 pl-4">
-              <a 
+              <a
                 href="#contact"
-                className="bg-foreground text-background font-mono text-xs uppercase tracking-widest px-6 py-3 hover:bg-accent hover:text-white transition-all active:translate-x-[2px] active:translate-y-[2px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
+                className="bg-foreground text-background font-mono text-xs uppercase tracking-widest px-6 py-3 hover:bg-accent hover:text-white transition-[background-color,color,transform] active:translate-x-[2px] active:translate-y-[2px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-2"
               >
-                Let's Talk
+                Let’s Talk
               </a>
             </div>
           </div>
 
           {/* Mobile Menu Toggle */}
           <div className="flex md:hidden items-center gap-4">
-            <button 
-              onClick={openMenu}
-              className="text-foreground p-2 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
-              aria-label="Open Menu"
+            <button
+              type="button"
+              onClick={() => setIsOpen(true)}
+              className="text-foreground w-11 h-11 flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none rounded-sm"
+              aria-label="Open menu"
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
-              <FaBars size={24} />
+              <FaBars size={24} aria-hidden="true" />
             </button>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
+            ref={drawerRef}
+            id="mobile-menu"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Site menu"
+            tabIndex={-1}
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-            ref={menuRef}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Site navigation"
-            className="fixed inset-0 top-0 left-0 w-full h-[100dvh] z-[200] bg-background flex flex-col"
+            className="fixed inset-0 top-0 left-0 w-full h-[100dvh] z-[200] bg-background flex flex-col overscroll-contain outline-none"
           >
             <div className="p-6 h-20 flex justify-between items-center border-b border-foreground/10 relative z-10">
-              <a href="#home" onClick={closeMenu} className="flex items-center gap-3 font-mono text-xl tracking-widest uppercase font-black text-foreground">
-                <Logo className="w-8 h-8 flex-shrink-0" />
+              <a href="#home" onClick={handleLinkClick} translate="no" className="flex items-center gap-3 font-mono text-xl tracking-widest uppercase font-black text-foreground focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none">
+                <Logo className="w-8 h-8 flex-shrink-0" aria-hidden="true" />
                 <span>NAGA</span>
               </a>
-              <button 
-                ref={closeButtonRef}
-                onClick={closeMenu}
-                className="text-foreground p-2 bg-foreground/5 hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
-                aria-label="Close Menu"
+              <button
+                type="button"
+                onClick={() => setIsOpen(false)}
+                className="text-foreground w-11 h-11 flex items-center justify-center bg-foreground/5 hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                aria-label="Close menu"
               >
-                <FaXmark size={24} />
+                <FaXmark size={24} aria-hidden="true" />
               </button>
             </div>
 
-            <div className="flex-1 flex flex-col justify-center px-6 gap-8 relative z-10">
+            <nav aria-label="Mobile" className="flex-1 flex flex-col justify-center px-6 gap-8 relative z-10 pb-[env(safe-area-inset-bottom)]">
               {links.map((link, i) => (
                 <motion.a
                   key={link.name}
                   href={link.href}
-                  onClick={closeMenu}
+                  onClick={handleLinkClick}
+                  aria-current={activeSection === link.href ? 'location' : undefined}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 + (i * 0.1) }}
@@ -182,18 +167,18 @@ export default function Nav() {
                   {link.name}
                 </motion.a>
               ))}
-              
+
               <motion.a
                 href="#contact"
-                onClick={closeMenu}
+                onClick={handleLinkClick}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6 }}
                 className="mt-8 bg-foreground text-background text-center font-mono text-lg uppercase tracking-widest py-4 hover:bg-accent hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
               >
-                Let's Talk
+                Let’s Talk
               </motion.a>
-            </div>
+            </nav>
           </motion.div>
         )}
       </AnimatePresence>

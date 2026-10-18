@@ -16,10 +16,10 @@ export default function About() {
             
             <div className="space-y-4 sm:space-y-6 font-sans text-base md:text-lg text-foreground/80 leading-relaxed">
               <p>
-                I'm Naga, a product-minded software developer focused on turning real user and business needs into dependable digital products.
+                I’m <span translate="no">Naga</span>, a software developer and student builder focused on creating practical digital products across web, mobile, AI, and automation.
               </p>
               <p>
-                I work across full-stack web, mobile, applied AI, and automation, and care about the details that take an idea from a clear problem to a product people can use. Alongside building, I'm studying Marine Engineering at Nigeria Maritime University and hold NIIT certificates in Web Development and Python.
+                I build full-stack applications, AI-powered tools, and business websites, combining software development with product thinking to solve real problems. I'm currently studying Marine Engineering at Nigeria Maritime University and hold NIIT certificates in Web Development and Python.
               </p>
             </div>
 
@@ -33,6 +33,14 @@ export default function About() {
                 <p className="mt-2 text-sm text-foreground/70 max-w-lg">
                   Architected and executed a high-conversion digital marketing campaign that successfully generated an ₦80M enterprise business opportunity.
                 </p>
+                <div className="mt-3 pt-3 border-t border-foreground/10 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs font-mono text-foreground/70">
+                  <span className="text-accent uppercase font-bold">// Engine:</span>
+                  <span>Custom Next.js Funnel</span>
+                  <span className="text-foreground/30">•</span>
+                  <span>Server-Side CAPI Tracking</span>
+                  <span className="text-foreground/30">•</span>
+                  <span>Automated WhatsApp Lead Qualification</span>
+                </div>
               </div>
             </div>
           </div>
@@ -74,8 +82,11 @@ export default function About() {
                 Location
               </h4>
               <p className="font-mono text-foreground flex items-center gap-2">
-                <span aria-hidden="true" className="inline-flex h-2.5 w-2.5 rounded-full bg-accent" />
-                Based in Nigeria
+                <span className="relative flex h-3 w-3" aria-hidden="true">
+                  <span className="motion-safe:animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+                </span>
+                Nigeria
               </p>
             </div>
 

@@ -41,22 +41,8 @@ export default function Hero() {
             variants={itemVariants}
             className="font-sans text-base sm:text-lg md:text-xl max-w-md text-foreground/80 leading-relaxed"
           >
-            I'm Naga, a product-minded software developer in Lagos. I partner with engineering teams and founders to design, build, and ship dependable web, mobile, and AI products.
+            Hey, I’m <span translate="no">Naga</span>, a software developer and student builder. I build practical digital products across web, mobile, AI, and automation, without bloated templates or page builders. Just raw code that gets the job done.
           </motion.p>
-          <motion.div variants={itemVariants} className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#work"
-              className="inline-flex min-h-12 items-center justify-center border-2 border-accent bg-accent px-5 font-mono text-xs font-bold uppercase tracking-widest text-white transition-colors hover:bg-foreground hover:border-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            >
-              View selected work <span aria-hidden="true" className="ml-3">↗</span>
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex min-h-12 items-center px-3 font-mono text-xs font-bold uppercase tracking-widest text-foreground underline decoration-foreground/30 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2"
-            >
-              Hiring or building? Let's talk
-            </a>
-          </motion.div>
         </motion.div>
       </div>
       
@@ -68,20 +54,15 @@ export default function Hero() {
         className="w-full md:w-[40%] bg-accent border-t md:border-t-0 md:border-l border-dark/10 flex items-center md:items-end justify-between md:justify-start p-6 md:p-12 py-5 md:py-12 relative z-10"
       >
         <div className="flex flex-col gap-1 md:block">
-          <div className="font-mono text-white/80 text-xs md:text-base uppercase tracking-widest leading-relaxed">
+          <p className="font-mono text-white/80 text-xs md:text-base uppercase tracking-widest leading-relaxed">
             LAGOS, NG<br className="hidden md:inline" />
-            <span className="inline md:hidden"> • </span>
+            <span className="inline md:hidden" aria-hidden="true"> • </span>
             EST. 2023
-          </div>
-          <div className="font-mono text-[10px] md:text-xs uppercase tracking-wider text-white/90 flex items-center gap-1.5 pt-0.5">
-            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            Open to conversations
-          </div>
-          <div className="mt-5 hidden max-w-xs border-t border-white/25 pt-5 font-mono text-xs uppercase leading-loose tracking-wider text-white/75 md:block">
-            Product engineering<br />
-            Web · Mobile · Applied AI<br />
-            From first brief to production
-          </div>
+          </p>
+          <p className="md:hidden font-mono text-[10px] uppercase tracking-wider text-white/90 flex items-center gap-1.5 pt-0.5">
+            <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-emerald-400 motion-safe:animate-pulse"></span>
+            Available For Work
+          </p>
         </div>
       </motion.div>
     </section>

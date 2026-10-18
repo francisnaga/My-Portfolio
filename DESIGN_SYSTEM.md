@@ -115,17 +115,17 @@ An inline SVG fractal noise pseudo-element applied across sections:
   - Solid International Klein Blue canvas (`bg-accent`).
   - Monospace location timestamp: `LAGOS, NG / EST. 2023`.
 
-### 3.3 Services & Pricing Bento Grid (`src/components/Services.jsx`)
-- **Layout:** 4-column responsive Bento Grid with varying row and column spans.
-- **Interactive State:** Hover and click reveal detailed card flip / breakdown with WhatsApp and Email CTAs.
-- **Catalog:**
-  1. `[01] Mobile App Development`: ₦500k+ (Range: ₦500k - 3.5M+)
-  2. `[02] Website Development`: ₦100k+ (Range: ₦100k - 800k)
-  3. `[03] AI Tools & Chatbots`: ₦150k+ (Range: ₦150k - 1.5M)
-  4. `[04] Python Automation`: ₦30k+ (Range: ₦30k - 300k)
-  5. `[05] Facebook & Social Ads`: ₦100k/mo (Range: ₦100k - 400k/month)
-  6. `[06] Google Business`: ₦20k+ (Range: ₦20k - 80k)
-  7. `[07] Business Launch Package`: ₦250k+ (Range: ₦250k - 900k)
+### 3.3 Studio Capabilities & Engagement Bento Grid (`src/components/Services.jsx`)
+- **Layout:** 4-column responsive Bento Grid with symmetrical 2-column span cards (`md:col-span-2`).
+- **Interactive State:** Hover and focus reveal architectural breakdown, technical deliverables, engagement models, and contextual WhatsApp/Email CTAs.
+- **Positioning:** High-value software engineering and growth systems (Zero micro-prices).
+- **Capabilities Catalog:**
+  1. `[01] Mobile App Development`: iOS • Android • React Native (Native Kotlin Bridges, Offline Sync, Store Release).
+  2. `[02] Full-Stack Web & SaaS`: Next.js • Supabase • TypeScript (App Router, Supabase Auth/RLS, Paystack Webhooks, CAC/FIRS Compliance).
+  3. `[03] AI & Document Intelligence`: OCR • Multimodal AI • Gemini (On-Device OCR, Multimodal Pipelines, Automated DOCX/PDF Compilers).
+  4. `[04] Workflow & Data Automation`: Python • Edge Workers • Bots (Data Scrapers, Webhook Pipelines, Telegram/WhatsApp Bots, Automated ETL).
+  5. `[05] Growth & Acquisition Systems`: Funnels • Attribution Tracking (High-Conversion Funnels, Server-Side Tracking, ROAS Optimization).
+  6. `[06] End-to-End Product Launch`: 0-to-1 Studio Engineering (Web + Mobile Unified Build, Regulatory Compliance, Go-To-Market Funnel).
 
 ### 3.4 Selected Works Grid & Modal (`src/components/Work.jsx`)
 - **Layout:** 3-column responsive card grid with interactive hover lifts.
