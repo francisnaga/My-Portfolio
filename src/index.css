@@ -118,3 +118,31 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Vercel React Best Practices: rendering-content-visibility for below-the-fold sections */
+#services,
+#work,
+#about,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
+}
+
+/* Clean Editorial Print Stylesheet */
+@media print {
+  .skip-link,
+  nav,
+  .fixed,
+  [class*="fixed"],
+  .noise-bg::before {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

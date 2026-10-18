@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaTiktok, FaXTwitter } from 'react-icons/fa6';
 import { EMAIL, emailLink } from '../lib/contact';
 
@@ -11,12 +12,24 @@ const socials = [
 const CURRENT_YEAR = new Date().getFullYear();
 
 export default function Contact() {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Fallback if clipboard API is unavailable
+    }
+  };
+
   return (
     <footer id="contact" className="py-16 md:py-24 px-6 md:px-12 pb-28 md:pb-24 bg-foreground text-background noise-bg">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12 relative z-10">
         
         <div className="flex-1">
-          <h2 className="font-mono text-xs uppercase tracking-widest text-background/50 mb-12 md:mb-16">
+          <h2 className="font-mono text-xs uppercase tracking-widest text-background/70 mb-12 md:mb-16">
             // Engage
           </h2>
           <p className="font-mono text-3xl md:text-6xl uppercase font-bold mb-4 md:mb-6 text-background">
@@ -26,17 +39,39 @@ export default function Contact() {
             Shoot me an email with what you’re trying to build, and we can figure out if it makes sense to work together.
           </p>
           
-          <a href={emailLink()} translate="no" className="inline-flex items-center gap-4 group focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-4 focus-visible:ring-offset-foreground">
-            <span className="font-mono text-lg md:text-xl uppercase tracking-widest border-b border-background pb-1 group-hover:border-accent transition-colors break-all">
-              {EMAIL}
-            </span>
-            <svg aria-hidden="true" className="w-5 h-5 shrink-0 group-hover:text-accent group-hover:translate-x-2 transition-[color,transform] hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-          </a>
+          <div className="flex flex-wrap items-center gap-3">
+            <a href={emailLink()} translate="no" className="inline-flex items-center gap-3 group focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none focus-visible:ring-offset-4 focus-visible:ring-offset-foreground">
+              <span className="font-mono text-lg md:text-xl uppercase tracking-widest border-b border-background pb-1 group-hover:border-accent transition-colors break-all">
+                {EMAIL}
+              </span>
+              <svg aria-hidden="true" className="w-5 h-5 shrink-0 group-hover:text-accent group-hover:translate-x-1 transition-[color,transform] hidden sm:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </a>
+
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="px-3 py-1.5 bg-background/10 hover:bg-accent text-background font-mono text-xs uppercase tracking-wider border border-background/20 hover:border-accent transition-colors flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+              aria-label="Copy email address to clipboard"
+            >
+              {copied ? (
+                <>
+                  <span className="text-emerald-400 font-bold" aria-hidden="true">✓</span> Copied
+                </>
+              ) : (
+                <>
+                  <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy
+                </>
+              )}
+            </button>
+          </div>
         </div>
         
-        <div className="w-full md:w-auto font-mono text-xs uppercase tracking-widest text-background/50 flex flex-col md:items-end gap-6 mt-8 md:mt-0">
+        <div className="w-full md:w-auto font-mono text-xs uppercase tracking-widest text-background/70 flex flex-col md:items-end gap-6 mt-8 md:mt-0">
           <p className="hidden md:block mb-2" id="social-heading">Social</p>
           <ul className="flex gap-4" aria-labelledby="social-heading">
             {socials.map(({ label, href, Icon }) => (
