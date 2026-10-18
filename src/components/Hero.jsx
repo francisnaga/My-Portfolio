@@ -43,6 +43,21 @@ export default function Hero() {
           >
             Hey, I’m <span translate="no">Naga</span>, a software developer and student builder. I build practical digital products across web, mobile, AI, and automation, without bloated templates or page builders. Just raw code that gets the job done.
           </motion.p>
+          <motion.div variants={itemVariants} className="mt-8 flex flex-wrap gap-4">
+            <a 
+              href="#work"
+              className="px-6 py-3.5 bg-foreground text-background font-mono text-xs uppercase tracking-widest hover:bg-accent hover:text-white transition-[background-color,color,transform] active:translate-x-[2px] active:translate-y-[2px] shadow-[4px_4px_0px_0px_rgba(17,17,17,1)] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none flex items-center gap-2"
+            >
+              Selected Works
+              <span aria-hidden="true">↓</span>
+            </a>
+            <a 
+              href="#services"
+              className="px-6 py-3.5 border border-foreground text-foreground font-mono text-xs uppercase tracking-widest hover:bg-foreground hover:text-background transition-[background-color,color,transform] active:translate-x-[2px] active:translate-y-[2px] focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none flex items-center gap-2"
+            >
+              Studio Capabilities
+            </a>
+          </motion.div>
         </motion.div>
       </div>
       

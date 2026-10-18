@@ -1,4 +1,3 @@
-import { MotionConfig } from 'framer-motion'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -9,8 +8,7 @@ import { whatsappLink } from './lib/contact'
 
 function App() {
   return (
-    // reducedMotion="user" makes every Framer animation honour the OS setting
-    <MotionConfig reducedMotion="user">
+    <>
       <a href="#main" className="skip-link">Skip to content</a>
       <Nav />
       <div className="relative w-full overflow-x-hidden selection:bg-accent selection:text-white">
@@ -37,7 +35,7 @@ function App() {
       </a>
 
       </div>
-    </MotionConfig>
+    </>
   )
 }
 

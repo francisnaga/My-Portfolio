@@ -53,7 +53,7 @@ export default function Contact() {
               </li>
             ))}
           </ul>
-          <p className="normal-case tracking-normal text-background/40">
+          <p className="normal-case tracking-normal text-background/70">
             © {CURRENT_YEAR} Efobi Francis Chibundo
           </p>
         </div>

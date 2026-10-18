@@ -113,7 +113,7 @@ export default function Work() {
   return (
     <section id="work" className="py-16 md:py-24 px-6 md:px-12 bg-white border-b border-foreground/10 noise-bg">
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-12 md:mb-16">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/70 mb-12 md:mb-16">
           // Selected Works
         </h2>
         
@@ -136,14 +136,14 @@ export default function Work() {
             >
               <div>
                 <div className="flex justify-between items-start mb-4">
-                  <span className="font-mono text-sm text-foreground/40 group-hover:text-accent/60 transition-colors">[{proj.id}]</span>
-                  <svg aria-hidden="true" className="w-5 h-5 text-foreground/20 group-hover:text-accent group-hover:-translate-y-1 group-hover:translate-x-1 transition-[color,transform]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span className="font-mono text-sm text-foreground/70 group-hover:text-accent transition-colors">[{proj.id}]</span>
+                  <svg aria-hidden="true" className="w-5 h-5 text-foreground/30 group-hover:text-accent group-hover:-translate-y-1 group-hover:translate-x-1 transition-[color,transform]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
-                <h3 translate="no" className="font-mono text-2xl uppercase font-bold text-foreground group-hover:text-accent transition-colors mb-4">
+                <span role="heading" aria-level="3" translate="no" className="block font-mono text-2xl uppercase font-bold text-foreground group-hover:text-accent transition-colors mb-4">
                   {proj.title}
-                </h3>
+                </span>
               </div>
 
               <div className="flex flex-wrap gap-2">
@@ -203,7 +203,7 @@ export default function Work() {
               {/* Modal Content */}
               <div className="w-full p-6 sm:p-8 md:p-12 flex flex-col noise-bg">
                 <div className="relative z-10">
-                  <span className="font-mono text-xs sm:text-sm text-foreground/40 mb-2 block">[{activeProject.id}]</span>
+                  <span className="font-mono text-xs sm:text-sm text-foreground/70 mb-2 block">[{activeProject.id}]</span>
                   <h3 id="project-dialog-title" translate="no" className="font-mono text-2xl sm:text-3xl md:text-5xl uppercase font-bold text-foreground mb-4 md:mb-6 pr-10 md:pr-12">
                     {activeProject.title}
                   </h3>
@@ -235,11 +235,12 @@ export default function Work() {
                         <span className="font-mono text-xs uppercase tracking-wider text-foreground/70">
                           // Production Interface ({activeProject.screenshots.length} Screens)
                         </span>
-                        <span className="font-mono text-[10px] text-foreground/40 uppercase tracking-widest hidden sm:inline">
+                        <span className="font-mono text-[10px] text-foreground/70 uppercase tracking-widest hidden sm:inline">
                           Scroll horizontally →
                         </span>
                       </div>
                       <div 
+                        role="region"
                         tabIndex={0}
                         aria-label={`${activeProject.title} app screenshots gallery`}
                         className="flex gap-4 overflow-x-auto pb-4 pt-1 snap-x snap-mandatory focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"

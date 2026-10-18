@@ -42,6 +42,17 @@ export function useDialog(isOpen, onClose) {
       if (nodes.length === 0) return;
       const first = nodes[0];
       const last = nodes[nodes.length - 1];
+
+      if (!ref.current.contains(document.activeElement) || document.activeElement === ref.current) {
+        e.preventDefault();
+        if (e.shiftKey) {
+          last.focus();
+        } else {
+          first.focus();
+        }
+        return;
+      }
+
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();

@@ -6,7 +6,7 @@
   <h1>Francis Naga · Product-minded software developer</h1>
 
   <p><strong>I turn complex problems into software people trust.</strong><br />
-  Web products, mobile apps, and practical AI — from a clear idea to a polished release.</p>
+  Web products, mobile apps, and practical AI: from a clear idea to a polished release.</p>
 
   <p>
     <a href="https://francisnaga.site/"><img alt="Visit portfolio" src="https://img.shields.io/badge/Portfolio-francisnaga.site-002FA7?style=for-the-badge&logo=vercel&logoColor=white" /></a>
@@ -29,32 +29,28 @@
 
 ## The portfolio
 
-This repository powers [francisnaga.site](https://francisnaga.site/), the personal portfolio of **Efobi Francis Chibundo (Naga)** — a product-minded software developer based in Lagos, Nigeria, and a Marine Engineering student at Nigeria Maritime University.
+This repository powers [francisnaga.site](https://francisnaga.site/), the portfolio and engineering studio of **Efobi Francis Chibundo (Naga)**: a product-minded software developer based in Lagos, Nigeria, and a Marine Engineering student at Nigeria Maritime University.
 
-The site is designed for two conversations: joining a thoughtful engineering team, or helping a founder turn a product idea into a dependable release. It leads with selected work, explains the engineering behind it, and makes the next step clear.
+The site is designed for high-conviction conversations: partnering with founders to architect dependable digital products, and engineering zero-to-one software systems across web, mobile, and automation.
 
 ## Selected work
 
-| Product | What it does | Explore |
+| Product | What it does | Access |
 | --- | --- | --- |
-| **NCB Finance** | Invoicing and payments for Nigerian freelancers and businesses. | [Source](https://github.com/francisnaga/NCB-Finance) |
-| **Vantage** | A focused workspace for moving job applications from shortlist to offer. | [Source](https://github.com/francisnaga/Vantage) |
-| **NairaLens** | Financial product, remittance-rate, and provider comparison tools. | [Source](https://github.com/francisnaga/NairaLens) |
-| **Classync** | A student-first campus PWA with role-based approvals. | [Source](https://github.com/francisnaga/Classync) |
-| **Inkto** | Mobile legal-document scanning, transcription, and DOCX output. | [Google Play developer page](https://play.google.com/store/apps/dev?id=7500831168663512287) |
-
-> **Preview note:** The NCB Finance, Vantage, NairaLens, and Classync subdomains currently have missing DNS records. Their project dialogs link to source code while those preview domains are repaired.
+| **Inkto** | Mobile legal document scanner, AI transcription, and DOCX compiler. | [Google Play](https://play.google.com/store/apps/details?id=com.inkto.app) (Closed Source) |
+| **Vantage** | Premium job application tracker and pipeline visualization workspace. | [Source](https://github.com/francisnaga/job-application-tracker) |
+| **NCB Finance** | Invoicing and payments platform with FIRS/NRS compliance. | Private Client Repo (Demo on Request) |
+| **NairaLens** | Financial transparency and remittance comparison tools. | Private Client Repo (Demo on Request) |
+| **Classync** | Campus PWA with multi-tier role-based approval workflows. | Private Client Repo (Demo on Request) |
 
 ## Inside the build
 
-- **Clear product story:** the hero, project details, background, and contact paths speak to both hiring teams and product partners.
-- **Useful project evidence:** each project includes its purpose, stack, and a concise architecture summary.
-- **Real public GitHub activity:** the site fetches repository, star, and follower counts from GitHub's public API. It caches the response in the visitor's browser for 15 minutes and shows saved data if GitHub is unavailable.
-- **Accessible interactions:** responsive navigation, keyboard-operable project dialogs, Escape close, focus handling, and reduced-motion support.
-- **Personal brand system:** a custom two-tone monogram, International Klein Blue accents, and a clean technical visual language.
-- **Built for static deployment:** Vite outputs the production site to `dist/`, with Vercel configuration included.
-
-GitHub profile figures describe public repository activity. They are not portfolio visits, customer counts, revenue, or app installs. The site does not collect visitor analytics.
+- **Studio capabilities model:** 6 high-value engineering disciplines (Mobile App Dev, Full-Stack SaaS, AI Document Intelligence, Workflow Automation, Growth & Acquisition, End-to-End Product Launch).
+- **Verified product evidence:** Inkto showcases 6 high-res production screenshots in a zero-CLS brutalist carousel.
+- **Enterprise telemetry proof:** Detailed technical stack backing the ₦80M enterprise pipeline metric.
+- **Accessible interactions:** WAI-ARIA dialog traps (`useDialog.js`), Escape close, focus restoration, zero CLS, and reduced-motion compliance.
+- **Personal brand system:** Custom two-tone monogram, International Klein Blue accents (`#002FA7`), and a tactile brutalist visual language.
+- **Production SEO:** Rich JSON-LD Schema (`Person`, `ProfilePage`), OpenGraph cards, Twitter Cards, robots.txt, and sitemap.xml.
 
 ## The stack
 
@@ -96,11 +92,11 @@ Vite prints the local development URL after the server starts.
 
 ## Brand assets
 
-- `assets/readme-banner.gif` — original, restrained animated README banner; regenerate with `python scripts/generate_readme_banner.py`.
-- `public/logo.svg` and `public/logo-white.svg` — two-tone and white Naga marks.
-- `public/favicon.svg` — browser icon with a dark-mode color variant.
-- `public/og-image.png` — social-sharing preview image.
-- `src/components/Logo.jsx` — reusable React mark.
+- `assets/readme-banner.gif`: original, restrained animated README banner; regenerate with `python scripts/generate_readme_banner.py`.
+- `public/logo.svg` and `public/logo-white.svg`: two-tone and white Naga marks.
+- `public/favicon.svg`: browser icon with a dark-mode color variant.
+- `public/og-image.png`: social-sharing preview image.
+- `src/components/Logo.jsx`: reusable React mark.
 
 ## Connect
 

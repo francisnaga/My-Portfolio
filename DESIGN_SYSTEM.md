@@ -1,4 +1,4 @@
-# Naga — Portfolio Design System & Brand Specification
+# Naga : Portfolio Design System & Brand Specification
 
 > **Version:** 2.1 (Architectural Monogram & Clean Brutalism)  
 > **Brand Name:** Strictly **Naga** (NO "Naga Digital")  
@@ -13,7 +13,7 @@
 
 ### 1.1 Brand Voice & Persona
 - **Role:** Software Developer & Student Builder.
-- **Core Stance:** Practical digital products across web, mobile, AI, and automation—without bloated templates, drag-and-drop builders, or generic buzzwords. Raw, performant code that solves real business problems.
+- **Core Stance:** Practical digital products across web, mobile, AI, and automation, without bloated templates, drag-and-drop builders, or generic buzzwords. Raw, performant code that solves real business problems.
 - **Visual Style:** **Clean High-Contrast Neo-Brutalism**. 
   - Sharp geometric boundaries (0px border radius on major containers, 2px borders).
   - High-contrast tactile drop shadows (`4px 4px 0px 0px #111111` or `8px 8px 0px 0px #111111`).
@@ -53,16 +53,16 @@ Configured in `src/index.css` via CSS variables and mapped in `tailwind.config.j
 | :--- | :--- | :--- | :--- |
 | `--background` | `0 0% 97%` | `#F8F8F8` | Primary page canvas, light card backgrounds |
 | `--foreground` | `0 0% 7%` | `#111111` | Primary typography, borders, dark cards, footer |
-| `--accent` | `223 100% 33%` | `#002FA7` | International Klein Blue — focal CTAs, hero block, active states |
+| `--accent` | `223 100% 33%` | `#002FA7` | International Klein Blue: focal CTAs, hero block, active states |
 | `--ring` | `223 100% 33%` | `#002FA7` | Keyboard focus indicator rings (`focus-visible:ring-2`) |
-| Selection | — | `#002FA7` bg / `#FFFFFF` text | Global text selection styling |
+| Selection | N/A | `#002FA7` bg / `#FFFFFF` text | Global text selection styling |
 
 ### 2.2 Typography Hierarchy
 - **Primary Sans Font:** `Plus Jakarta Sans`, sans-serif (Google Fonts: 400, 500, 700, 900).
 - **Secondary Monospace Font:** System Monospace (`font-mono` / ui-monospace, Menlo, Monaco, Consolas).
 - **Text Styles:**
   - **Hero Display:** `text-[11vw] sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase leading-[1.1] md:leading-[1]`
-  - **Section Titles (Mono):** `text-xs uppercase tracking-widest text-foreground/50 font-mono` (`// Section Name`)
+  - **Section Titles (Mono):** `text-xs uppercase tracking-widest text-foreground/70 font-mono` (`// Section Name`)
   - **Component Headers:** `font-mono text-2xl md:text-3xl lg:text-4xl uppercase font-bold`
   - **Body Text:** `font-sans text-base md:text-lg text-foreground/80 leading-relaxed`
   - **Tags / Metadata:** `font-mono text-[10px] md:text-xs uppercase tracking-wider`

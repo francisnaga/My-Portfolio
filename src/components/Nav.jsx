@@ -6,9 +6,9 @@ import { useDialog } from '../lib/useDialog';
 
 const links = [
   { name: 'Home', href: '#home' },
+  { name: 'Services', href: '#services' },
   { name: 'Projects', href: '#work' },
   { name: 'About', href: '#about' },
-  { name: 'Services', href: '#services' },
   { name: 'Contact', href: '#contact' }
 ];
 

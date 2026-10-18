@@ -107,7 +107,7 @@ export default function Services() {
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-2">
+            <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/70 mb-2">
               // Studio Capabilities
             </h2>
             <p className="font-mono text-xl sm:text-2xl uppercase font-bold text-foreground">
@@ -129,7 +129,7 @@ export default function Services() {
             >
               <div>
                 <div className="flex justify-between items-start mb-2">
-                  <span className="font-mono text-xs text-foreground/40 font-bold" aria-hidden="true">[{svc.id}]</span>
+                  <span className="font-mono text-xs text-foreground/70 font-bold" aria-hidden="true">[{svc.id}]</span>
                   {svc.icon && (
                     <div>
                       {svc.icon}
@@ -149,7 +149,7 @@ export default function Services() {
 
               <div>
                 <div className="font-mono text-xs text-foreground/70 border-t border-foreground/10 pt-3 pb-3">
-                  <span className="block text-[11px] text-foreground/50 uppercase tracking-wide mb-0.5">Model</span>
+                  <span className="block text-[11px] text-foreground/70 uppercase tracking-wide mb-0.5">Model</span>
                   <span className="font-semibold text-foreground">{svc.model}</span>
                 </div>
                 <div className="flex gap-2">
@@ -205,7 +205,7 @@ export default function Services() {
               <div aria-hidden="true" className={`absolute inset-0 p-6 flex flex-col justify-between transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
                 <div>
                   <div className="flex justify-between items-start mb-3">
-                    <span className="font-mono text-sm text-foreground/40">[{svc.id}]</span>
+                    <span className="font-mono text-sm text-foreground/70 font-bold">[{svc.id}]</span>
                     {svc.icon && (
                       <div className="group-hover:text-accent transition-colors">
                         {svc.icon}
@@ -220,10 +220,10 @@ export default function Services() {
                   </span>
                 </div>
                 <div className="flex justify-between items-end border-t border-foreground/10 pt-4">
-                  <span className="font-mono text-xs uppercase tracking-wider text-foreground/60">
+                  <span className="font-mono text-xs uppercase tracking-wider text-foreground/70">
                     {svc.model}
                   </span>
-                  <svg className="w-5 h-5 text-foreground/20 group-hover:text-accent transform transition-[color,transform] group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg className="w-5 h-5 text-foreground/30 group-hover:text-accent transform transition-[color,transform] group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </div>
@@ -236,7 +236,7 @@ export default function Services() {
                     <h3 id={`svc-d-${svc.id}`} className="font-mono text-lg uppercase font-bold text-accent">
                       {svc.title}
                     </h3>
-                    <span className="font-mono text-xs text-foreground/40 font-bold">[{svc.id}]</span>
+                    <span className="font-mono text-xs text-foreground/70 font-bold">[{svc.id}]</span>
                   </div>
                   <p className="font-sans text-xs text-foreground/80 mb-3 leading-relaxed">
                     {svc.desc}
@@ -245,7 +245,7 @@ export default function Services() {
                     <strong className="text-foreground block uppercase text-[10px] tracking-wider mb-0.5 text-accent">// Key Deliverables</strong>
                     <span>{svc.deliverables}</span>
                   </div>
-                  <div className="font-mono text-[10px] text-foreground/60 uppercase tracking-wide">
+                  <div className="font-mono text-[10px] text-foreground/70 uppercase tracking-wide">
                     Engagement: <strong className="text-foreground">{svc.model}</strong>
                   </div>
                 </div>
@@ -256,7 +256,7 @@ export default function Services() {
                     target="_blank"
                     rel="noreferrer"
                     aria-label={`Discuss ${svc.title} on WhatsApp`}
-                    className="flex-1 text-center py-2.5 bg-foreground text-background font-mono text-[10px] uppercase tracking-widest hover:bg-accent transition-colors flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                    className="flex-1 text-center min-h-11 py-2.5 bg-foreground text-background font-mono text-[10px] uppercase tracking-widest hover:bg-accent transition-colors flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
                     onClick={(e) => e.stopPropagation()}
                   >
                     WhatsApp
@@ -264,7 +264,7 @@ export default function Services() {
                   <a 
                     href={emailLink(svc.title)}
                     aria-label={`Email about ${svc.title}`}
-                    className="flex-1 text-center py-2.5 border border-foreground text-foreground font-mono text-[10px] uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
+                    className="flex-1 text-center min-h-11 py-2.5 border border-foreground text-foreground font-mono text-[10px] uppercase tracking-widest hover:bg-foreground hover:text-background transition-colors flex items-center justify-center focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none"
                     onClick={(e) => e.stopPropagation()}
                   >
                     Email

@@ -2,7 +2,7 @@ export default function About() {
   return (
     <section id="about" className="py-16 md:py-24 px-6 md:px-12 bg-background border-b border-foreground/10 noise-bg">
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/50 mb-12 md:mb-16">
+        <h2 className="font-mono text-xs uppercase tracking-widest text-foreground/70 mb-12 md:mb-16">
           // The Builder
         </h2>
 
@@ -49,7 +49,7 @@ export default function About() {
           <div className="lg:col-span-4 lg:col-start-9 space-y-8">
             
             <div className="bg-foreground/5 border border-foreground/10 p-6">
-              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/50 mb-4 border-b border-foreground/10 pb-2">
+              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/70 mb-4 border-b border-foreground/10 pb-2">
                 Education
               </h4>
               <p className="font-mono font-bold text-foreground">
@@ -64,7 +64,7 @@ export default function About() {
             </div>
 
             <div className="bg-foreground/5 border border-foreground/10 p-6">
-              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/50 mb-4 border-b border-foreground/10 pb-2">
+              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/70 mb-4 border-b border-foreground/10 pb-2">
                 Certifications
               </h4>
               <ul className="space-y-3 font-mono text-sm text-foreground">
@@ -78,7 +78,7 @@ export default function About() {
             </div>
 
             <div className="bg-foreground/5 border border-foreground/10 p-6">
-              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/50 mb-4 border-b border-foreground/10 pb-2">
+              <h4 className="font-mono text-sm uppercase tracking-widest text-foreground/70 mb-4 border-b border-foreground/10 pb-2">
                 Location
               </h4>
               <p className="font-mono text-foreground flex items-center gap-2">
