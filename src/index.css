@@ -47,6 +47,30 @@
   color: var(--selection-text);
 }
 
+/* Accessibility: Skip Link */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1.5rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 500;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  transition: top var(--transition);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   font-size: 16px;

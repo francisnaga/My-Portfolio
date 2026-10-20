@@ -1,0 +1,20 @@
+# Francis Naga
+
+> Personal portfolio and systems engineering showcase of Efobi Francis Chibundo (Francis Naga), software developer and marine engineering student based in Lagos, Nigeria. Building practical digital products across web, mobile, and AI.
+
+## Verified Projects
+- [Inkto Android App](https://play.google.com/store/apps/dev?id=7500831168663512287): Production Android utility for scanning documents, handwritten notes, and audio with on-device OCR and cloud sync.
+- [Vantage Job Tracker](https://github.com/francisnaga/job-application-tracker): Local-first job application and candidate pipeline tracker with Kanban board and analytics.
+- [NCB Finance Portal](https://wa.me/2349130436032): Commercial lending and asset verification portal for SME loans.
+- [NairaLens FX Monitor](https://wa.me/2349130436032): Real-time FX scraper and parallel market spread engine across NGN currency pairs.
+- [ClasSync Timetable](https://wa.me/2349130436032): Academic timetable and lecture reschedule alert service for university faculties.
+
+## Online Profiles
+- [Personal Website](https://www.francisnaga.site/): Official minimal portfolio and engineering work.
+- [GitHub Profile](https://github.com/francisnaga): Open-source repositories and development work.
+- [LinkedIn Profile](https://linkedin.com/in/francisnaga): Professional experience and credentials.
+- [X Profile](https://x.com/francisnaga): Engineering insights and builder notes.
+- [Google Play Developer](https://play.google.com/store/apps/dev?id=7500831168663512287): Mobile applications by Naga Labs.
+
+## Optional
+- [Full LLM Documentation](https://www.francisnaga.site/llms-full.txt): Detailed architecture, project breakdowns, and full credentials.
