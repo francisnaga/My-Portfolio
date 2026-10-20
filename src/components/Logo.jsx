@@ -1,30 +1,28 @@
 import React from 'react';
 
 /**
- * Naga Identity Mark : Concept 02: "The Interlocking Keels"
- * Marine engineering hull/keel geometry fused with precision software architecture.
- * Designed for extreme scalability (from 16px favicon to 512px app icon).
+ * Naga Identity Mark : "The Interlocking Keels"
+ * Marine engineering geometry fused with software systems architecture.
+ * Pure monochrome representation adapting to theme colors.
  *
  * @param {Object} props
  * @param {number|string} [props.size=24] - Pixel height/size of the mark
- * @param {string} [props.className] - Additional Tailwind or CSS classes
- * @param {'duotone'|'mono'|'white'|'sand'} [props.variant='duotone'] - Color variant
+ * @param {string} [props.className] - Additional CSS classes
+ * @param {'mono'|'duotone'} [props.variant='mono'] - Color variant
  */
 export default function Logo({
-  size,
+  size = 24,
   className = '',
-  variant = 'duotone',
+  variant = 'mono',
   ...rest
 }) {
-  const numericSize = size ? (typeof size === 'number' ? size : parseInt(size, 10)) : undefined;
+  const numericSize = typeof size === 'number' ? size : parseInt(size, 10) || 24;
   
   const colors = {
-    duotone: ['#111111', '#002FA7'],
     mono: ['currentColor', 'currentColor'],
-    white: ['#FFFFFF', '#FFFFFF'],
-    sand: ['#C9C7B6', '#EAE8DA'],
+    duotone: ['var(--fg)', 'var(--gray)'],
   };
-  const [primary, secondary] = colors[variant] || colors.duotone;
+  const [primary, secondary] = colors[variant] || colors.mono;
 
   return (
     <svg
@@ -33,17 +31,17 @@ export default function Logo({
       viewBox="0 0 100 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className={`inline-block ${className}`}
+      className={className}
       role="img"
       aria-label="Naga Logo"
       {...rest}
     >
-      {/* Left Keel Pillar (Forward cutting prow) */}
+      {/* Left Keel Pillar */}
       <path
         d="M16 16H38V48L58 74L42 84H16V16Z"
         fill={primary}
       />
-      {/* Right Keel Pillar (Inverted reciprocal wedge) */}
+      {/* Right Keel Pillar */}
       <path
         d="M84 84H62V52L42 26L58 16H84V84Z"
         fill={secondary}

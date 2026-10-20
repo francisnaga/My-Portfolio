@@ -6,34 +6,47 @@
     <link rel="apple-touch-icon" href="/og-image.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>Francis Naga // Independent Software Studio</title>
-    <meta name="description" content="Independent software studio building precision mobile apps, fintech infrastructure, and production AI tools. No bloated templates. Just clean code built to convert." />
+    <title>Francis Naga // Software Developer</title>
+    <meta name="description" content="Personal portfolio of Francis Naga, a software developer and student builder based in Lagos, Nigeria. Building practical digital products across web, mobile, and AI." />
     <meta name="author" content="Efobi Francis Chibundo (Naga)" />
-    <meta name="theme-color" content="#002FA7" />
+    <meta name="theme-color" content="#131415" />
     <link rel="canonical" href="https://www.francisnaga.site/" />
     
     <!-- Open Graph / Facebook / LinkedIn / WhatsApp -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://www.francisnaga.site/" />
-    <meta property="og:title" content="Francis Naga // Independent Software Studio" />
-    <meta property="og:description" content="Building precision mobile applications, fintech infrastructure, and production AI tools. Raw code that gets the job done." />
+    <meta property="og:title" content="Francis Naga // Software Developer" />
+    <meta property="og:description" content="Personal portfolio of Francis Naga, a software developer and student builder based in Lagos, Nigeria. Building practical digital products across web, mobile, and AI." />
     <meta property="og:image" content="https://www.francisnaga.site/og-image.png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:width" content="1200" />
+    <meta property="og:height" content="630" />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter / X Cards -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://www.francisnaga.site/" />
-    <meta name="twitter:title" content="Francis Naga // Independent Software Studio" />
-    <meta name="twitter:description" content="Building precision mobile applications, fintech infrastructure, and production AI tools. Raw code that gets the job done." />
+    <meta name="twitter:title" content="Francis Naga // Software Developer" />
+    <meta name="twitter:description" content="Personal portfolio of Francis Naga, a software developer and student builder based in Lagos, Nigeria. Building practical digital products across web, mobile, and AI." />
     <meta name="twitter:image" content="https://www.francisnaga.site/og-image.png" />
     <meta name="twitter:creator" content="@francisnaga" />
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Inter & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Anti-Flash Dark/Light Theme Script -->
+    <script>
+      (function() {
+        try {
+          var mode = localStorage.getItem('theme');
+          if (!mode) {
+            mode = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          document.documentElement.setAttribute('data-theme', mode);
+        } catch (e) {}
+      })()
+    </script>
 
     <!-- Open SEO Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -46,7 +59,7 @@
           "name": "Efobi Francis Chibundo",
           "alternateName": "Francis Naga",
           "url": "https://www.francisnaga.site/",
-          "jobTitle": "Software Developer & Digital Builder",
+          "jobTitle": "Software Developer & Builder",
           "alumniOf": {
             "@type": "CollegeOrUniversity",
             "name": "Nigeria Maritime University"
@@ -72,75 +85,11 @@
           "@type": "WebSite",
           "@id": "https://www.francisnaga.site/#website",
           "url": "https://www.francisnaga.site/",
-          "name": "Francis Naga // Independent Software Studio",
+          "name": "Francis Naga // Software Developer",
           "publisher": {
             "@id": "https://www.francisnaga.site/#person"
           },
           "inLanguage": "en-US"
-        },
-        {
-          "@type": "ProfessionalService",
-          "@id": "https://www.francisnaga.site/#service",
-          "name": "Naga Software Studio",
-          "url": "https://www.francisnaga.site/",
-          "founder": {
-            "@id": "https://www.francisnaga.site/#person"
-          },
-          "priceRange": "$$$",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Lagos",
-            "addressCountry": "NG"
-          },
-          "areaServed": ["Nigeria", "Global"],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Software Engineering & Growth Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Mobile Application Development"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Full-Stack Web & SaaS Platforms"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Production AI & Document Intelligence"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Workflow & Data Automation"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "Growth Infrastructure & Acquisition Systems"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "End-to-End Product Launch Engineering"
-                }
-              }
-            ]
-          }
         }
       ]
     }

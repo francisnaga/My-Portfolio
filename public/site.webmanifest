@@ -1,11 +1,11 @@
 {
-  "name": "Francis Naga // Independent Software Studio",
-  "short_name": "Naga Studio",
-  "description": "Independent software studio building precision mobile apps, fintech infrastructure, and production AI tools.",
+  "name": "Francis Naga // Software Developer & Builder",
+  "short_name": "Francis Naga",
+  "description": "Minimalist portfolio of Francis Naga, software developer and student builder based in Lagos, Nigeria.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F8F8F8",
-  "theme_color": "#002FA7",
+  "background_color": "#131415",
+  "theme_color": "#131415",
   "icons": [
     {
       "src": "/favicon.svg",
