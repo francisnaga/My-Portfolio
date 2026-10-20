@@ -2,24 +2,6 @@ import React, { useState, useEffect, useCallback } from 'react';
 import Logo from './components/Logo';
 import { whatsappLink, EMAIL } from './lib/contact';
 
-const INKTO_CURATED_SCREENS = [
-  {
-    src: '/projects/inkto/01-home-dashboard.png',
-    title: 'Document Feed',
-    desc: 'Categorized documents, scan tray, and quick actions.',
-  },
-  {
-    src: '/projects/inkto/02-handwritten-scan.png',
-    title: 'Camera Scanner',
-    desc: 'Perspective edge boundary warping and high-contrast capture.',
-  },
-  {
-    src: '/projects/inkto/03-ai-transcription.png',
-    title: 'Text Extraction',
-    desc: 'On-device OCR extracting handwritten legal and academic notes.',
-  },
-];
-
 const INKTO_ALL_SCREENS = [
   {
     src: '/projects/inkto/01-home-dashboard.png',
@@ -53,21 +35,97 @@ const INKTO_ALL_SCREENS = [
   },
 ];
 
-const SECONDARY_SYSTEMS = [
+const PROJECTS = [
   {
+    id: 'inkto',
+    title: 'Inkto',
+    badge: 'Android Utility • In Production',
+    desc: 'Native Android utility that captures handwritten paper notes, scans physical documents with edge correction, transcribes text via on-device OCR, and records synchronized voice notes with Google Drive cloud backup.',
+    stack: 'Capacitor • Android Native • OCR Engine • Audio Waveform • Google Drive',
+    whatIBuilt:
+      'Engineered the complete camera scanning pipeline, perspective corner-detection, high-contrast document rendering, speech waveform recording, and cloud synchronization routines.',
+    architecture:
+      'Packaged for Android via Capacitor runtime with native camera, storage, and audio plugins. Features offline-first local file caching and automated Google Drive cloud backup.',
+    actions: [
+      { type: 'modal', label: 'View All 6 Production Screens' },
+      {
+        type: 'external',
+        label: 'Google Play Profile',
+        url: 'https://play.google.com/store/apps/dev?id=7500831168663512287',
+      },
+    ],
+  },
+  {
+    id: 'vantage',
+    title: 'Vantage',
+    badge: 'Open Source • Full-Stack Web',
+    desc: 'A clean, local-first web application designed for job applicants to organize application pipelines, track interview stages through an interactive Kanban board, and review search analytics without external tracking.',
+    stack: 'Next.js App Router • TypeScript • Tailwind CSS • IndexedDB',
+    whatIBuilt:
+      'Architected the local browser persistence layer, drag-and-drop Kanban state machine, stage transition timelines, and instant JSON backup and restore.',
+    architecture:
+      'Built with Next.js App Router, TypeScript, and client-side IndexedDB storage. Zero external server dependencies, full offline capability, and instant load times.',
+    actions: [
+      {
+        type: 'external',
+        label: 'Inspect Source on GitHub',
+        url: 'https://github.com/francisnaga/job-application-tracker',
+      },
+    ],
+  },
+  {
+    id: 'acquisition-pipeline',
     title: 'Commercial Client Acquisition Pipeline',
-    role: 'Full-Stack Architecture & Conversion Tracking',
-    desc: 'Engineered a multi-step customer acquisition funnel for a commercial services firm, combining a custom Next.js frontend, server-side conversion tracking, and automated webhook routing to WhatsApp for instant lead qualification.',
+    badge: 'Client Contract • Production Funnel',
+    desc: 'Multi-step customer acquisition funnel engineered for a commercial services firm, combining a custom Next.js frontend, server-side conversion tracking, and automated webhook routing to WhatsApp for instant lead qualification.',
+    stack: 'Next.js • Node.js Webhooks • Server-Side Meta CAPI • WhatsApp API',
+    whatIBuilt:
+      'Developed the multi-step qualification questionnaire, server-side conversion tracking scripts to bypass browser ad-blockers, and real-time webhook routing into WhatsApp chat.',
+    architecture:
+      'Next.js dynamic routes paired with lightweight Node.js webhook listeners. Direct integration with WhatsApp Business API and secure event logging.',
+    actions: [
+      {
+        type: 'external',
+        label: 'Discuss Acquisition Systems',
+        url: whatsappLink('Enterprise Acquisition Funnel'),
+      },
+    ],
   },
   {
+    id: 'ncb-finance',
     title: 'SME Lending & KYC Workflow Interface',
-    role: 'Frontend & Workflow Architecture',
-    desc: 'Developed an internal loan intake and borrower document verification interface (NCB Finance) to streamline SME underwriting workflows, KYC identity documentation checks, and borrower record management.',
+    badge: 'Fintech Interface • Client System',
+    desc: 'Internal loan intake and borrower document verification interface (NCB Finance) developed to streamline SME underwriting workflows, KYC identity documentation checks, and borrower record management.',
+    stack: 'Next.js • TypeScript • Tailwind CSS • Document Ingestion',
+    whatIBuilt:
+      'Built the borrower application multi-stage wizard, document upload validation preview, and administrative underwriting review dashboard.',
+    architecture:
+      'Component-driven frontend built with Next.js and TypeScript, designed for secure internal network deployment and client document verification.',
+    actions: [
+      {
+        type: 'external',
+        label: 'Enquire About Loan Interfaces',
+        url: whatsappLink('NCB Finance Workflow Demo'),
+      },
+    ],
   },
   {
+    id: 'nairalens',
     title: 'Foreign Exchange Spread Engine',
-    role: 'Data Aggregation & Monitoring',
-    desc: 'Lightweight currency spread tracker (NairaLens) monitoring disparities between official and parallel market exchange rates across NGN currency pairs with automated rate alerts.',
+    badge: 'Data Pipeline • Market Monitor',
+    desc: 'Lightweight currency spread monitor (NairaLens) tracking disparities between official and parallel market exchange rates across NGN currency pairs with automated rate alerts.',
+    stack: 'Python • Scraping Engine • REST APIs • Automated Alerts',
+    whatIBuilt:
+      'Authored the automated rate scraping daemon, spread calculation algorithms, and webhook dispatcher for rate disparity notifications.',
+    architecture:
+      'Lightweight Python service scheduled via cron, pushing normalized JSON feeds to client endpoints and messaging webhooks.',
+    actions: [
+      {
+        type: 'external',
+        label: 'Enquire About Data Pipelines',
+        url: whatsappLink('FX Monitor Service'),
+      },
+    ],
   },
 ];
 
@@ -96,6 +154,8 @@ export default function App() {
     return 'dark';
   });
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false);
+  const [expandedProject, setExpandedProject] = useState('inkto');
   const [copiedEmail, setCopiedEmail] = useState(false);
 
   // Toggle theme and persist
@@ -130,6 +190,20 @@ export default function App() {
     };
   }, [isModalOpen]);
 
+  // Close mobile nav on escape
+  useEffect(() => {
+    if (!isNavOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsNavOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isNavOpen]);
+
   // Copy email helper
   const handleCopyEmail = useCallback(async () => {
     try {
@@ -141,6 +215,14 @@ export default function App() {
     }
   }, []);
 
+  const toggleProject = (id) => {
+    setExpandedProject((prev) => (prev === id ? null : id));
+  };
+
+  const handleNavClick = () => {
+    setIsNavOpen(false);
+  };
+
   return (
     <>
       <a href="#main" className="skip-link">
@@ -151,24 +233,28 @@ export default function App() {
       <header className="site-header">
         <div className="header-inner">
           <a href="#" className="brand-link" aria-label="Francis Naga Home">
-            <Logo size={28} className="brand-logo" />
+            <Logo size={32} className="brand-logo" />
             <span className="brand-title">Francis Naga</span>
           </a>
 
-          <nav className="nav-links" aria-label="Primary navigation">
-            <a href="#work" className="nav-link">
-              Work
-            </a>
-            <a href="#focus" className="nav-link">
-              Focus
-            </a>
-            <a href="#background" className="nav-link">
-              Background
-            </a>
-            <a href="#contact" className="nav-link">
-              Contact
-            </a>
+          <div className="header-right">
+            {/* Desktop Navigation */}
+            <nav className="nav-links desktop-only" aria-label="Primary navigation">
+              <a href="#work" className="nav-link">
+                Work
+              </a>
+              <a href="#focus" className="nav-link">
+                Focus
+              </a>
+              <a href="#background" className="nav-link">
+                Background
+              </a>
+              <a href="#contact" className="nav-link">
+                Contact
+              </a>
+            </nav>
 
+            {/* Theme Toggle Button */}
             <button
               type="button"
               className="theme-toggle-btn"
@@ -214,8 +300,68 @@ export default function App() {
                 </svg>
               )}
             </button>
-          </nav>
+
+            {/* Mobile Hamburger Button */}
+            <button
+              type="button"
+              className="hamburger-btn"
+              onClick={() => setIsNavOpen((prev) => !prev)}
+              aria-label={isNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-expanded={isNavOpen}
+            >
+              {isNavOpen ? (
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              ) : (
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                  <line x1="3" y1="6" x2="21" y2="6" />
+                  <line x1="3" y1="18" x2="21" y2="18" />
+                </svg>
+              )}
+            </button>
+          </div>
         </div>
+
+        {/* Mobile Nav Drawer */}
+        {isNavOpen && (
+          <nav className="mobile-nav-drawer" aria-label="Mobile primary navigation">
+            <a href="#work" className="mobile-nav-link" onClick={handleNavClick}>
+              Work
+            </a>
+            <a href="#focus" className="mobile-nav-link" onClick={handleNavClick}>
+              Focus
+            </a>
+            <a href="#background" className="mobile-nav-link" onClick={handleNavClick}>
+              Background
+            </a>
+            <a href="#contact" className="mobile-nav-link" onClick={handleNavClick}>
+              Contact
+            </a>
+          </nav>
+        )}
       </header>
 
       {/* Main Content */}
@@ -237,7 +383,7 @@ export default function App() {
 
           <div className="hero-actions">
             <a href="#work" className="hero-cta">
-              <span>View Featured Work</span>
+              <span>View Selected Work</span>
               <span aria-hidden="true">↓</span>
             </a>
             <a
@@ -262,166 +408,108 @@ export default function App() {
           </div>
         </section>
 
-        {/* 02: Featured Work Section */}
-        <section id="work" className="section" aria-label="Featured Work">
+        {/* 02: Clean Expandable Projects List */}
+        <section id="work" className="section" aria-label="Selected Work">
           <div className="section-header">
-            <h2 className="section-title">Featured Work</h2>
+            <h2 className="section-title">Selected Work</h2>
             <p className="section-subtitle">
-              Production software, mobile utilities, and open-source applications built with focus
-              on practical utility and stability.
+              Production software, mobile utilities, and open-source systems. Click any project
+              to review architecture and evidence.
             </p>
           </div>
 
-          {/* Anchor Case Study: Inkto */}
-          <article className="case-study-card">
-            <div className="case-study-header">
-              <span className="case-study-badge">Android Utility • In Production</span>
-              <h3 className="case-study-title">Inkto: Document Scanner &amp; Transcriber</h3>
-              <p className="case-study-summary">
-                A native Android utility that captures handwritten paper notes, scans physical
-                documents with edge correction, transcribes text via on-device OCR, and records
-                synchronized voice notes with Google Drive cloud backup.
-              </p>
-            </div>
-
-            {/* In-Page Visual Showcase */}
-            <div className="phone-gallery">
-              {INKTO_CURATED_SCREENS.map((screen) => (
-                <div key={screen.title} className="phone-mockup">
-                  <img
-                    src={screen.src}
-                    alt={screen.title}
-                    loading="lazy"
-                    width="378"
-                    height="842"
-                  />
-                  <div className="phone-caption">
-                    <span className="phone-caption-title">{screen.title}</span>
-                    <span className="phone-caption-desc">{screen.desc}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Case Study Details Grid */}
-            <div className="case-study-details">
-              <div className="detail-col">
-                <span className="detail-heading">What I Built</span>
-                <p className="detail-text">
-                  Engineered the complete camera scanning pipeline, perspective corner-detection,
-                  high-contrast document rendering, speech waveform recording, and cloud
-                  synchronization routines.
-                </p>
-              </div>
-
-              <div className="detail-col">
-                <span className="detail-heading">Architecture &amp; Stack</span>
-                <p className="detail-text">
-                  Packaged for Android via Capacitor runtime with native camera, storage, and
-                  audio plugins. Features offline-first local file caching and automated Google
-                  Drive cloud backup.
-                </p>
-              </div>
-            </div>
-
-            <div className="case-study-footer">
-              <div className="action-btn-group">
-                <button
-                  type="button"
-                  className="action-btn"
-                  onClick={() => setIsModalOpen(true)}
-                >
-                  <svg
-                    width="15"
-                    height="15"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    aria-hidden="true"
+          <div className="project-list-clean">
+            {PROJECTS.map((project) => {
+              const isExpanded = expandedProject === project.id;
+              return (
+                <article key={project.id} className="project-item-clean">
+                  <button
+                    type="button"
+                    className="project-header-clickable"
+                    onClick={() => toggleProject(project.id)}
+                    aria-expanded={isExpanded}
+                    aria-controls={`details-${project.id}`}
                   >
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                    <circle cx="8.5" cy="8.5" r="1.5" />
-                    <polyline points="21 15 16 10 5 21" />
-                  </svg>
-                  <span>View All 6 Production Screens</span>
-                </button>
+                    <div className="project-title-area">
+                      <div className="project-title-row">
+                        <h3 className="project-name">{project.title}</h3>
+                        <span className="project-badge-clean">{project.badge}</span>
+                      </div>
+                      <p className="project-desc-clean">{project.desc}</p>
+                      <div className="project-stack-clean">{project.stack}</div>
+                    </div>
 
-                <a
-                  href="https://play.google.com/store/apps/dev?id=7500831168663512287"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="action-btn"
-                >
-                  <span>Google Play Profile</span>
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-          </article>
+                    <div className="project-toggle-indicator" aria-hidden="true">
+                      <span>{isExpanded ? 'Collapse' : 'Details'}</span>
+                      <span>{isExpanded ? '▲' : '▼'}</span>
+                    </div>
+                  </button>
 
-          {/* Featured Project 02: Vantage */}
-          <article className="featured-project-card">
-            <div className="case-study-header">
-              <span className="case-study-badge">Open Source • Full-Stack Web</span>
-              <h3 className="case-study-title">Vantage: Local-First Job Application Tracker</h3>
-              <p className="case-study-summary">
-                A clean, local-first web application designed for job applicants to organize
-                application pipelines, track interview stages through an interactive Kanban board,
-                and review search analytics without external tracking or vendor lock-in.
-              </p>
-            </div>
+                  {/* Expanded Technical Details */}
+                  {isExpanded && (
+                    <div id={`details-${project.id}`} className="project-expanded-panel">
+                      <div className="case-study-details">
+                        <div className="detail-col">
+                          <span className="detail-heading">What I Built</span>
+                          <p className="detail-text">{project.whatIBuilt}</p>
+                        </div>
 
-            <div className="case-study-details">
-              <div className="detail-col">
-                <span className="detail-heading">What I Built</span>
-                <p className="detail-text">
-                  Architected the local browser persistence layer, drag-and-drop Kanban state
-                  machine, stage transition timelines, and instant JSON backup and restore.
-                </p>
-              </div>
+                        <div className="detail-col">
+                          <span className="detail-heading">Architecture &amp; Stack</span>
+                          <p className="detail-text">{project.architecture}</p>
+                        </div>
+                      </div>
 
-              <div className="detail-col">
-                <span className="detail-heading">Architecture &amp; Stack</span>
-                <p className="detail-text">
-                  Built with Next.js App Router, TypeScript, and client-side IndexedDB storage.
-                  Zero external server dependencies, full offline capability, and instant load
-                  times.
-                </p>
-              </div>
-            </div>
-
-            <div className="case-study-footer">
-              <div className="action-btn-group">
-                <a
-                  href="https://github.com/francisnaga/job-application-tracker"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="action-btn"
-                >
-                  <span>Inspect Source on GitHub</span>
-                  <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-            </div>
-          </article>
-
-          {/* Secondary Systems List */}
-          <div className="secondary-section">
-            <h3 className="secondary-title">Additional Systems &amp; Client Projects</h3>
-            <div className="secondary-list">
-              {SECONDARY_SYSTEMS.map((item) => (
-                <div key={item.title} className="secondary-item">
-                  <div className="secondary-item-header">
-                    <span className="secondary-item-title">{item.title}</span>
-                    <span className="secondary-item-role">{item.role}</span>
-                  </div>
-                  <p className="secondary-item-desc">{item.desc}</p>
-                </div>
-              ))}
-            </div>
+                      {project.actions && project.actions.length > 0 && (
+                        <div className="action-btn-group">
+                          {project.actions.map((action) => {
+                            if (action.type === 'modal') {
+                              return (
+                                <button
+                                  key={action.label}
+                                  type="button"
+                                  className="action-btn"
+                                  onClick={() => setIsModalOpen(true)}
+                                >
+                                  <svg
+                                    width="15"
+                                    height="15"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    aria-hidden="true"
+                                  >
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                                    <circle cx="8.5" cy="8.5" r="1.5" />
+                                    <polyline points="21 15 16 10 5 21" />
+                                  </svg>
+                                  <span>{action.label}</span>
+                                </button>
+                              );
+                            }
+                            return (
+                              <a
+                                key={action.label}
+                                href={action.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="action-btn"
+                              >
+                                <span>{action.label}</span>
+                                <span aria-hidden="true">↗</span>
+                              </a>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </article>
+              );
+            })}
           </div>
         </section>
 
