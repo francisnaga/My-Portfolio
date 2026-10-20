@@ -151,7 +151,7 @@ export default function App() {
       <header className="site-header">
         <div className="header-inner">
           <a href="#" className="brand-link" aria-label="Francis Naga Home">
-            <Logo size={20} />
+            <Logo size={28} className="brand-logo" />
             <span className="brand-title">Francis Naga</span>
           </a>
 

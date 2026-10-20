@@ -206,12 +206,23 @@ button {
 .brand-link {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.75rem;
   font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: -0.01em;
+  font-size: 1rem;
+  letter-spacing: -0.015em;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.brand-logo {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.brand-link:hover .brand-logo {
+  transform: scale(1.05);
 }
 
 .brand-title {
@@ -859,8 +870,13 @@ button {
   }
 
   .brand-link {
-    gap: 0.5rem;
-    font-size: 0.9rem;
+    gap: 0.55rem;
+    font-size: 0.92rem;
+  }
+
+  .brand-logo {
+    width: 24px;
+    height: 24px;
   }
 
   .nav-links {
@@ -887,8 +903,13 @@ button {
   }
 
   .brand-link {
-    gap: 0.35rem;
-    font-size: 0.82rem;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+  }
+
+  .brand-logo {
+    width: 22px;
+    height: 22px;
   }
 
   .nav-links {
