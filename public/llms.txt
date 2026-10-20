@@ -1,20 +1,19 @@
 # Francis Naga
 
-> Personal portfolio and systems engineering showcase of Efobi Francis Chibundo (Francis Naga), software developer and marine engineering student based in Lagos, Nigeria. Building practical digital products across web, mobile, and AI.
+> Personal portfolio and systems engineering showcase of Efobi Francis Chibundo (Francis Naga), software developer and marine engineering student based in Nigeria. Building focused digital products across web, mobile, and document automation.
 
 ## Verified Projects
-- [Inkto Android App](https://play.google.com/store/apps/dev?id=7500831168663512287): Production Android utility for scanning documents, handwritten notes, and audio with on-device OCR and cloud sync.
-- [Vantage Job Tracker](https://github.com/francisnaga/job-application-tracker): Local-first job application and candidate pipeline tracker with Kanban board and analytics.
-- [NCB Finance Portal](https://wa.me/2349130436032): Commercial lending and asset verification portal for SME loans.
-- [NairaLens FX Monitor](https://wa.me/2349130436032): Real-time FX scraper and parallel market spread engine across NGN currency pairs.
-- [ClasSync Timetable](https://wa.me/2349130436032): Academic timetable and lecture reschedule alert service for university faculties.
+- [Inkto Android App](https://play.google.com/store/apps/dev?id=7500831168663512287): Native Android utility for capturing handwritten notes, document edge warping, on-device OCR, and cloud synchronization via Capacitor.
+- [Vantage Job Tracker](https://github.com/francisnaga/job-application-tracker): Local-first job application and candidate pipeline tracker with Kanban board and analytics built with Next.js and IndexedDB.
+- [Commercial Client Acquisition Pipeline](https://www.francisnaga.site/#work): Multi-step conversion funnel and server-side webhook tracking engine for enterprise lead qualification.
+- [SME Lending Workflow Interface](https://www.francisnaga.site/#work): Internal loan intake and KYC verification interface developed for commercial lending review.
+- [Foreign Exchange Spread Engine](https://www.francisnaga.site/#work): Currency disparity tracker monitoring official vs. parallel market rates across NGN pairs.
 
 ## Online Profiles
-- [Personal Website](https://www.francisnaga.site/): Official minimal portfolio and engineering work.
+- [Personal Website](https://www.francisnaga.site/): Official engineering portfolio and case studies.
 - [GitHub Profile](https://github.com/francisnaga): Open-source repositories and development work.
 - [LinkedIn Profile](https://linkedin.com/in/francisnaga): Professional experience and credentials.
-- [X Profile](https://x.com/francisnaga): Engineering insights and builder notes.
 - [Google Play Developer](https://play.google.com/store/apps/dev?id=7500831168663512287): Mobile applications by Naga Labs.
 
 ## Optional
-- [Full LLM Documentation](https://www.francisnaga.site/llms-full.txt): Detailed architecture, project breakdowns, and full credentials.
+- [Full LLM Documentation](https://www.francisnaga.site/llms-full.txt): Detailed architecture, project breakdowns, and engineering credentials.
