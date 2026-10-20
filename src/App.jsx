@@ -231,8 +231,8 @@ export default function App() {
 
           <p className="hero-lead">
             I build focused mobile utilities, responsive web applications, and automated
-            document systems. My work combines software engineering with physical fault-tolerance
-            principles learned from Marine Engineering at Nigeria Maritime University.
+            document systems. I don't use bloated templates or page builders. Just raw code
+            that loads fast and gets the job done.
           </p>
 
           <div className="hero-actions">
