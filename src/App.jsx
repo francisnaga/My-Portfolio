@@ -1,227 +1,187 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Logo from './components/Logo';
+import IPhone from './components/IPhone';
+import InktoWordmark from './components/InktoWordmark';
+import { PROJECTS } from './data/projects';
 import { whatsappLink, EMAIL } from './lib/contact';
 
-const INKTO_ALL_SCREENS = [
-  {
-    src: '/projects/inkto/01-home-dashboard.png',
-    title: 'Home & Recents',
-    desc: 'Categorized document matters, quick action tray, and recent scans.',
-  },
-  {
-    src: '/projects/inkto/02-handwritten-scan.png',
-    title: 'Camera Scanner',
-    desc: 'Edge boundary detection and high-contrast monochrome scan mode.',
-  },
-  {
-    src: '/projects/inkto/03-ai-transcription.png',
-    title: 'AI Transcription',
-    desc: 'OCR text recognition and editable markdown export.',
-  },
-  {
-    src: '/projects/inkto/04-audio-waveform.png',
-    title: 'Voice Notes',
-    desc: 'Synchronized audio waveform recording with automated speech transcription.',
-  },
-  {
-    src: '/projects/inkto/05-files-matters.png',
-    title: 'Matter Organization',
-    desc: 'Folder hierarchy, matter classification, and metadata search.',
-  },
-  {
-    src: '/projects/inkto/06-cloud-sync.png',
-    title: 'Cloud Backup',
-    desc: 'Automated Google Drive and cloud sync with offline-first local caching.',
-  },
+const NAV = [
+  { id: 'work', label: 'Work' },
+  { id: 'about', label: 'About' },
+  { id: 'contact', label: 'Contact' },
 ];
 
-const PROJECTS = [
-  {
-    id: 'inkto',
-    title: 'Inkto',
-    badge: 'Android Utility • In Production',
-    desc: 'Native Android utility that captures handwritten paper notes, scans physical documents with edge correction, transcribes text via on-device OCR, and records synchronized voice notes with Google Drive cloud backup.',
-    stack: 'Capacitor • Android Native • OCR Engine • Audio Waveform • Google Drive',
-    whatIBuilt:
-      'Engineered the complete camera scanning pipeline, perspective corner-detection, high-contrast document rendering, speech waveform recording, and cloud synchronization routines.',
-    architecture:
-      'Packaged for Android via Capacitor runtime with native camera, storage, and audio plugins. Features offline-first local file caching and automated Google Drive cloud backup.',
-    actions: [
-      { type: 'modal', label: 'View All 6 Production Screens' },
-      {
-        type: 'external',
-        label: 'Google Play Profile',
-        url: 'https://play.google.com/store/apps/dev?id=7500831168663512287',
-      },
-    ],
-  },
-  {
-    id: 'vantage',
-    title: 'Vantage',
-    badge: 'Open Source • Full-Stack Web',
-    desc: 'A clean, local-first web application designed for job applicants to organize application pipelines, track interview stages through an interactive Kanban board, and review search analytics without external tracking.',
-    stack: 'Next.js App Router • TypeScript • Tailwind CSS • IndexedDB',
-    whatIBuilt:
-      'Architected the local browser persistence layer, drag-and-drop Kanban state machine, stage transition timelines, and instant JSON backup and restore.',
-    architecture:
-      'Built with Next.js App Router, TypeScript, and client-side IndexedDB storage. Zero external server dependencies, full offline capability, and instant load times.',
-    actions: [
-      {
-        type: 'external',
-        label: 'Inspect Source on GitHub',
-        url: 'https://github.com/francisnaga/job-application-tracker',
-      },
-    ],
-  },
-  {
-    id: 'acquisition-pipeline',
-    title: 'Commercial Client Acquisition Pipeline',
-    badge: 'Client Contract • Production Funnel',
-    desc: 'Multi-step customer acquisition funnel engineered for a commercial services firm, combining a custom Next.js frontend, server-side conversion tracking, and automated webhook routing to WhatsApp for instant lead qualification.',
-    stack: 'Next.js • Node.js Webhooks • Server-Side Meta CAPI • WhatsApp API',
-    whatIBuilt:
-      'Developed the multi-step qualification questionnaire, server-side conversion tracking scripts to bypass browser ad-blockers, and real-time webhook routing into WhatsApp chat.',
-    architecture:
-      'Next.js dynamic routes paired with lightweight Node.js webhook listeners. Direct integration with WhatsApp Business API and secure event logging.',
-    actions: [
-      {
-        type: 'external',
-        label: 'Discuss Acquisition Systems',
-        url: whatsappLink('Enterprise Acquisition Funnel'),
-      },
-    ],
-  },
-  {
-    id: 'ncb-finance',
-    title: 'SME Lending & KYC Workflow Interface',
-    badge: 'Fintech Interface • Client System',
-    desc: 'Internal loan intake and borrower document verification interface (NCB Finance) developed to streamline SME underwriting workflows, KYC identity documentation checks, and borrower record management.',
-    stack: 'Next.js • TypeScript • Tailwind CSS • Document Ingestion',
-    whatIBuilt:
-      'Built the borrower application multi-stage wizard, document upload validation preview, and administrative underwriting review dashboard.',
-    architecture:
-      'Component-driven frontend built with Next.js and TypeScript, designed for secure internal network deployment and client document verification.',
-    actions: [
-      {
-        type: 'external',
-        label: 'Enquire About Loan Interfaces',
-        url: whatsappLink('NCB Finance Workflow Demo'),
-      },
-    ],
-  },
-  {
-    id: 'nairalens',
-    title: 'Foreign Exchange Spread Engine',
-    badge: 'Data Pipeline • Market Monitor',
-    desc: 'Lightweight currency spread monitor (NairaLens) tracking disparities between official and parallel market exchange rates across NGN currency pairs with automated rate alerts.',
-    stack: 'Python • Scraping Engine • REST APIs • Automated Alerts',
-    whatIBuilt:
-      'Authored the automated rate scraping daemon, spread calculation algorithms, and webhook dispatcher for rate disparity notifications.',
-    architecture:
-      'Lightweight Python service scheduled via cron, pushing normalized JSON feeds to client endpoints and messaging webhooks.',
-    actions: [
-      {
-        type: 'external',
-        label: 'Enquire About Data Pipelines',
-        url: whatsappLink('FX Monitor Service'),
-      },
-    ],
-  },
+const NOW = [
+  { label: 'Building', value: 'New features for Inkto' },
+  { label: 'Studying', value: 'Marine Engineering, NMU' },
+  { label: 'Open to', value: 'Freelance and contract work' },
 ];
 
-const FOCUS_AREAS = [
-  {
-    title: 'Mobile & Offline Utilities',
-    desc: 'Applications built to run reliably on physical devices, leveraging native hardware APIs (camera, microphone, local storage) and local-first caching that functions without continuous network connectivity.',
-  },
-  {
-    title: 'Full-Stack Web Applications',
-    desc: 'Fast, type-safe web interfaces built with Next.js, React, and TypeScript. Focused on high-contrast typography, strict accessibility, zero layout shifts, and resilient backend integrations.',
-  },
-  {
-    title: 'Data Pipelines & Automation',
-    desc: 'Custom backend scripts, webhook processors, and document extraction workflows in Python and Node.js designed to eliminate manual administrative bottlenecks and operational overhead.',
-  },
-];
+const TOOLS = ['Kotlin', 'Jetpack Compose', 'TypeScript', 'React', 'Next.js', 'Python', 'Supabase'];
 
-const CURRENT_YEAR = 2026;
+const CURRENT_YEAR = new Date().getFullYear();
+
+/** Adds `is-visible` to [data-reveal] elements as they scroll into view. */
+function useReveal() {
+  useEffect(() => {
+    const items = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      items.forEach((el) => el.classList.add('is-visible'));
+      return undefined;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.12 }
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+}
+
+/** Tracks scroll progress, the active section and whether to show "back to top". */
+function useScrollState() {
+  const [progress, setProgress] = useState(0);
+  const [active, setActive] = useState('');
+  const [showTop, setShowTop] = useState(false);
+  const ticking = useRef(false);
+
+  useEffect(() => {
+    const update = () => {
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - window.innerHeight;
+      const y = window.scrollY;
+      setProgress(max > 0 ? Math.min(1, y / max) : 0);
+      setShowTop(y > window.innerHeight * 0.9);
+
+      let current = '';
+      NAV.forEach(({ id }) => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) current = id;
+      });
+      setActive(current);
+      ticking.current = false;
+    };
+    const onScroll = () => {
+      if (!ticking.current) {
+        ticking.current = true;
+        window.requestAnimationFrame(update);
+      }
+    };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
+  return { progress, active, showTop };
+}
+
+function ProjectFeature({ project, index }) {
+  const [first, second] = project.screens || [];
+  return (
+    <article className="project" data-reveal>
+      <div className="project-copy">
+        <div className="project-meta">
+          <span className="project-index">{String(index + 1).padStart(2, '0')}</span>
+          <span className="status-dot" aria-hidden="true" />
+          <span>{project.status}</span>
+        </div>
+
+        <h3 className="project-name">
+          {project.wordmark === 'inkto' ? (
+            <InktoWordmark height={34} className="project-wordmark" />
+          ) : (
+            project.name
+          )}
+          <span className="sr-only">{project.wordmark ? project.name : ''}</span>
+        </h3>
+
+        <p className="project-summary">{project.summary}</p>
+
+        <ul className="project-built" aria-label="What I built">
+          {project.built.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+
+        <p className="project-stack">{project.stack.join('  ·  ')}</p>
+
+        <div className="project-links">
+          {project.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={link.primary ? 'btn btn-solid' : 'btn btn-ghost'}
+            >
+              {link.label}
+              <span aria-hidden="true">↗</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {first && (
+        <div className="project-visual" aria-label={`${project.name} screenshots`}>
+          <IPhone src={first.src} alt={first.alt} className="phone-back" />
+          {second && <IPhone src={second.src} alt={second.alt} className="phone-front" />}
+        </div>
+      )}
+    </article>
+  );
+}
 
 export default function App() {
-  const [theme, setTheme] = useState(() => {
-    if (typeof document !== 'undefined') {
-      return document.documentElement.getAttribute('data-theme') || 'dark';
-    }
-    return 'dark';
-  });
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [theme, setTheme] = useState(() =>
+    typeof document !== 'undefined'
+      ? document.documentElement.getAttribute('data-theme') || 'dark'
+      : 'dark'
+  );
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const [expandedProject, setExpandedProject] = useState('inkto');
-  const [copiedEmail, setCopiedEmail] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const { progress, active, showTop } = useScrollState();
+  useReveal();
 
-  // Toggle theme and persist
   const toggleTheme = useCallback(() => {
-    const nextTheme = theme === 'dark' ? 'light' : 'dark';
-    setTheme(nextTheme);
-    document.documentElement.setAttribute('data-theme', nextTheme);
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    document.documentElement.setAttribute('data-theme', next);
     try {
-      localStorage.setItem('theme', nextTheme);
+      localStorage.setItem('theme', next);
     } catch {
-      // Ignore local storage write errors
+      // Storage can be unavailable in private mode; the toggle still works.
     }
   }, [theme]);
 
-  // Modal keyboard listener and scroll lock
   useEffect(() => {
-    if (!isModalOpen) return;
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setIsModalOpen(false);
-      }
-    };
-
-    const originalOverflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.body.style.overflow = originalOverflow;
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [isModalOpen]);
-
-  // Close mobile nav on escape
-  useEffect(() => {
-    if (!isNavOpen) return;
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') {
-        setIsNavOpen(false);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    if (!isNavOpen) return undefined;
+    const onKey = (e) => e.key === 'Escape' && setIsNavOpen(false);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [isNavOpen]);
 
-  // Copy email helper
-  const handleCopyEmail = useCallback(async () => {
+  const copyEmail = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
-      setCopiedEmail(true);
-      setTimeout(() => setCopiedEmail(false), 2000);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch {
       window.location.href = `mailto:${EMAIL}`;
     }
   }, []);
 
-  const toggleProject = (id) => {
-    setExpandedProject((prev) => (prev === id ? null : id));
-  };
-
-  const handleNavClick = () => {
-    setIsNavOpen(false);
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
   return (
     <>
@@ -229,483 +189,242 @@ export default function App() {
         Skip to content
       </a>
 
-      {/* Sticky Header with Safe Area Inset Support */}
+      <div
+        className="scroll-progress"
+        style={{ transform: `scaleX(${progress})` }}
+        aria-hidden="true"
+      />
+
       <header className="site-header">
         <div className="header-inner">
-          <a href="#" className="brand-link" aria-label="Francis Naga Home">
-            <Logo size={32} className="brand-logo" />
+          <a href="#top" className="brand-link" aria-label="Francis Naga, back to top">
+            <Logo size={30} className="brand-logo" />
             <span className="brand-title">Francis Naga</span>
           </a>
 
           <div className="header-right">
-            {/* Desktop Navigation */}
-            <nav className="nav-links desktop-only" aria-label="Primary navigation">
-              <a href="#work" className="nav-link">
-                Work
-              </a>
-              <a href="#focus" className="nav-link">
-                Focus
-              </a>
-              <a href="#background" className="nav-link">
-                Background
-              </a>
-              <a href="#contact" className="nav-link">
-                Contact
-              </a>
+            <nav className="nav-links" aria-label="Primary">
+              {NAV.map(({ id, label }) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  className={`nav-link${active === id ? ' is-active' : ''}`}
+                  aria-current={active === id ? 'true' : undefined}
+                >
+                  {label}
+                </a>
+              ))}
             </nav>
 
-            {/* Theme Toggle Button */}
             <button
               type="button"
-              className="theme-toggle-btn"
+              className="icon-btn"
               onClick={toggleTheme}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
               {theme === 'dark' ? (
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <circle cx="12" cy="12" r="5" />
-                  <line x1="12" y1="1" x2="12" y2="3" />
-                  <line x1="12" y1="21" x2="12" y2="23" />
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-                  <line x1="1" y1="12" x2="3" y2="12" />
-                  <line x1="21" y1="12" x2="23" y2="12" />
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="4.5" />
+                  <path d="M12 1.5v2M12 20.5v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1.5 12h2M20.5 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
                 </svg>
               ) : (
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                 </svg>
               )}
             </button>
 
-            {/* Mobile Hamburger Button */}
             <button
               type="button"
-              className="hamburger-btn"
-              onClick={() => setIsNavOpen((prev) => !prev)}
-              aria-label={isNavOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              className="icon-btn hamburger"
+              onClick={() => setIsNavOpen((v) => !v)}
+              aria-label={isNavOpen ? 'Close menu' : 'Open menu'}
               aria-expanded={isNavOpen}
+              aria-controls="mobile-nav"
             >
-              {isNavOpen ? (
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="18" y1="6" x2="6" y2="18" />
-                  <line x1="6" y1="6" x2="18" y2="18" />
-                </svg>
-              ) : (
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="3" y1="12" x2="21" y2="12" />
-                  <line x1="3" y1="6" x2="21" y2="6" />
-                  <line x1="3" y1="18" x2="21" y2="18" />
-                </svg>
-              )}
+              <span className={`burger${isNavOpen ? ' is-open' : ''}`} aria-hidden="true">
+                <span />
+                <span />
+              </span>
             </button>
           </div>
         </div>
 
-        {/* Mobile Nav Drawer */}
         {isNavOpen && (
-          <nav className="mobile-nav-drawer" aria-label="Mobile primary navigation">
-            <a href="#work" className="mobile-nav-link" onClick={handleNavClick}>
-              Work
-            </a>
-            <a href="#focus" className="mobile-nav-link" onClick={handleNavClick}>
-              Focus
-            </a>
-            <a href="#background" className="mobile-nav-link" onClick={handleNavClick}>
-              Background
-            </a>
-            <a href="#contact" className="mobile-nav-link" onClick={handleNavClick}>
-              Contact
-            </a>
+          <nav id="mobile-nav" className="mobile-nav" aria-label="Mobile">
+            {NAV.map(({ id, label }) => (
+              <a key={id} href={`#${id}`} className="mobile-nav-link" onClick={() => setIsNavOpen(false)}>
+                {label}
+              </a>
+            ))}
           </nav>
         )}
       </header>
 
-      {/* Main Content */}
-      <main id="main" className="site-wrapper" tabIndex={-1}>
-        {/* 01: Hero Section */}
-        <section className="hero-block" aria-label="Introduction">
-          <div className="hero-title-group">
-            <h1 className="hero-name">Francis Naga</h1>
-            <div className="hero-tagline">
-              Software Developer &amp; Marine Engineering Student
-            </div>
-          </div>
-
-          <p className="hero-lead">
-            I build focused mobile utilities, responsive web applications, and automated
-            document systems. I don't use bloated templates or page builders. Just raw code
-            that loads fast and gets the job done.
+      <main id="main" tabIndex={-1}>
+        {/* Hero */}
+        <section id="top" className="hero container" aria-label="Introduction">
+          <p className="hero-status" data-reveal>
+            <span className="status-dot" aria-hidden="true" />
+            Available for new projects
           </p>
 
-          <div className="hero-actions">
-            <a href="#work" className="hero-cta">
-              <span>View Selected Work</span>
+          <h1 className="hero-title" data-reveal>
+            Hi, I&rsquo;m Francis.
+            <span className="hero-title-muted">I make software that feels simple.</span>
+          </h1>
+
+          <p className="hero-lead" data-reveal>
+            I build focused mobile utilities, responsive web applications, and automated document
+            systems. I don&rsquo;t use bloated templates or page builders. Just raw code that loads
+            fast and gets the job done.
+          </p>
+
+          <div className="hero-actions" data-reveal>
+            <a href="#work" className="btn btn-solid">
+              See my work
               <span aria-hidden="true">↓</span>
             </a>
+            <a href="#contact" className="btn btn-ghost">
+              Say hello
+            </a>
+          </div>
+        </section>
+
+        {/* Work */}
+        <section id="work" className="section container" aria-labelledby="work-title">
+          <header className="section-head" data-reveal>
+            <h2 id="work-title" className="section-title">Selected work</h2>
+            <p className="section-note">Things I&rsquo;ve designed, built and shipped.</p>
+          </header>
+
+          {PROJECTS.map((project, i) => (
+            <ProjectFeature key={project.id} project={project} index={i} />
+          ))}
+
+          <div className="more-soon" data-reveal>
+            <p>
+              More projects are on the way. I add new work here as it ships.
+            </p>
             <a
               href="https://github.com/francisnaga"
               target="_blank"
               rel="noopener noreferrer"
-              className="hero-link"
+              className="text-link"
             >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/francisnaga"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hero-link"
-            >
-              LinkedIn
-            </a>
-            <a href={`mailto:${EMAIL}`} className="hero-link">
-              Email
+              Peek at GitHub in the meantime <span aria-hidden="true">↗</span>
             </a>
           </div>
         </section>
 
-        {/* 02: Clean Expandable Projects List */}
-        <section id="work" className="section" aria-label="Selected Work">
-          <div className="section-header">
-            <h2 className="section-title">Selected Work</h2>
-            <p className="section-subtitle">
-              Production software, mobile utilities, and open-source systems. Click any project
-              to review architecture and evidence.
-            </p>
-          </div>
+        {/* About */}
+        <section id="about" className="section container" aria-labelledby="about-title">
+          <header className="section-head" data-reveal>
+            <h2 id="about-title" className="section-title">A bit about me</h2>
+          </header>
 
-          <div className="project-list-clean">
-            {PROJECTS.map((project) => {
-              const isExpanded = expandedProject === project.id;
-              return (
-                <article key={project.id} className="project-item-clean">
-                  <button
-                    type="button"
-                    className="project-header-clickable"
-                    onClick={() => toggleProject(project.id)}
-                    aria-expanded={isExpanded}
-                    aria-controls={`details-${project.id}`}
-                  >
-                    <div className="project-title-area">
-                      <div className="project-title-row">
-                        <h3 className="project-name">{project.title}</h3>
-                        <span className="project-badge-clean">{project.badge}</span>
-                      </div>
-                      <p className="project-desc-clean">{project.desc}</p>
-                      <div className="project-stack-clean">{project.stack}</div>
-                    </div>
-
-                    <div className="project-toggle-indicator" aria-hidden="true">
-                      <span>{isExpanded ? 'Collapse' : 'Details'}</span>
-                      <span>{isExpanded ? '▲' : '▼'}</span>
-                    </div>
-                  </button>
-
-                  {/* Expanded Technical Details */}
-                  {isExpanded && (
-                    <div id={`details-${project.id}`} className="project-expanded-panel">
-                      <div className="case-study-details">
-                        <div className="detail-col">
-                          <span className="detail-heading">What I Built</span>
-                          <p className="detail-text">{project.whatIBuilt}</p>
-                        </div>
-
-                        <div className="detail-col">
-                          <span className="detail-heading">Architecture &amp; Stack</span>
-                          <p className="detail-text">{project.architecture}</p>
-                        </div>
-                      </div>
-
-                      {project.actions && project.actions.length > 0 && (
-                        <div className="action-btn-group">
-                          {project.actions.map((action) => {
-                            if (action.type === 'modal') {
-                              return (
-                                <button
-                                  key={action.label}
-                                  type="button"
-                                  className="action-btn"
-                                  onClick={() => setIsModalOpen(true)}
-                                >
-                                  <svg
-                                    width="15"
-                                    height="15"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    aria-hidden="true"
-                                  >
-                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-                                    <circle cx="8.5" cy="8.5" r="1.5" />
-                                    <polyline points="21 15 16 10 5 21" />
-                                  </svg>
-                                  <span>{action.label}</span>
-                                </button>
-                              );
-                            }
-                            return (
-                              <a
-                                key={action.label}
-                                href={action.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="action-btn"
-                              >
-                                <span>{action.label}</span>
-                                <span aria-hidden="true">↗</span>
-                              </a>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  )}
-                </article>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* 03: What I Build Section */}
-        <section id="focus" className="section" aria-label="Engineering Strengths">
-          <div className="section-header">
-            <h2 className="section-title">What I Build</h2>
-            <p className="section-subtitle">
-              Focused software engineering across mobile utilities, modern web interfaces, and
-              operational automation.
-            </p>
-          </div>
-
-          <div className="approach-grid">
-            {FOCUS_AREAS.map((area) => (
-              <div key={area.title} className="approach-card">
-                <h3 className="approach-card-title">{area.title}</h3>
-                <p className="approach-card-body">{area.desc}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* 04: Background Section */}
-        <section id="background" className="section" aria-label="Background and Education">
-          <div className="section-header">
-            <h2 className="section-title">Background &amp; Discipline</h2>
-            <p className="section-subtitle">
-              Dual foundation in heavy mechanical engineering and software systems development.
-            </p>
-          </div>
-
-          <div className="background-grid">
-            <div className="background-card">
-              <h3 className="background-card-title">Marine Engineering Rigor</h3>
-              <p className="background-card-body">
-                Pursuing a B.Eng in Marine Engineering at Nigeria Maritime University (NMU).
-                Training covers marine propulsion machinery, thermodynamics, fluid dynamics, and
-                stringent safety regulations. This heavy-machinery discipline shapes how I
-                engineer software: prioritizing fault isolation, structural resilience, edge-case
-                verification, and preventative maintenance over fragile quick-fixes.
+          <div className="about-grid">
+            <div className="about-copy" data-reveal>
+              <p>
+                I&rsquo;m a Marine Engineering student at Nigeria Maritime University who got
+                hooked on writing software and never looked back.
               </p>
-              <div className="background-card-meta">
-                Nigeria Maritime University (Okerenkoko)
-              </div>
-            </div>
-
-            <div className="background-card">
-              <h3 className="background-card-title">Software Engineering Foundation</h3>
-              <p className="background-card-body">
-                Formally grounded in core computer science principles and software development
-                through NIIT diploma coursework. Supplemented by active production building
-                across modern TypeScript, mobile runtimes, relational databases, and serverless
-                cloud infrastructure.
+              <p>
+                I like small, sharp tools that do one job really well. Most of what I build starts
+                with a simple question, like why people are still retyping paper documents by hand.
+                Inkto came from exactly that.
               </p>
-              <div className="background-card-meta">
-                NIIT Software Engineering Diploma • Continuous Production Building
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 05: Contact Section */}
-        <section id="contact" className="section" aria-label="Contact Information">
-          <div className="section-header">
-            <h2 className="section-title">Get in Touch</h2>
-            <p className="section-subtitle">
-              Open for select engineering contracts, mobile app development, and technical
-              collaborations.
-            </p>
-          </div>
-
-          <div className="contact-block">
-            <p className="contact-lead">
-              If you have an engineering problem, need a fast mobile utility, or want to discuss a
-              project, send an email or reach out on GitHub or LinkedIn.
-            </p>
-
-            <div className="contact-links-grid">
-              <div className="contact-action-item">
-                <a href={`mailto:${EMAIL}`} className="link-underlined">
-                  {EMAIL}
-                </a>
-                <button
-                  type="button"
-                  className="copy-btn"
-                  onClick={handleCopyEmail}
-                  aria-label="Copy email address"
-                >
-                  {copiedEmail ? 'Copied' : 'Copy'}
-                </button>
-              </div>
-
-              <div className="contact-action-item">
-                <a
-                  href="https://github.com/francisnaga"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underlined"
-                >
-                  GitHub
-                </a>
-              </div>
-
-              <div className="contact-action-item">
-                <a
-                  href="https://linkedin.com/in/francisnaga"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underlined"
-                >
-                  LinkedIn
-                </a>
-              </div>
-
-              <div className="contact-action-item">
-                <a
-                  href={whatsappLink()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="link-underlined"
-                >
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Minimal Footer */}
-        <footer className="site-footer">
-          <div>
-            &copy; {CURRENT_YEAR} Francis Naga. All rights reserved.
-          </div>
-          <div>
-            Built with React, Vite, and clean typography.
-          </div>
-        </footer>
-      </main>
-
-      {/* Inkto Full Screenshot Modal */}
-      {isModalOpen && (
-        <div
-          className="modal-backdrop"
-          onClick={() => setIsModalOpen(false)}
-          role="presentation"
-        >
-          <div
-            className="modal-dialog"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="inkto-modal-title"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="modal-header">
-              <h2 id="inkto-modal-title" className="modal-title">
-                Inkto: Android Production Screens (6)
-              </h2>
-              <button
-                type="button"
-                className="modal-close-btn"
-                onClick={() => setIsModalOpen(false)}
-                aria-label="Close modal"
-              >
-                Close [Esc]
-              </button>
-            </div>
-
-            <div className="modal-body">
-              <p style={{ marginBottom: '1.25rem', color: 'var(--gray)', fontSize: '0.92rem' }}>
-                Verified captures from an Android physical device running Inkto. Scroll
-                horizontally to review each workflow screen.
+              <p>
+                If you care about software that feels quick, honest and calm to use, we&rsquo;ll
+                probably get along.
               </p>
+            </div>
 
-              <div className="screenshot-gallery">
-                {INKTO_ALL_SCREENS.map((screen) => (
-                  <div key={screen.title} className="screenshot-card">
-                    <img
-                      src={screen.src}
-                      alt={screen.title}
-                      loading="lazy"
-                      width="210"
-                      height="467"
-                    />
-                    <span>
-                      <strong>{screen.title}</strong>
-                      <br />
-                      {screen.desc}
-                    </span>
+            <aside className="about-side" data-reveal>
+              <h3 className="side-title">Right now</h3>
+              <dl className="now-list">
+                {NOW.map((row) => (
+                  <div key={row.label} className="now-row">
+                    <dt>{row.label}</dt>
+                    <dd>{row.value}</dd>
                   </div>
                 ))}
-              </div>
-            </div>
+              </dl>
+
+              <h3 className="side-title">Tools I reach for</h3>
+              <p className="tools">{TOOLS.join(', ')}</p>
+            </aside>
           </div>
-        </div>
-      )}
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="section contact container" aria-labelledby="contact-title">
+          <h2 id="contact-title" className="contact-title" data-reveal>
+            Have an idea?
+            <span className="hero-title-muted">Let&rsquo;s build it together.</span>
+          </h2>
+          <p className="contact-lead" data-reveal>
+            Tell me what you&rsquo;re working on, what&rsquo;s getting in the way, or just say
+            hi. No forms, no gatekeeping, just me.
+          </p>
+
+          <div className="contact-email" data-reveal>
+            <a href={`mailto:${EMAIL}`} className="email-link">
+              {EMAIL}
+            </a>
+            <button type="button" className="copy-btn" onClick={copyEmail} aria-live="polite">
+              {copied ? 'Copied' : 'Copy'}
+            </button>
+          </div>
+
+          <ul className="social-list" data-reveal>
+            <li>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="text-link">
+                WhatsApp <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/francisnaga" target="_blank" rel="noopener noreferrer" className="text-link">
+                GitHub <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://linkedin.com/in/francisnaga" target="_blank" rel="noopener noreferrer" className="text-link">
+                LinkedIn <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://play.google.com/store/apps/dev?id=7500831168663512287"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-link"
+              >
+                Google Play <span aria-hidden="true">↗</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+      </main>
+
+      <footer className="site-footer container">
+        <span>&copy; {CURRENT_YEAR} Francis Naga</span>
+        <button type="button" className="text-link footer-top" onClick={scrollToTop}>
+          Back to top <span aria-hidden="true">↑</span>
+        </button>
+      </footer>
+
+      <button
+        type="button"
+        className={`to-top${showTop ? ' is-shown' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        tabIndex={showTop ? 0 : -1}
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M12 19V5M5 12l7-7 7 7" />
+        </svg>
+      </button>
     </>
   );
 }
