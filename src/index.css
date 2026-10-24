@@ -590,40 +590,24 @@ main:focus {
     transform: rotate(2deg) translateY(14px);
   }
 }
-/* ---------- iPhone frame ---------- */
+/* ---------- iPhone frame (slim iPhone 16 Pro proportions) ---------- */
 .iphone {
+  --bezel: 3.5px;
+  --outer-r: 32px;
   position: relative;
-  aspect-ratio: 756 / 1720;
-  padding: 3.6%;
-  border-radius: 17% / 7.8%;
-  background: var(--frame);
+  aspect-ratio: 920 / 2048;
+  padding: var(--bezel);
+  border-radius: var(--outer-r);
+  background: #0a0a0c;
   box-shadow:
-    inset 0 0 0 1.5px var(--frame-edge),
-    inset 0 0 0 4px var(--frame),
+    0 0 0 1px rgba(255, 255, 255, 0.14),
     var(--shadow);
 }
 
-/* Side buttons */
-.iphone::before,
-.iphone::after {
-  content: '';
-  position: absolute;
-  width: 3px;
-  background: var(--frame-edge);
-  border-radius: 2px;
-}
-
-.iphone::before {
-  left: -2px;
-  top: 19%;
-  height: 11%;
-  box-shadow: 0 -2.4em 0 -0.05em var(--frame-edge);
-}
-
-.iphone::after {
-  right: -2px;
-  top: 25%;
-  height: 15%;
+[data-theme='light'] .iphone {
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.14),
+    var(--shadow);
 }
 
 .iphone-screen {
@@ -631,7 +615,7 @@ main:focus {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  border-radius: 13.5% / 6.2%;
+  border-radius: calc(var(--outer-r) - var(--bezel));
   background: #f3f4f8;
 }
 
@@ -646,56 +630,60 @@ main:focus {
   top: 0;
   left: 0;
   right: 0;
-  height: 7.2%;
+  height: 5.4%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 9% 0 11%;
-  color: #000;
-  font-size: clamp(8px, 2.4vw, 11.5px);
+  padding: 0 8.5% 0 10%;
+  color: #111;
+  font-size: clamp(7.5px, 1.9vw, 10px);
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
+.iphone-status.is-light {
+  color: rgba(255, 255, 255, 0.92);
+}
+
 .iphone-time {
-  width: 30%;
+  width: 28%;
+  line-height: 1;
 }
 
 .iphone-island {
   position: absolute;
   left: 50%;
-  top: 22%;
-  width: 31%;
-  height: 52%;
-  transform: translateX(-50%);
+  top: 50%;
+  width: 26%;
+  height: 50%;
+  transform: translate(-50%, -50%);
   border-radius: 999px;
   background: #000;
 }
 
 .iphone-icons {
-  width: 30%;
+  width: 28%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  gap: 4%;
+  gap: 5%;
 }
 
 .iphone-icons svg {
-  height: 0.95em;
+  height: 0.88em;
   width: auto;
   fill: currentColor;
 }
 
 .iphone-home {
   position: absolute;
-  bottom: 1.1%;
+  bottom: 1.2%;
   left: 50%;
-  width: 36%;
-  height: 0.45%;
-  min-height: 3px;
+  width: 34%;
+  height: 3px;
   transform: translateX(-50%);
   border-radius: 999px;
-  background: #000;
+  background: rgba(0, 0, 0, 0.78);
 }
 
 /* More soon */
@@ -940,6 +928,8 @@ main:focus {
   }
 
   .project-visual .iphone {
+    --outer-r: 24px;
+    --bezel: 3px;
     width: 44vw;
   }
 

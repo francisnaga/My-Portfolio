@@ -134,8 +134,20 @@ function ProjectFeature({ project, index }) {
 
       {first && (
         <div className="project-visual" aria-label={`${project.name} screenshots`}>
-          <IPhone src={first.src} alt={first.alt} className="phone-back" />
-          {second && <IPhone src={second.src} alt={second.alt} className="phone-front" />}
+          <IPhone
+            src={first.src}
+            alt={first.alt}
+            statusLight={first.statusLight}
+            className="phone-back"
+          />
+          {second && (
+            <IPhone
+              src={second.src}
+              alt={second.alt}
+              statusLight={second.statusLight}
+              className="phone-front"
+            />
+          )}
         </div>
       )}
     </article>

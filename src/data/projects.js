@@ -15,7 +15,7 @@ export const PROJECTS = [
     platform: 'Android',
     year: '2026',
     summary:
-      'Inkto turns paper documents and voice dictation into clean, editable text. Scan a page or record a note, and a few moments later you have a transcript you can review, edit and export.',
+      'The transcription engine for legal minds. Inkto turns paper documents, handwritten notes and voice dictation into clean, structured text you can review, edit and export in seconds.',
     built: [
       'Native Android app written in Kotlin with Jetpack Compose',
       'Document scanning with ML Kit, plus audio recording and file upload',
@@ -32,8 +32,15 @@ export const PROJECTS = [
       },
     ],
     screens: [
-      { src: '/projects/inkto/inkto-home.webp', alt: 'Inkto home screen with audio, handwriting and scan shortcuts' },
-      { src: '/projects/inkto/inkto-transcript.webp', alt: 'Inkto transcript of a scanned legal document' },
+      {
+        src: '/projects/inkto/inkto-welcome.webp',
+        alt: 'Inkto welcome screen: The transcription engine for legal minds',
+      },
+      {
+        src: '/projects/inkto/inkto-workspace.webp',
+        alt: 'Inkto workspace sign-in and note transcription view',
+        statusLight: true,
+      },
     ],
   },
 ];
