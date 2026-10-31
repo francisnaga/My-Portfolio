@@ -9,7 +9,7 @@ export default function IPhone({
   alt,
   className = '',
   statusLight = false,
-  eager = false,
+  eager = true,
 }) {
   return (
     <figure className={`iphone ${className}`}>

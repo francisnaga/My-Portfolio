@@ -8,8 +8,8 @@
   --bg: #121211;
   --bg-raised: #1a1a19;
   --fg: #f5f4f1;
-  --muted: #9a9893;
-  --faint: #6b6a66;
+  --muted: #a4a29d;
+  --faint: #8e8c87;
   --line: #262624;
   --line-strong: #3a3936;
   --header-bg: #121211;
@@ -17,7 +17,7 @@
   --btn-fg: #121211;
   --frame: #0b0b0b;
   --frame-edge: #3b3b3b;
-  --shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7), 0 18px 36px -18px rgba(0, 0, 0, 0.6);
+  --shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6), 0 12px 28px -12px rgba(0, 0, 0, 0.5);
   color-scheme: dark;
 }
 
@@ -26,7 +26,7 @@
   --bg-raised: #ffffff;
   --fg: #151514;
   --muted: #64625d;
-  --faint: #8d8b86;
+  --faint: #6e6b66;
   --line: #e8e6e1;
   --line-strong: #d3d0ca;
   --header-bg: #faf9f6;
@@ -34,7 +34,7 @@
   --btn-fg: #faf9f6;
   --frame: #1a1a1a;
   --frame-edge: #c9c9c9;
-  --shadow: 0 40px 80px -30px rgba(40, 35, 25, 0.35), 0 18px 36px -18px rgba(40, 35, 25, 0.25);
+  --shadow: 0 30px 60px -20px rgba(40, 35, 25, 0.25), 0 12px 28px -12px rgba(40, 35, 25, 0.18);
   color-scheme: light;
 }
 
@@ -546,49 +546,36 @@ main:focus {
   margin-top: 2rem;
 }
 
-/* Two staggered phones */
+/* Staggered upright phones */
 .project-visual {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 1rem 0 4rem;
+  padding: 1rem 0 3.5rem;
 }
 
 .project-visual .iphone {
-  width: min(240px, 42vw);
+  width: min(235px, 42vw);
   flex-shrink: 0;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .phone-back {
-  margin-right: -9%;
-  animation: float-a 7s ease-in-out infinite;
+  margin-right: -10%;
   z-index: 1;
 }
 
 .phone-front {
-  margin-top: 3.5rem;
-  animation: float-b 7s ease-in-out infinite;
+  margin-top: 2.75rem;
   z-index: 2;
 }
 
-@keyframes float-a {
-  0%,
-  100% {
-    transform: rotate(-4deg) translateY(0);
-  }
-  50% {
-    transform: rotate(-3deg) translateY(-12px);
-  }
+.project-visual:hover .phone-back {
+  transform: translateY(-4px);
 }
 
-@keyframes float-b {
-  0%,
-  100% {
-    transform: rotate(3deg) translateY(0);
-  }
-  50% {
-    transform: rotate(2deg) translateY(14px);
-  }
+.project-visual:hover .phone-front {
+  transform: translateY(-8px);
 }
 /* ---------- iPhone frame (slim iPhone 16 Pro proportions) ---------- */
 .iphone {
@@ -690,8 +677,8 @@ main:focus {
 .more-soon {
   margin-top: clamp(4rem, 8vw, 6rem);
   padding: 1.75rem 0;
-  border-top: 1px dashed var(--line-strong);
-  border-bottom: 1px dashed var(--line-strong);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -869,26 +856,8 @@ main:focus {
 
 /* ---------- Reveal on scroll ---------- */
 [data-reveal] {
-  opacity: 0;
-  transform: translateY(22px);
-  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-}
-
-[data-reveal].is-visible {
   opacity: 1;
   transform: none;
-}
-
-.hero [data-reveal]:nth-child(2) {
-  transition-delay: 0.08s;
-}
-
-.hero [data-reveal]:nth-child(3) {
-  transition-delay: 0.16s;
-}
-
-.hero [data-reveal]:nth-child(4) {
-  transition-delay: 0.24s;
 }
 
 /* ---------- Responsive ---------- */
