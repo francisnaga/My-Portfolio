@@ -12,9 +12,9 @@ const NAV = [
 ];
 
 const NOW = [
-  { label: 'Building', value: 'New features for Inkto' },
+  { label: 'Building', value: 'Inkto & Jetty' },
   { label: 'Studying', value: 'Marine Engineering, NMU' },
-  { label: 'Open to', value: 'Freelance and contract work' },
+  { label: 'Open to', value: 'Engineering contracts & freelance' },
 ];
 
 const TOOLS = ['Kotlin', 'Jetpack Compose', 'TypeScript', 'React', 'Next.js', 'Python', 'Supabase'];
@@ -338,16 +338,15 @@ export default function App() {
           <div className="about-grid">
             <div className="about-copy" data-reveal>
               <p>
-                I&rsquo;m a Marine Engineering student at Nigeria Maritime University who got
-                hooked on writing software and never looked back.
+                I&rsquo;m a Marine Engineering student at Nigeria Maritime University who builds
+                clean software for mobile and web.
               </p>
               <p>
-                I like small, sharp tools that do one job really well. Most of what I build starts
-                with a simple question, like why people are still retyping paper documents by hand.
-                Inkto came from exactly that.
+                I focus on focused tools that solve practical frictions, from legal document
+                transcription with Inkto to campus marketplace and housing with Jetty.
               </p>
               <p>
-                If you care about software that feels quick, honest and calm to use, we&rsquo;ll
+                If you care about software that feels fast, honest, and calm to use, we&rsquo;ll
                 probably get along.
               </p>
             </div>

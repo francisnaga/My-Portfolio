@@ -1,12 +1,43 @@
 /**
  * Projects shown on the homepage.
  *
- * To add a new project, copy the Inkto object below, change the values and
- * drop its screenshots into /public/projects/<id>/. Projects render in the
- * order they appear in this array. Leave `screens` empty if you have no
- * screenshots yet; the card will still look complete.
+ * Direct, minimal, and focused on production software built by Francis Naga.
  */
 export const PROJECTS = [
+  {
+    id: 'jetty',
+    name: 'Jetty',
+    status: 'Campus Platform',
+    platform: 'Web · Mobile First',
+    year: '2026',
+    summary:
+      'Campus marketplace, housing directory, and services platform built for Nigeria Maritime University students.',
+    built: [
+      'Off-campus student lodge directory with direct caretaker WhatsApp verification',
+      'Student marketplace for cadet action rigs, boots, and hostel supplies',
+      'Campus service booking for uniform alterations, laundry, and grooming',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
+    links: [
+      {
+        label: 'View Source on GitHub',
+        url: 'https://github.com/francisnaga/Island-Hub',
+        primary: true,
+      },
+    ],
+    screens: [
+      {
+        src: '/projects/jetty/jetty-home.webp',
+        alt: 'Jetty home screen showing NMU campus marketplace and categories',
+        statusLight: true,
+      },
+      {
+        src: '/projects/jetty/jetty-lodge.webp',
+        alt: 'Jetty student lodge screen showing off-campus room listings and WhatsApp inspection',
+        statusLight: true,
+      },
+    ],
+  },
   {
     id: 'inkto',
     name: 'Inkto',
@@ -15,15 +46,13 @@ export const PROJECTS = [
     platform: 'Android',
     year: '2026',
     summary:
-      'The transcription engine for legal minds. Inkto turns paper documents, handwritten notes and voice dictation into clean, structured text you can review, edit and export in seconds.',
+      'Mobile utility that scans physical documents, records voice dictation, and generates structured editable text.',
     built: [
-      'Native Android app written in Kotlin with Jetpack Compose',
-      'Document scanning with ML Kit, plus audio recording and file upload',
-      'AI transcription that flags uncertain words for a human to review',
-      'Export to PDF, DOCX and plain text, organised into matters',
-      'Google Sign-In, Supabase auth and credits through Play Billing',
+      'On-device document scanning with perspective edge correction and OCR',
+      'Voice note recording with speech transcription and uncertainty review',
+      'Matter filing system with one-tap export to PDF and DOCX',
     ],
-    stack: ['Kotlin', 'Jetpack Compose', 'Room', 'Hilt', 'WorkManager', 'Supabase', 'ML Kit'],
+    stack: ['Kotlin', 'Jetpack Compose', 'Room', 'ML Kit', 'Supabase'],
     links: [
       {
         label: 'Get it on Google Play',
