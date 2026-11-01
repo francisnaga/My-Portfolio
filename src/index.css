@@ -673,6 +673,133 @@ main:focus {
   background: rgba(0, 0, 0, 0.78);
 }
 
+/* Expandable Archive ("See More Projects") */
+.see-more-wrap {
+  margin-top: clamp(3rem, 6vw, 4.5rem);
+  display: flex;
+  justify-content: center;
+}
+
+.see-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.see-more-btn:hover {
+  border-color: var(--fg);
+  transform: translateY(-1px);
+}
+
+.other-projects-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  animation: fadeInGrid 0.35s ease;
+}
+
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.other-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  border-radius: 6px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.other-card:hover {
+  border-color: var(--fg);
+  transform: translateY(-2px);
+}
+
+.other-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  color: var(--faint);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.85rem;
+}
+
+.other-index {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.other-tag {
+  color: var(--fg);
+  background: var(--tint, rgba(0, 0, 0, 0.04));
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+}
+
+.other-year {
+  margin-left: auto;
+}
+
+.other-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin-bottom: 0.5rem;
+}
+
+.other-summary {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.other-highlights {
+  font-size: 0.82rem;
+  line-height: 1.45;
+  color: var(--faint);
+  margin-bottom: 1rem;
+}
+
+.other-stack {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+  margin-bottom: 1.25rem;
+}
+
+.other-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--line);
+}
+
 /* More soon */
 .more-soon {
   margin-top: clamp(4rem, 8vw, 6rem);

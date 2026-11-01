@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Logo from './components/Logo';
 import IPhone from './components/IPhone';
 import InktoWordmark from './components/InktoWordmark';
-import { PROJECTS } from './data/projects';
+import { FEATURED_PROJECTS, OTHER_PROJECTS } from './data/projects';
 import { whatsappLink, EMAIL } from './lib/contact';
 
 const NAV = [
@@ -12,7 +12,7 @@ const NAV = [
 ];
 
 const NOW = [
-  { label: 'Building', value: 'Inkto & Jetty' },
+  { label: 'Building', value: 'Jetty, Inkto & CemGuard' },
   { label: 'Studying', value: 'Marine Engineering, NMU' },
   { label: 'Open to', value: 'Engineering contracts & freelance' },
 ];
@@ -138,6 +138,7 @@ function ProjectFeature({ project, index }) {
             src={first.src}
             alt={first.alt}
             statusLight={first.statusLight}
+            showStatus={first.showStatus !== false}
             className="phone-back"
           />
           {second && (
@@ -145,6 +146,7 @@ function ProjectFeature({ project, index }) {
               src={second.src}
               alt={second.alt}
               statusLight={second.statusLight}
+              showStatus={second.showStatus !== false}
               className="phone-front"
             />
           )}
@@ -162,6 +164,7 @@ export default function App() {
   );
   const [isNavOpen, setIsNavOpen] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [showMore, setShowMore] = useState(false);
   const { progress, active, showTop } = useScrollState();
   useReveal();
 
@@ -310,9 +313,70 @@ export default function App() {
             <p className="section-note">Things I&rsquo;ve designed, built and shipped.</p>
           </header>
 
-          {PROJECTS.map((project, i) => (
+          {FEATURED_PROJECTS.map((project, i) => (
             <ProjectFeature key={project.id} project={project} index={i} />
           ))}
+
+          <div className="see-more-wrap" data-reveal>
+            <button
+              type="button"
+              className="see-more-btn"
+              onClick={() => setShowMore((v) => !v)}
+              aria-expanded={showMore}
+              aria-controls="other-projects"
+            >
+              <span>{showMore ? 'Show fewer projects' : `See more projects (${OTHER_PROJECTS.length})`}</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                style={{
+                  transform: showMore ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.25s ease',
+                }}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+          </div>
+
+          {showMore && (
+            <div id="other-projects" className="other-projects-grid" aria-label="Additional projects">
+              {OTHER_PROJECTS.map((item, idx) => (
+                <article key={item.id} className="other-card">
+                  <div className="other-meta">
+                    <span className="other-index">{String(idx + 4).padStart(2, '0')}</span>
+                    <span className="other-tag">{item.category}</span>
+                    <span className="other-year">{item.year}</span>
+                  </div>
+                  <h4 className="other-title">{item.name}</h4>
+                  <p className="other-summary">{item.summary}</p>
+                  <p className="other-highlights">{item.highlights}</p>
+                  <p className="other-stack">{item.stack.join('  ·  ')}</p>
+                  <div className="other-links">
+                    {item.links.map((link) => (
+                      <a
+                        key={link.url}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-link"
+                      >
+                        {link.label}
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
 
           <div className="more-soon" data-reveal>
             <p>
@@ -352,7 +416,7 @@ export default function App() {
                 >
                   Inkto
                 </a>{' '}
-                to campus marketplace and housing with{' '}
+                to campus commerce with{' '}
                 <a
                   href="https://jetty.francisnaga.site"
                   target="_blank"
@@ -360,6 +424,15 @@ export default function App() {
                   className="text-link"
                 >
                   Jetty
+                </a>{' '}
+                and predictive plant reliability with{' '}
+                <a
+                  href="https://github.com/francisnaga/CemGuard"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link"
+                >
+                  CemGuard
                 </a>
                 .
               </p>
