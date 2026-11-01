@@ -466,8 +466,8 @@ main:focus {
 /* ---------- Project ---------- */
 .project {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(2.5rem, 6vw, 5rem);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
   align-items: center;
 }
 
@@ -551,38 +551,39 @@ main:focus {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 1rem 0 3.5rem;
+  padding: 1.5rem 0 4rem;
 }
 
 .project-visual .iphone {
-  width: min(235px, 42vw);
+  width: clamp(245px, 23vw, 290px);
   flex-shrink: 0;
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
 .phone-back {
-  margin-right: -10%;
+  margin-right: -6%;
   z-index: 1;
 }
 
 .phone-front {
-  margin-top: 2.75rem;
+  margin-top: 3.25rem;
   z-index: 2;
 }
 
 .project-visual:hover .phone-back {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .project-visual:hover .phone-front {
-  transform: translateY(-8px);
+  transform: translateY(-9px);
 }
-/* ---------- iPhone frame (slim iPhone 16 Pro proportions) ---------- */
+
+/* ---------- iPhone frame (standard modern iPhone proportions) ---------- */
 .iphone {
   --bezel: 3.5px;
-  --outer-r: 32px;
+  --outer-r: 36px;
   position: relative;
-  aspect-ratio: 920 / 2048;
+  aspect-ratio: 393 / 852;
   padding: var(--bezel);
   border-radius: var(--outer-r);
   background: #0a0a0c;
@@ -1024,9 +1025,13 @@ main:focus {
   }
 
   .project-visual .iphone {
-    --outer-r: 24px;
+    --outer-r: 26px;
     --bezel: 3px;
-    width: 44vw;
+    width: clamp(145px, 42vw, 190px);
+  }
+
+  .phone-front {
+    margin-top: 2.25rem;
   }
 
   .project-name {
