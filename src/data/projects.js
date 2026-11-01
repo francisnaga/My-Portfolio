@@ -7,7 +7,7 @@ export const PROJECTS = [
   {
     id: 'jetty',
     name: 'Jetty',
-    status: 'Campus Platform',
+    status: 'Live in Production',
     platform: 'Web · Mobile First',
     year: '2026',
     summary:
@@ -20,20 +20,24 @@ export const PROJECTS = [
     stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
     links: [
       {
-        label: 'View Source on GitHub',
-        url: 'https://github.com/francisnaga/Island-Hub',
+        label: 'Visit jetty.francisnaga.site',
+        url: 'https://jetty.francisnaga.site',
         primary: true,
+      },
+      {
+        label: 'Source on GitHub',
+        url: 'https://github.com/francisnaga/Island-Hub',
       },
     ],
     screens: [
       {
         src: '/projects/jetty/jetty-home.webp',
-        alt: 'Jetty home screen showing NMU campus marketplace and categories',
+        alt: 'Jetty live platform showing NMU campus marketplace and categories',
         statusLight: true,
       },
       {
         src: '/projects/jetty/jetty-lodge.webp',
-        alt: 'Jetty student lodge screen showing off-campus room listings and WhatsApp inspection',
+        alt: 'Jetty live platform showing off-campus room listings and WhatsApp inspection',
         statusLight: true,
       },
     ],

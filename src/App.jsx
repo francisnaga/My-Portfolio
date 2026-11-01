@@ -343,7 +343,25 @@ export default function App() {
               </p>
               <p>
                 I focus on focused tools that solve practical frictions, from legal document
-                transcription with Inkto to campus marketplace and housing with Jetty.
+                transcription with{' '}
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.inkto.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link"
+                >
+                  Inkto
+                </a>{' '}
+                to campus marketplace and housing with{' '}
+                <a
+                  href="https://jetty.francisnaga.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link"
+                >
+                  Jetty
+                </a>
+                .
               </p>
               <p>
                 If you care about software that feels fast, honest, and calm to use, we&rsquo;ll
