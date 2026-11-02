@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Francis Naga - Resume</title>
+<style>
+  @page {
+    size: letter portrait;
+    margin: 0.5in 0.55in;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #151515;
+    background: #ffffff;
+    font-size: 9.5pt;
+    line-height: 1.42;
+    -webkit-font-smoothing: antialiased;
+  }
+  a {
+    color: #111111;
+    text-decoration: none;
+    border-bottom: 1px solid #c0c0c0;
+  }
+  .header {
+    border-bottom: 2px solid #151515;
+    padding-bottom: 8pt;
+    margin-bottom: 10pt;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .name {
+    font-size: 22pt;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: #050505;
+  }
+  .title {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #454545;
+    margin-top: 4pt;
+    letter-spacing: 0.01em;
+  }
+  .contact {
+    text-align: right;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    color: #404040;
+  }
+  .contact a {
+    color: #202020;
+  }
+  .section {
+    margin-bottom: 10pt;
+  }
+  .section-title {
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #050505;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 2pt;
+    margin-bottom: 6pt;
+  }
+  .summary {
+    color: #333333;
+    font-size: 9pt;
+    line-height: 1.45;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8pt;
+  }
+  .skills-group {
+    margin-bottom: 4pt;
+    font-size: 8.8pt;
+  }
+  .skills-label {
+    font-weight: 700;
+    color: #111111;
+    display: inline;
+  }
+  .skills-val {
+    color: #383838;
+    display: inline;
+  }
+  .item {
+    margin-bottom: 8pt;
+    page-break-inside: avoid;
+  }
+  .item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 2pt;
+  }
+  .item-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #0a0a0a;
+  }
+  .item-subtitle {
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: #555555;
+  }
+  .item-meta {
+    font-size: 8.5pt;
+    font-weight: 500;
+    color: #666666;
+    font-variant-numeric: tabular-nums;
+  }
+  .item-desc {
+    list-style: none;
+    margin-top: 2pt;
+  }
+  .item-desc li {
+    position: relative;
+    padding-left: 10pt;
+    color: #333333;
+    font-size: 8.8pt;
+    line-height: 1.4;
+    margin-bottom: 1.5pt;
+  }
+  .item-desc li::before {
+    content: "•";
+    position: absolute;
+    left: 1pt;
+    color: #666666;
+  }
+  .pill {
+    display: inline-block;
+    font-size: 7.5pt;
+    font-weight: 600;
+    padding: 1pt 4pt;
+    background: #f0f0f0;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin-left: 4pt;
+    color: #222222;
+  }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div>
+    <h1 class="name">Francis Naga</h1>
+    <p class="title">Software Developer & Systems Builder (Efobi Francis Chibundo)</p>
+  </div>
+  <div class="contact">
+    <div><a href="https://www.francisnaga.site">francisnaga.site</a> · <a href="mailto:contact@francisnaga.site">contact@francisnaga.site</a></div>
+    <div>+234 814 624 4923 · Nigeria</div>
+    <div><a href="https://github.com/francisnaga">github.com/francisnaga</a> · <a href="https://linkedin.com/in/francisnaga">linkedin.com/in/francisnaga</a></div>
+  </div>
+</header>
+
+<section class="section">
+  <h2 class="section-title">Professional Summary</h2>
+  <p class="summary">
+    Pragmatic software developer and Marine Engineering student at Nigeria Maritime University specializing in native mobile engineering (Kotlin / Jetpack Compose), full-stack web platforms (Next.js 15, TypeScript, Supabase), and production automated workflow systems. Proven track record of launching real products from zero to production with active user adoption and verifiable engineering deliverables.
+  </p>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-group">
+    <div class="skills-label">Languages:</div>
+    <div class="skills-val">Kotlin, TypeScript, JavaScript, Python, SQL (PostgreSQL), HTML5, CSS3</div>
+  </div>
+  <div class="skills-group">
+    <div class="skills-label">Mobile Development:</div>
+    <div class="skills-val">Android Native, Jetpack Compose, Room Database, ML Kit (On-Device OCR), Material 3, Google Play Deployment</div>
+  </div>
+  <div class="skills-group">
+    <div class="skills-label">Web & Full-Stack:</div>
+    <div class="skills-val">Next.js 15, React, Node.js, FastAPI, REST APIs, Tailwind CSS, Supabase (PostgreSQL, Auth, Realtime), Zustand, Recharts</div>
+  </div>
+  <div class="skills-group">
+    <div class="skills-label">Systems & Tools:</div>
+    <div class="skills-val">Git, GitHub Actions, Docker, Linux, Paystack Payment Integration, PWA Offline-First Architecture</div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Featured Production Engineering Projects</h2>
+
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">Jetty</span>
+        <span class="pill">Live in Production</span>
+        <span class="item-subtitle"> · Campus Marketplace & Housing Platform</span>
+      </div>
+      <span class="item-meta">2026 · <a href="https://jetty.francisnaga.site">jetty.francisnaga.site</a></span>
+    </div>
+    <ul class="item-desc">
+      <li>Architected and launched a full-stack campus platform serving students and businesses at Nigeria Maritime University.</li>
+      <li>Engineered an off-campus lodge directory with direct caretaker WhatsApp verification, removing intermediate agent fraud.</li>
+      <li>Shipped student marketplace and service booking system for cadet gear, laundry, and hostel supplies.</li>
+      <li>Stack: Next.js, React, TypeScript, Tailwind CSS, Supabase (PostgreSQL, Auth, Storage).</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">Inkto</span>
+        <span class="pill">Live on Google Play</span>
+        <span class="item-subtitle"> · Legal Document Transcription & Audio Engine</span>
+      </div>
+      <span class="item-meta">2026 · <a href="https://play.google.com/store/apps/details?id=com.inkto.app">Google Play Store</a></span>
+    </div>
+    <ul class="item-desc">
+      <li>Designed and built a native Android utility that converts physical documents and voice notes into structured editable text.</li>
+      <li>Integrated on-device ML Kit OCR with perspective edge detection for instantaneous offline document scanning.</li>
+      <li>Implemented local-first Room database architecture with one-tap export to formatted PDF and DOCX files.</li>
+      <li>Stack: Kotlin, Jetpack Compose, Android SDK, Room DB, ML Kit, Supabase.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">CemGuard</span>
+        <span class="pill">Open Source</span>
+        <span class="item-subtitle"> · Industrial Reliability Decision-Support Platform</span>
+      </div>
+      <span class="item-meta">2026 · <a href="https://github.com/francisnaga/CemGuard">github.com/francisnaga/CemGuard</a></span>
+    </div>
+    <ul class="item-desc">
+      <li>Engineered predictive maintenance and telemetry decision-support platform for continuous-process plants and marine engineering.</li>
+      <li>Linked physics-engine driven digital twins mathematically to live telemetry with Weibull failure distribution calculations.</li>
+      <li>Built real-time financial risk translator converting mechanical degradation to plant downtime exposure at ₦54M/hour.</li>
+      <li>Stack: Next.js 15, TypeScript, Tailwind CSS, Recharts, Zustand, Supabase.</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">Recall</span>
+        <span class="pill">PWA</span>
+        <span class="item-subtitle"> · Offline-First Revision & Exam Preparation Platform</span>
+      </div>
+      <span class="item-meta">2026 · <a href="https://github.com/BuildItt-Inc/definam-pwa">github.com/BuildItt-Inc/definam-pwa</a></span>
+    </div>
+    <ul class="item-desc">
+      <li>Developed offline-first revision platform with active recall study decks for engineering students in low-connectivity areas.</li>
+      <li>Built FastAPI REST backend paired with client-side caching Service Workers for zero-latency question retrieval.</li>
+      <li>Stack: Next.js PWA, FastAPI, Python, PostgreSQL.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section-title">Education</h2>
+  <div class="item">
+    <div class="item-head">
+      <div>
+        <span class="item-title">Nigeria Maritime University (NMU)</span>
+        <span class="item-subtitle"> · B.Eng. in Marine Engineering</span>
+      </div>
+      <span class="item-meta">Okerenkoko, Delta State · Class of 2026</span>
+    </div>
+    <ul class="item-desc">
+      <li>Specialization in marine power systems, mechanical reliability, fluid dynamics, and automated industrial monitoring.</li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>

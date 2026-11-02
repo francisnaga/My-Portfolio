@@ -182,6 +182,36 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, [isNavOpen]);
 
+  // Developer keyboard shortcuts
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const tag = document.activeElement?.tagName?.toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || document.activeElement?.isContentEditable) {
+        return;
+      }
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      const key = e.key.toLowerCase();
+      if (key === 't') {
+        e.preventDefault();
+        toggleTheme();
+      } else if (key === 'w') {
+        const el = document.getElementById('work');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else if (key === 'a') {
+        const el = document.getElementById('about');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else if (key === 'c') {
+        const el = document.getElementById('contact');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      } else if (key === 'r') {
+        window.open('/resume.pdf', '_blank', 'noopener,noreferrer');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [toggleTheme]);
+
   const copyEmail = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
@@ -225,6 +255,15 @@ export default function App() {
                   {label}
                 </a>
               ))}
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-link nav-resume"
+                title="View Resume (PDF)"
+              >
+                Resume <span aria-hidden="true">↗</span>
+              </a>
             </nav>
 
             <button
@@ -268,6 +307,15 @@ export default function App() {
                 {label}
               </a>
             ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mobile-nav-link"
+              onClick={() => setIsNavOpen(false)}
+            >
+              Resume <span aria-hidden="true">↗</span>
+            </a>
           </nav>
         )}
       </header>
@@ -295,6 +343,15 @@ export default function App() {
             <a href="#work" className="btn btn-solid">
               See my work
               <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost"
+            >
+              Resume
+              <span aria-hidden="true">↗</span>
             </a>
             <a href="#contact" className="btn btn-ghost">
               Say hello
@@ -451,6 +508,17 @@ export default function App() {
 
               <h3 className="side-title">Tools I reach for</h3>
               <p className="tools">{TOOLS.join(', ')}</p>
+
+              <div className="about-resume-wrap">
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-ghost resume-btn"
+                >
+                  View full resume <span aria-hidden="true">↗</span>
+                </a>
+              </div>
             </aside>
           </div>
         </section>
@@ -506,7 +574,12 @@ export default function App() {
       </main>
 
       <footer className="site-footer container">
-        <span>&copy; {CURRENT_YEAR} Francis Naga</span>
+        <div className="footer-left">
+          <span>&copy; {CURRENT_YEAR} Francis Naga</span>
+          <span className="footer-hotkeys" aria-hidden="true">
+            Shortcuts: <kbd>T</kbd> theme · <kbd>W</kbd> work · <kbd>R</kbd> resume · <kbd>C</kbd> contact
+          </span>
+        </div>
         <button type="button" className="text-link footer-top" onClick={scrollToTop}>
           Back to top <span aria-hidden="true">↑</span>
         </button>
