@@ -10,9 +10,16 @@ export default function IPhone({
   alt,
   className = '',
   eager = true,
+  onClick,
+  title,
 }) {
   return (
-    <figure className={`device-frame ${className}`}>
+    <figure
+      className={`device-frame ${className}`}
+      onClick={onClick}
+      title={title}
+      style={onClick ? { cursor: 'pointer' } : undefined}
+    >
       <img
         src={src}
         alt={alt}
