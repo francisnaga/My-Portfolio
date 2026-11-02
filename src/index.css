@@ -546,18 +546,12 @@ main:focus {
   margin-top: 2rem;
 }
 
-/* Staggered upright phones */
+/* Staggered upright app screens */
 .project-visual {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 1.5rem 0 4rem;
-}
-
-.project-visual .iphone {
-  width: clamp(245px, 23vw, 290px);
-  flex-shrink: 0;
-  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  padding: 1.5rem 0 3.5rem;
 }
 
 .phone-back {
@@ -578,100 +572,38 @@ main:focus {
   transform: translateY(-9px);
 }
 
-/* ---------- iPhone frame (standard modern iPhone proportions) ---------- */
+/* ---------- Clean authentic device showcase ---------- */
+.device-frame,
 .iphone {
-  --bezel: 3.5px;
-  --outer-r: 36px;
   position: relative;
-  aspect-ratio: 393 / 852;
-  padding: var(--bezel);
-  border-radius: var(--outer-r);
-  background: #0a0a0c;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.14),
-    var(--shadow);
-}
-
-[data-theme='light'] .iphone {
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.14),
-    var(--shadow);
-}
-
-.iphone-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  width: clamp(245px, 23vw, 290px);
+  flex-shrink: 0;
+  border-radius: 28px;
   overflow: hidden;
-  border-radius: calc(var(--outer-r) - var(--bezel));
-  background: #f3f4f8;
+  background: var(--bg-raised);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 24px 48px -12px rgba(0, 0, 0, 0.55),
+    0 8px 18px -6px rgba(0, 0, 0, 0.35);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
-.iphone-screen img {
+[data-theme='light'] .device-frame,
+[data-theme='light'] .iphone {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 24px 48px -12px rgba(30, 25, 20, 0.16),
+    0 8px 18px -6px rgba(30, 25, 20, 0.1);
+}
+
+.device-frame img,
+.device-img,
+.iphone img {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
+  aspect-ratio: 472 / 1024;
   object-fit: cover;
-}
-
-.iphone-status {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 5.4%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8.5% 0 10%;
-  color: #111;
-  font-size: clamp(7.5px, 1.9vw, 10px);
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.iphone-status.is-light {
-  color: rgba(255, 255, 255, 0.92);
-}
-
-.iphone-time {
-  width: 28%;
-  line-height: 1;
-}
-
-.iphone-island {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 26%;
-  height: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 999px;
-  background: #000;
-}
-
-.iphone-icons {
-  width: 28%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 5%;
-}
-
-.iphone-icons svg {
-  height: 0.88em;
-  width: auto;
-  fill: currentColor;
-}
-
-.iphone-home {
-  position: absolute;
-  bottom: 1.2%;
-  left: 50%;
-  width: 34%;
-  height: 3px;
-  transform: translateX(-50%);
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.78);
 }
 
 /* Expandable Archive ("See More Projects") */
@@ -1024,9 +956,9 @@ main:focus {
     justify-content: center;
   }
 
+  .device-frame,
   .project-visual .iphone {
-    --outer-r: 26px;
-    --bezel: 3px;
+    border-radius: 20px;
     width: clamp(145px, 42vw, 190px);
   }
 

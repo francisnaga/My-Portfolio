@@ -137,16 +137,12 @@ function ProjectFeature({ project, index }) {
           <IPhone
             src={first.src}
             alt={first.alt}
-            statusLight={first.statusLight}
-            showStatus={first.showStatus !== false}
             className="phone-back"
           />
           {second && (
             <IPhone
               src={second.src}
               alt={second.alt}
-              statusLight={second.statusLight}
-              showStatus={second.showStatus !== false}
               className="phone-front"
             />
           )}

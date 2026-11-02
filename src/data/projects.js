@@ -22,12 +22,12 @@ export const FEATURED_PROJECTS = [
     stack: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase'],
     links: [
       {
-        label: 'Visit jetty.francisnaga.site',
+        label: 'Visit Jetty',
         url: 'https://jetty.francisnaga.site',
         primary: true,
       },
       {
-        label: 'Source on GitHub',
+        label: 'GitHub',
         url: 'https://github.com/francisnaga/Island-Hub',
       },
     ],
@@ -35,12 +35,10 @@ export const FEATURED_PROJECTS = [
       {
         src: '/projects/jetty/jetty-home.webp',
         alt: 'Jetty live mobile home screen showing NMU marketplace and categories',
-        showStatus: false,
       },
       {
         src: '/projects/jetty/jetty-services.webp',
         alt: 'Jetty live mobile services screen showing verified student providers',
-        showStatus: false,
       },
     ],
   },
@@ -61,12 +59,12 @@ export const FEATURED_PROJECTS = [
     stack: ['Kotlin', 'Jetpack Compose', 'Room', 'ML Kit', 'Supabase'],
     links: [
       {
-        label: 'Get it on Google Play',
+        label: 'Get on Google Play',
         url: 'https://play.google.com/store/apps/details?id=com.inkto.app',
         primary: true,
       },
       {
-        label: 'Source on GitHub',
+        label: 'GitHub',
         url: 'https://github.com/francisnaga/Inkto-app',
       },
     ],
@@ -74,13 +72,10 @@ export const FEATURED_PROJECTS = [
       {
         src: '/projects/inkto/inkto-welcome.webp',
         alt: 'Inkto welcome screen: The transcription engine for legal minds',
-        showStatus: true,
       },
       {
         src: '/projects/inkto/inkto-workspace.webp',
         alt: 'Inkto workspace sign-in and note transcription view',
-        statusLight: true,
-        showStatus: true,
       },
     ],
   },
@@ -100,7 +95,7 @@ export const FEATURED_PROJECTS = [
     stack: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Recharts', 'Zustand', 'Supabase'],
     links: [
       {
-        label: 'Source on GitHub',
+        label: 'GitHub',
         url: 'https://github.com/francisnaga/CemGuard',
         primary: true,
       },
@@ -109,12 +104,10 @@ export const FEATURED_PROJECTS = [
       {
         src: '/projects/cemguard/cemguard-dashboard.webp',
         alt: 'CemGuard fleet health, OEE monitoring, and active risk telemetry',
-        showStatus: false,
       },
       {
         src: '/projects/cemguard/cemguard-simulator.webp',
         alt: 'CemGuard physics simulation engine, live mass flow, and throughput dynamics',
-        showStatus: false,
       },
     ],
   },
@@ -156,14 +149,14 @@ export const OTHER_PROJECTS = [
     ],
   },
   {
-    id: 'definam',
-    name: 'DefinAm PWA',
+    id: 'recall',
+    name: 'Recall',
     category: 'EdTech & Learning',
     year: '2026',
     summary:
-      'Offline-first college mode learning platform and engineering past-question revision suite.',
+      'Offline-first learning and engineering exam revision platform built for students.',
     highlights:
-      'FastAPI REST backend with Next.js PWA, client-side caching for low-bandwidth creek areas, and study decks.',
+      'FastAPI backend with Next.js PWA, active recall revision decks, and client-side caching for low-connectivity environments.',
     stack: ['Next.js PWA', 'FastAPI', 'Python', 'PostgreSQL'],
     links: [
       {
