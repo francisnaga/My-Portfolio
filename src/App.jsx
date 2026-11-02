@@ -53,6 +53,7 @@ function useScrollState() {
   const ticking = useRef(false);
 
   useEffect(() => {
+    let rafId = 0;
     const update = () => {
       const doc = document.documentElement;
       const max = doc.scrollHeight - window.innerHeight;
@@ -71,7 +72,7 @@ function useScrollState() {
     const onScroll = () => {
       if (!ticking.current) {
         ticking.current = true;
-        window.requestAnimationFrame(update);
+        rafId = window.requestAnimationFrame(update);
       }
     };
     update();
@@ -80,6 +81,7 @@ function useScrollState() {
     return () => {
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
+      if (rafId) window.cancelAnimationFrame(rafId);
     };
   }, []);
 
@@ -205,6 +207,7 @@ export default function App() {
         const el = document.getElementById('contact');
         if (el) el.scrollIntoView({ behavior: 'smooth' });
       } else if (key === 'r') {
+        e.preventDefault();
         window.open('/resume.pdf', '_blank', 'noopener,noreferrer');
       }
     };
@@ -212,14 +215,23 @@ export default function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [toggleTheme]);
 
+  const copyTimerRef = useRef(null);
+
   const copyEmail = useCallback(async () => {
     try {
       await navigator.clipboard.writeText(EMAIL);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+      copyTimerRef.current = setTimeout(() => setCopied(false), 2000);
     } catch {
       window.location.href = `mailto:${EMAIL}`;
     }
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (copyTimerRef.current) clearTimeout(copyTimerRef.current);
+    };
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });

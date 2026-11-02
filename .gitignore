@@ -1,3 +1,12 @@
+# Environment variables & secrets
+.env
+.env.*
+*.local
+*.pem
+*.key
+*.cert
+*.pfx
+
 # Logs
 logs
 *.log
@@ -7,13 +16,13 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies & Build outputs
 node_modules
 .npm-cache/
 dist
 dist-ssr
-*.local
 
-# Editor directories and files
+# Editor and OS directories
 .vscode/*
 !.vscode/extensions.json
 .idea

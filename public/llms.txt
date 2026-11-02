@@ -2,12 +2,17 @@
 
 > Personal portfolio and systems engineering showcase of Efobi Francis Chibundo (Francis Naga), software developer and marine engineering student based in Nigeria. Building focused digital products across web, mobile, and document automation.
 
-## Verified Projects
-- [Inkto Android App](https://play.google.com/store/apps/dev?id=7500831168663512287): Native Android utility for capturing handwritten notes, document edge warping, on-device OCR, and cloud synchronization via Capacitor.
-- [Vantage Job Tracker](https://github.com/francisnaga/job-application-tracker): Local-first job application and candidate pipeline tracker with Kanban board and analytics built with Next.js and IndexedDB.
-- [Commercial Client Acquisition Pipeline](https://www.francisnaga.site/#work): Multi-step conversion funnel and server-side webhook tracking engine for enterprise lead qualification.
-- [SME Lending Workflow Interface](https://www.francisnaga.site/#work): Internal loan intake and KYC verification interface developed for commercial lending review.
-- [Foreign Exchange Spread Engine](https://www.francisnaga.site/#work): Currency disparity tracker monitoring official vs. parallel market rates across NGN pairs.
+## Verified Flagship Projects
+- [Jetty Campus Marketplace](https://jetty.francisnaga.site): Campus marketplace, student housing directory, and service booking platform built for Nigeria Maritime University students (Next.js, TypeScript, Tailwind CSS, Supabase).
+- [Inkto Android App](https://play.google.com/store/apps/details?id=com.inkto.app): Native Android document scanning and audio transcription utility built with Kotlin, Jetpack Compose, Room DB, and ML Kit OCR.
+- [CemGuard Industrial IoT](https://github.com/francisnaga/CemGuard): Predictive maintenance and reliability decision-support platform linking physics-engine digital twins to live sensor telemetry (Next.js 15, TypeScript, Recharts, Zustand).
+
+## Secondary Projects
+- [Recall](https://github.com/BuildItt-Inc/definam-pwa): Offline-first learning and engineering exam revision platform with active recall study decks (FastAPI, Python, Next.js PWA).
+- [InvoiceFlow (NCB)](https://github.com/francisnaga/INVOICEFLOW): Automated invoicing suite with Paystack integration and instant WhatsApp invoice delivery.
+- [CivicTrack](https://github.com/francisnaga): Smart municipal complaint and issue reporting platform with geotagged infrastructure tracking.
+- [Metamask Simulator](https://github.com/francisnaga/Metamask-Simulator): Mobile-first Web3 crypto wallet simulator with ERC-20 sandbox.
+- [Coursemate](https://github.com/francisnaga/Coursemate): Engineering syllabus and lecture note companion for NMU students.
 
 ## Online Profiles
 - [Personal Website](https://www.francisnaga.site/): Official engineering portfolio and case studies.
