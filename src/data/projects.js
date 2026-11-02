@@ -33,7 +33,7 @@ export const FEATURED_PROJECTS = [
     ],
     screens: [
       {
-        src: '/projects/jetty/jetty-home.webp',
+        src: '/projects/jetty/jetty-home-v2.webp',
         alt: 'Jetty live mobile home screen showing NMU marketplace and categories',
       },
       {
