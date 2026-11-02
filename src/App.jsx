@@ -14,6 +14,7 @@ const NAV = [
 const NOW = [
   { label: 'Building', value: 'Jetty, Inkto, CemGuard & InvoiceFlow' },
   { label: 'Studying', value: 'Marine Engineering, NMU' },
+  { label: 'Certified', value: 'Python & Web Development, NIIT' },
   { label: 'Open to', value: 'Engineering contracts & freelance' },
 ];
 
@@ -484,8 +485,8 @@ export default function App() {
           <div className="about-grid">
             <div className="about-copy" data-reveal>
               <p>
-                I&rsquo;m a Marine Engineering student at Nigeria Maritime University who builds
-                clean software for mobile and web.
+                I&rsquo;m a Marine Engineering student at Nigeria Maritime University and NIIT-certified
+                software developer who builds clean, reliable systems for mobile and web.
               </p>
               <p>
                 I focus on focused tools that solve practical frictions, from legal document
