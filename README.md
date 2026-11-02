@@ -1,108 +1,51 @@
-<div align="center">
+<p align="center">
   <a href="https://francisnaga.site/">
-    <img src="assets/readme-banner.gif" alt="Animated Naga portfolio banner: Francis Naga, product-minded software developer in Lagos, Nigeria" width="100%" />
+    <img src="public/logo.svg" alt="Francis Naga Logo" width="84" height="84" />
   </a>
+</p>
 
-  <h1>Francis Naga · Product-minded software developer</h1>
+<h1 align="center">Francis Naga · Software Developer</h1>
 
-  <p><strong>I turn complex problems into software people trust.</strong><br />
-  Web products, mobile apps, and practical AI: from a clear idea to a polished release.</p>
+<p align="center">
+  <strong>Personal engineering portfolio showcasing production mobile applications, web platforms, and industrial systems. Built with React and Vite.</strong>
+</p>
 
-  <p>
-    <a href="https://francisnaga.site/"><img alt="Visit portfolio" src="https://img.shields.io/badge/Portfolio-francisnaga.site-002FA7?style=for-the-badge&logo=vercel&logoColor=white" /></a>
-    <a href="https://github.com/francisnaga"><img alt="GitHub profile" src="https://img.shields.io/badge/GitHub-francisnaga-111827?style=for-the-badge&logo=github&logoColor=white" /></a>
-    <a href="mailto:hello@francisnaga.site"><img alt="Email Francis" src="https://img.shields.io/badge/Email-Let's%20talk-334155?style=for-the-badge&logo=gmail&logoColor=white" /></a>
-    <a href="https://www.linkedin.com/in/francisnaga/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
-  </p>
-
-  <p>
-    <img alt="Repository stars" src="https://img.shields.io/github/stars/francisnaga/My-Portfolio?style=flat-square&color=4f73ff" />
-    <img alt="Latest commit" src="https://img.shields.io/github/last-commit/francisnaga/My-Portfolio?style=flat-square&color=64748b" />
-    <img alt="Built with React" src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=111827" />
-    <img alt="Built with Vite" src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" />
-  </p>
-
-  <p><a href="#selected-work">Selected work</a> · <a href="#inside-the-build">Inside the build</a> · <a href="#run-locally">Run locally</a> · <a href="#connect">Connect</a></p>
-</div>
+<p align="center">
+  <a href="https://francisnaga.site/"><img src="https://img.shields.io/badge/Live%20Portfolio-francisnaga.site-002FA7?logo=safari&logoColor=white" alt="Portfolio" /></a>
+  <a href="https://vitejs.dev/"><img src="https://img.shields.io/badge/Bundler-Vite-646CFF?logo=vite&logoColor=white" alt="Vite" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/UI-React%2019-61DAFB?logo=react&logoColor=black" alt="React" /></a>
+</p>
 
 ---
 
-## The portfolio
+## Flagship Systems
 
-This repository powers [francisnaga.site](https://francisnaga.site/), the portfolio and engineering studio of **Efobi Francis Chibundo (Naga)**: a product-minded software developer based in Lagos, Nigeria, and a Marine Engineering student at Nigeria Maritime University.
+- [**Jetty**](https://jetty.francisnaga.site) · Campus marketplace, verified off-campus student accommodation directory, and student services platform for Nigeria Maritime University.
+- [**Inkto**](https://play.google.com/store/apps/details?id=com.inkto.app) · Native Android legal transcription and document scanning engine on Google Play.
+- [**CemGuard**](https://github.com/francisnaga/CemGuard) · Predictive maintenance and reliability decision-support platform with physics-based digital twins.
 
-The site is designed for high-conviction conversations: partnering with founders to architect dependable digital products, and engineering zero-to-one software systems across web, mobile, and automation.
+---
 
-## Selected work
+## Tech Stack
 
-| Product | What it does | Access |
-| --- | --- | --- |
-| **Inkto** | Mobile legal document scanner, AI transcription, and DOCX compiler. | [Google Play](https://play.google.com/store/apps/details?id=com.inkto.app) (Closed Source) |
-| **Vantage** | Premium job application tracker and pipeline visualization workspace. | [Source](https://github.com/francisnaga/job-application-tracker) |
-| **NCB Finance** | Invoicing and payments platform with FIRS/NRS compliance. | Private Client Repo (Demo on Request) |
-| **NairaLens** | Financial transparency and remittance comparison tools. | Private Client Repo (Demo on Request) |
-| **Classync** | Campus PWA with multi-tier role-based approval workflows. | Private Client Repo (Demo on Request) |
+- **Frontend & Web**: React 19, Vite, Next.js 15, TypeScript, Tailwind CSS
+- **Mobile Engineering**: Native Android (Kotlin, Jetpack Compose, Room SQLite, ML Kit)
+- **Backend & Cloud**: Supabase (PostgreSQL + RLS + Realtime), Google Cloud Run, Paystack API
 
-## Inside the build
+---
 
-- **Studio capabilities model:** 6 high-value engineering disciplines (Mobile App Dev, Full-Stack SaaS, AI Document Intelligence, Workflow Automation, Growth & Acquisition, End-to-End Product Launch).
-- **Verified product evidence:** Inkto showcases 6 high-res production screenshots in a zero-CLS brutalist carousel.
-- **Enterprise telemetry proof:** Detailed technical stack backing the ₦80M enterprise pipeline metric.
-- **Accessible interactions:** WAI-ARIA dialog traps (`useDialog.js`), Escape close, focus restoration, zero CLS, and reduced-motion compliance.
-- **Personal brand system:** Custom two-tone monogram, International Klein Blue accents (`#002FA7`), and a tactile brutalist visual language.
-- **Production SEO:** Rich JSON-LD Schema (`Person`, `ProfilePage`), OpenGraph cards, Twitter Cards, robots.txt, and sitemap.xml.
+## Live Site
 
-## The stack
+Visit the live production site at [francisnaga.site](https://francisnaga.site).
 
-<p>
-  <img alt="React" src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react&logoColor=111827" />
-  <img alt="Vite" src="https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite&logoColor=white" />
-  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-3-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white" />
-  <img alt="Framer Motion" src="https://img.shields.io/badge/Framer_Motion-14-0055FF?style=flat-square&logo=framer&logoColor=white" />
-  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=flat-square&logo=javascript&logoColor=111827" />
-  <img alt="Oxlint" src="https://img.shields.io/badge/Oxlint-checked-64748B?style=flat-square" />
-</p>
+---
 
-The GitHub stats cards below are generated by [GitHub Readme Stats](https://github.com/anuraghazra/github-readme-stats). They summarize public GitHub activity, can be cached, and do not measure site traffic or hiring interest.
+## Author
 
-<div align="center">
-  <img height="165" alt="Public GitHub profile statistics for Francis Naga" src="https://github-readme-stats.vercel.app/api?username=francisnaga&show_icons=true&hide_border=true&rank_icon=github&bg_color=0b0f18&title_color=92a8ff&icon_color=4f73ff&text_color=e2e7f2" />
-  <img height="165" alt="Most-used languages across Francis Naga's public repositories" src="https://github-readme-stats.vercel.app/api/top-langs/?username=francisnaga&layout=compact&hide_border=true&langs_count=6&bg_color=0b0f18&title_color=92a8ff&text_color=e2e7f2" />
-</div>
+Francis Naga ([Portfolio](https://francisnaga.site) / [GitHub](https://github.com/francisnaga))
 
-## Run locally
+---
 
-Requires Node.js `20.19+` or `22.12+` and npm.
+## License
 
-```bash
-git clone https://github.com/francisnaga/My-Portfolio.git
-cd My-Portfolio
-npm ci
-npm run dev
-```
-
-Vite prints the local development URL after the server starts.
-
-| Command | Purpose |
-| --- | --- |
-| `npm run dev` | Start the development server. |
-| `npm run build` | Build the production site in `dist/`. |
-| `npm run preview` | Preview the production build locally. |
-| `npm run lint` | Check source with Oxlint. |
-
-## Brand assets
-
-- `assets/readme-banner.gif`: original, restrained animated README banner; regenerate with `python scripts/generate_readme_banner.py`.
-- `public/logo.svg` and `public/logo-white.svg`: two-tone and white Naga marks.
-- `public/favicon.svg`: browser icon with a dark-mode color variant.
-- `public/og-image.png`: social-sharing preview image.
-- `src/components/Logo.jsx`: reusable React mark.
-
-## Connect
-
-- **Website:** [francisnaga.site](https://francisnaga.site/)
-- **Email:** [hello@francisnaga.site](mailto:hello@francisnaga.site)
-- **GitHub:** [github.com/francisnaga](https://github.com/francisnaga)
-- **LinkedIn:** [linkedin.com/in/francisnaga](https://www.linkedin.com/in/francisnaga/)
-
-The repository has no license file. Please contact the author before reusing the source or brand assets.
+MIT License. See [LICENSE](LICENSE) for details.
