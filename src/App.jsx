@@ -12,12 +12,29 @@ const NAV = [
 ];
 
 const NOW = [
-  { label: 'Building', value: 'Jetty, Inkto & CemGuard' },
+  { label: 'Building', value: 'Jetty, Inkto, CemGuard & InvoiceFlow' },
   { label: 'Studying', value: 'Marine Engineering, NMU' },
   { label: 'Open to', value: 'Engineering contracts & freelance' },
 ];
 
-const TOOLS = ['Kotlin', 'Jetpack Compose', 'TypeScript', 'React', 'Next.js', 'Python', 'Supabase'];
+const STACK_GROUPS = [
+  {
+    domain: 'Mobile',
+    items: 'Kotlin, Jetpack Compose, Android SDK, Room DB, ML Kit (On-Device OCR)',
+  },
+  {
+    domain: 'Frontend',
+    items: 'Next.js 16 / 15, React 19, TypeScript, Tailwind CSS v4, Framer Motion, Zustand',
+  },
+  {
+    domain: 'Backend & Data',
+    items: 'Supabase (PostgreSQL, RLS), Python, FastAPI, Node.js, REST APIs',
+  },
+  {
+    domain: 'Integrations',
+    items: 'Paystack Rails & Webhooks, WhatsApp Business Routing, PWA Offline-First, Vercel',
+  },
+];
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -518,8 +535,15 @@ export default function App() {
                 ))}
               </dl>
 
-              <h3 className="side-title">Tools I reach for</h3>
-              <p className="tools">{TOOLS.join(', ')}</p>
+              <h3 className="side-title">Core Stack & Tooling</h3>
+              <dl className="tools-list">
+                {STACK_GROUPS.map((group) => (
+                  <div key={group.domain} className="tools-row">
+                    <dt>{group.domain}</dt>
+                    <dd>{group.items}</dd>
+                  </div>
+                ))}
+              </dl>
 
               <div className="about-resume-wrap">
                 <a
