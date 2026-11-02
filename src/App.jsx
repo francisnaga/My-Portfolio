@@ -2,12 +2,13 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Logo from './components/Logo';
 import IPhone from './components/IPhone';
 import InktoWordmark from './components/InktoWordmark';
-import { FEATURED_PROJECTS, OTHER_PROJECTS } from './data/projects';
+import { FEATURED_PROJECTS, OTHER_PROJECTS, CAPABILITIES } from './data/projects';
 import { whatsappLink, EMAIL } from './lib/contact';
 
 const NAV = [
   { id: 'work', label: 'Work' },
   { id: 'about', label: 'About' },
+  { id: 'capabilities', label: 'Capabilities' },
   { id: 'contact', label: 'Contact' },
 ];
 
@@ -557,6 +558,33 @@ export default function App() {
                 </a>
               </div>
             </aside>
+          </div>
+        </section>
+
+        {/* Capabilities / Delivery */}
+        <section id="capabilities" className="section capabilities container" aria-labelledby="capabilities-title">
+          <header className="section-head" data-reveal>
+            <h2 id="capabilities-title" className="section-title">End-to-end product delivery</h2>
+            <p className="section-sub">
+              From early brand identity and visual systems to production engineering and customer acquisition.
+            </p>
+          </header>
+
+          <div className="capabilities-grid">
+            {CAPABILITIES.map((cap) => (
+              <article key={cap.num} className="capability-card" data-reveal>
+                <div className="capability-head">
+                  <span className="capability-num">{cap.num}</span>
+                  <h3 className="capability-title">{cap.title}</h3>
+                </div>
+                <p className="capability-desc">{cap.desc}</p>
+                <ul className="capability-tags" aria-label="Key Deliverables">
+                  {cap.tags.map((tag) => (
+                    <li key={tag} className="capability-tag">{tag}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
         </section>
 

@@ -201,4 +201,31 @@ export const OTHER_PROJECTS = [
   },
 ];
 
+export const CAPABILITIES = [
+  {
+    num: '01',
+    title: 'Production Software Engineering',
+    desc: 'Native Android applications (Kotlin, Jetpack Compose, Room DB, ML Kit) and high-performance full-stack web platforms (Next.js 16, React 19, TypeScript, Supabase). Engineered for sub-second load times and production reliability.',
+    tags: ['Android Native', 'Next.js 16', 'TypeScript', 'Supabase', 'Room DB', 'Turbopack'],
+  },
+  {
+    num: '02',
+    title: 'Brand Identity & Visual Packaging',
+    desc: 'Distinctive brand marks, bespoke logos, design tokens, typography systems, and marketing collateral. Creating cohesive, high-trust visual packaging that makes emerging businesses look established, premium, and authoritative.',
+    tags: ['Logo Design', 'Visual Systems', 'Design Tokens', 'Brand Packaging', 'Figma'],
+  },
+  {
+    num: '03',
+    title: 'Search & Local Discovery',
+    desc: 'Technical SEO, structured JSON-LD schema markup, Google Search Console indexing, and verified Google Business Profile infrastructure designed to dominate local search results and Google Maps.',
+    tags: ['Google Business Profile', 'Technical SEO', 'Schema Markup', 'Search Console', 'Local SEO'],
+  },
+  {
+    num: '04',
+    title: 'Customer Acquisition & Ad Funnels',
+    desc: 'Direct-response paid advertising campaigns (Meta & Google Ads), conversion-focused landing pages, server-side CAPI tracking, and automated WhatsApp sales qualification pipelines built to drive revenue, not vanity traffic.',
+    tags: ['Meta & Google Ads', 'Conversion Funnels', 'WhatsApp Routing', 'Ad Attribution', 'CRO'],
+  },
+];
+
 export const PROJECTS = FEATURED_PROJECTS;
