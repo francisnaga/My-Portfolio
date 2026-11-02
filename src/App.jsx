@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import Logo from './components/Logo';
 import IPhone from './components/IPhone';
-import ProjectShowcase from './components/ProjectShowcase';
 import InktoWordmark from './components/InktoWordmark';
 import { FEATURED_PROJECTS, OTHER_PROJECTS } from './data/projects';
 import { whatsappLink, EMAIL } from './lib/contact';
@@ -90,6 +89,7 @@ function useScrollState() {
 }
 
 function ProjectFeature({ project, index }) {
+  const [first, second] = project.screens || [];
   return (
     <article className="project" data-reveal>
       <div className="project-copy">
@@ -134,11 +134,21 @@ function ProjectFeature({ project, index }) {
         </div>
       </div>
 
-      {project.screens && project.screens.length > 0 && (
-        <ProjectShowcase
-          screens={project.screens}
-          projectName={project.name}
-        />
+      {first && (
+        <div className="project-visual" aria-label={`${project.name} screenshots`}>
+          <IPhone
+            src={first.src}
+            alt={first.alt}
+            className="phone-back"
+          />
+          {second && (
+            <IPhone
+              src={second.src}
+              alt={second.alt}
+              className="phone-front"
+            />
+          )}
+        </div>
       )}
     </article>
   );

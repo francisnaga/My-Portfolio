@@ -35,17 +35,10 @@ export const FEATURED_PROJECTS = [
       {
         src: '/projects/jetty/jetty-nmu-marketplace.webp',
         alt: 'Jetty live mobile marketplace screen with student listings and search',
-        title: 'Marketplace Feed',
       },
       {
         src: '/projects/jetty/jetty-nmu-vendor.webp',
         alt: 'Jetty verified vendor storefront with direct WhatsApp messaging button',
-        title: 'WhatsApp Vendor Storefront',
-      },
-      {
-        src: '/projects/jetty/jetty-nmu-services.webp',
-        alt: 'Jetty live campus services directory with student providers',
-        title: 'Services Directory',
       },
     ],
   },
